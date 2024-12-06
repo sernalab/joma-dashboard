@@ -15,6 +15,7 @@ import StyleClass from "primevue/styleclass";
 import Button from "primevue/button";
 import Avatar from "primevue/avatar";
 import Menubar from "primevue/menubar";
+import InputText from "primevue/inputtext";
 
 import { firebaseApp } from "@/firebase.js";
 
@@ -35,4 +36,6 @@ app.directive("ripple", Ripple);
 app.component("Button", Button);
 app.component("Avatar", Avatar);
 app.component("Menubar", Menubar);
+app.component("InputText", InputText);
+
 app.mount("#app");

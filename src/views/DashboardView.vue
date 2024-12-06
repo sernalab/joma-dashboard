@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import { firebaseService } from "@/services/firebase.service";
+import Menu from "@/components/Menu.vue";
 
 const datos = ref([]);
 
