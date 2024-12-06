@@ -53,5 +53,9 @@ const items = ref([
     label: "Contact",
     icon: "pi pi-envelope",
   },
+  {
+    label: "Print Reports",
+    icon: "pi pi-print",
+  },
 ]);
 </script>

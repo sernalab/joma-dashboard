@@ -37,5 +37,7 @@ const fetchCompressionData = async () => {
     </div>
 
     <ServiceGrid />
+
+    <Divider />
   </div>
 </template>
