@@ -6,6 +6,8 @@ import Aura from "@primevue/themes/aura";
 import App from "./App.vue";
 import router from "./router";
 
+import "primeflex/primeflex.css";
+
 // import components
 import Sidebar from "primevue/sidebar";
 import Button from "primevue/button";
