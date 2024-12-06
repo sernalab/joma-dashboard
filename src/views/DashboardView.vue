@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from "vue";
+import ServiceGrid from "@/components/ServiceGrid.vue";
 import { firebaseService } from "@/services/firebase.service";
-import Menu from "@/components/Menu.vue";
 
 const datos = ref([]);
 
@@ -16,12 +16,15 @@ const fetchData = async () => {
 </script>
 
 <template>
-  <main>
-    <h1>Bienvenido</h1>
-    <h2>FIREBASE TEST</h2>
-    <Button label="Cargar Datos" @click="fetchData" />
-    <div v-if="datos.length > 0">
-      <pre>{{ JSON.stringify(datos, null, 2) }}</pre>
+  <div class="p-4">
+    <div class="mb-4">
+      <h1>Bienvenido al Dashboard</h1>
+      <Button label="Cargar Datos" @click="fetchData" class="mb-3" />
+      <div v-if="datos.length > 0">
+        <pre>{{ JSON.stringify(datos, null, 2) }}</pre>
+      </div>
     </div>
-  </main>
+
+    <ServiceGrid />
+  </div>
 </template>

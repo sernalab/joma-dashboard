@@ -23,4 +23,7 @@
 </script>
 
 <style>
+.p-button.p-button-primary {
+  background-color: #386ec7;
+}
 </style>
