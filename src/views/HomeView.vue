@@ -2,5 +2,5 @@
 </script>
 
 <template>
-  <main>HOME PAGE</main>
+  <main>TEST HOME VIEW WORKING</main>
 </template>
