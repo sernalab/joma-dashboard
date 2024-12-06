@@ -7,11 +7,16 @@ import App from "./App.vue";
 import router from "./router";
 
 import "primeflex/primeflex.css";
+import "primeicons/primeicons.css";
+import Ripple from "primevue/ripple";
+import StyleClass from "primevue/styleclass";
 
 // import components
-import Sidebar from "primevue/sidebar";
 import Button from "primevue/button";
 import Avatar from "primevue/avatar";
+import Menubar from "primevue/menubar";
+
+import { firebaseApp } from "@/firebase.js";
 
 const app = createApp(App);
 
@@ -22,9 +27,12 @@ app.use(PrimeVue, {
   },
 });
 
+// directives
+app.directive("styleclass", StyleClass);
+app.directive("ripple", Ripple);
+
 // register components
 app.component("Button", Button);
-app.component("Sidebar", Sidebar);
 app.component("Avatar", Avatar);
-
+app.component("Menubar", Menubar);
 app.mount("#app");

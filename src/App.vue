@@ -1,14 +1,12 @@
 <script setup>
+import Menu from "@/components/Menu.vue";
 import { RouterView } from "vue-router";
-import SideMenu from "./components/SideMenu.vue";
 </script>
 
 <template>
   <div class="main-container">
-    <SideMenu />
-    <div class="view-container">
-      <RouterView />
-    </div>
+    <Menu />
+    <RouterView />
   </div>
 </template>
 
