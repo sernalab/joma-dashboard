@@ -24,4 +24,12 @@ const router = createRouter({
   ],
 });
 
+router.beforeEach((to, from, next) => {
+  if (to.meta.requiresAuth && !authService.isAuthenticated()) {
+    next("/");
+  } else {
+    next();
+  }
+});
+
 export default router;

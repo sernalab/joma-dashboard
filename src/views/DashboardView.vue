@@ -1,43 +1,45 @@
 <script setup>
-import { ref } from "vue";
-import BarChart from "@/components/charts/BarChart.vue";
+import { ref, onMounted } from "vue";
 import ServiceGrid from "@/components/ServiceGrid.vue";
-import { dashboardService } from "@/services/dashboard.service";
+import ChartGrid from "@/components/ChartGrid.vue";
+import BarChart from "@/components/charts/BarChart.vue";
 
-const datos = ref([]);
-const compressionData = ref([]);
+const userData = ref(null);
+const showData = ref(false);
 
-const fetchData = async () => {
-  try {
-    datos.value = await dashboardService.fetchGeneralData();
-  } catch (error) {
-    console.error("Error:", error);
+onMounted(() => {
+  const user = JSON.parse(localStorage.getItem("currentUser"));
+  if (user) {
+    userData.value = user;
   }
-};
-
-const fetchCompressionData = async () => {
-  try {
-    compressionData.value = await dashboardService.fetchCompressionData();
-  } catch (error) {
-    console.error("Error:", error);
-  }
-};
+});
 </script>
 
 <template>
-  <div class="p-4">
-    <div class="mb-4">
-      <h1>Bienvenido al Dashboard</h1>
-      <Button label="Cargar Datos" @click="fetchData" class="mb-3" />
-      <Button label="Cargar Gráfico" @click="fetchCompressionData" />
-      <div v-if="datos.length > 0">
-        <pre>{{ JSON.stringify(datos, null, 2) }}</pre>
+  <div class="p-0 md:p-4">
+    <div v-if="userData" class="mb-4">
+      <h1>Bienvenido {{ userData.name || userData.id }}</h1>
+
+      <Button
+        label="DATOS USUARIO"
+        @click="showData = !showData"
+        class="mb-3"
+      />
+
+      <div v-if="showData" class="surface-card p-4 border-round mb-3">
+        <pre>{{ JSON.stringify(userData, null, 2) }}</pre>
       </div>
-      <BarChart :datos="compressionData" v-if="compressionData.length > 0" />
+
+      <div v-if="userData.datacompression">
+        <h2>Datos de Compresión</h2>
+        <BarChart :datos="userData.datacompression" />
+      </div>
+
+      <ServiceGrid />
+
+      <Divider />
+
+      <ChartGrid />
     </div>
-
-    <ServiceGrid />
-
-    <Divider />
   </div>
 </template>

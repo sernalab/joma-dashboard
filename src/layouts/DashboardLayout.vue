@@ -5,7 +5,7 @@ import Menu from "@/components/Menu.vue";
 <template>
   <div class="h-screen flex flex-column p-5">
     <Menu />
-    <div class="flex-1 p-4">
+    <div class="flex-1">
       <RouterView />
     </div>
   </div>
