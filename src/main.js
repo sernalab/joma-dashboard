@@ -19,6 +19,8 @@ import Menubar from "primevue/menubar";
 import InputText from "primevue/inputtext";
 import Card from "primevue/card";
 import Divider from "primevue/divider";
+import ProgressSpinner from "primevue/progressspinner";
+import Message from "primevue/message";
 
 const app = createApp(App);
 
@@ -44,5 +46,7 @@ app.component("Menubar", Menubar);
 app.component("InputText", InputText);
 app.component("Card", Card);
 app.component("Divider", Divider);
+app.component("ProgressSpinner", ProgressSpinner);
+app.component("Message", Message);
 
 app.mount("#app");
