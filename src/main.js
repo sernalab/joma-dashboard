@@ -1,6 +1,10 @@
 import "./assets/main.css";
 
 import { createApp } from "vue";
+
+import { createI18n } from "vue-i18n";
+import { messages } from "./i18n";
+
 import VueApexCharts from "vue3-apexcharts";
 import PrimeVue from "primevue/config";
 import Aura from "@primevue/themes/aura";
@@ -22,10 +26,17 @@ import Divider from "primevue/divider";
 import ProgressSpinner from "primevue/progressspinner";
 import Message from "primevue/message";
 
+const i18n = createI18n({
+  locale: "en",
+  fallbackLocale: "en",
+  messages,
+});
+
 const app = createApp(App);
 
 app.use(router);
 app.use(VueApexCharts);
+app.use(i18n);
 app.use(PrimeVue, {
   theme: {
     preset: Aura,
