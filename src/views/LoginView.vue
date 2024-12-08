@@ -2,6 +2,7 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { authService } from "@/services/auth.service";
+import { useI18n } from "vue-i18n";
 
 const router = useRouter();
 const userId = ref("");
@@ -11,7 +12,7 @@ const loading = ref(false);
 
 const handleLogin = async () => {
   if (!userId.value || !password.value) {
-    error.value = "Por favor, introduce todas las credenciales";
+    error.value = "login.error.required";
     return;
   }
 
@@ -24,11 +25,13 @@ const handleLogin = async () => {
       router.push("/dashboard");
     }
   } catch (err) {
-    error.value = "Credenciales inválidas";
+    error.value = "login.error.credentials";
   } finally {
     loading.value = false;
   }
 };
+
+const { t } = useI18n();
 </script>
 
 <template>
@@ -37,16 +40,18 @@ const handleLogin = async () => {
       <div class="surface-card p-4 shadow-2 border-round w-full lg:w-6">
         <div class="text-center mb-5">
           <img src="/src/assets/beta-logo.png" height="50" />
-          <div class="text-900 text-3xl font-medium mb-3">Bienvenido</div>
-          <span class="text-600 font-medium">Introduce tus credenciales</span>
+          <div class="text-900 text-3xl font-medium mb-3">
+            {{ t("login.title") }}
+          </div>
+          <span class="text-600 font-medium">{{ t("login.subtitle") }}</span>
         </div>
 
         <div class="flex flex-column gap-3">
           <Message v-if="error" severity="error" class="w-full">
-            {{ error }}
+            {{ t(error) }}
           </Message>
           <div class="flex flex-column gap-2">
-            <label for="userId">ID de Usuario</label>
+            <label for="userId">{{ t("login.userId") }}</label>
             <InputText
               id="userId"
               v-model="userId"
@@ -55,7 +60,7 @@ const handleLogin = async () => {
             />
           </div>
           <div class="flex flex-column gap-2">
-            <label for="password">Contraseña</label>
+            <label for="password">{{ t("login.password") }}</label>
             <InputText
               id="password"
               v-model="password"
@@ -64,7 +69,7 @@ const handleLogin = async () => {
             />
           </div>
           <Button
-            label="Iniciar Sesión"
+            :label="t('login.submit')"
             @click="handleLogin"
             :loading="loading"
           />
