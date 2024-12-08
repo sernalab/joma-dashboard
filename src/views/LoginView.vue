@@ -36,7 +36,7 @@ const handleLogin = async () => {
     <div class="w-full flex align-items-center justify-content-center">
       <div class="surface-card p-4 shadow-2 border-round w-full lg:w-6">
         <div class="text-center mb-5">
-          <img src="/src/assets/joma-logo.jpg" height="50" class="mb-3" />
+          <img src="/src/assets/beta-logo.png" height="50" />
           <div class="text-900 text-3xl font-medium mb-3">Bienvenido</div>
           <span class="text-600 font-medium">Introduce tus credenciales</span>
         </div>
@@ -75,12 +75,27 @@ const handleLogin = async () => {
 </template>
 
 <style>
-.p-button {
+/* Joma Colors */
+/* .p-button {
   background-color: #386ec7 !important;
   border: #386ec7 !important;
 }
 
 .p-inputtext:focus {
   border-color: #386ec7 !important;
+} */
+
+/* Beta Colors */
+.p-button {
+  background-color: #ec7d13 !important;
+  border: #ec7d13 !important;
+}
+
+.p-inputtext:focus {
+  border-color: #ec7d13 !important;
+}
+
+img {
+  height: 100px;
 }
 </style>
