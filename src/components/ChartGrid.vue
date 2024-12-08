@@ -1,5 +1,12 @@
 <script setup>
-import { ref } from "vue";
+import { ref, watchEffect } from "vue";
+
+const props = defineProps({
+  userData: {
+    type: Object,
+    default: () => ({}),
+  },
+});
 
 const charts = ref([
   {
@@ -8,16 +15,26 @@ const charts = ref([
     data: {
       series: [
         {
-          data: [400, 430, 448, 470],
+          data: [],
         },
       ],
       options: {
-        chart: { type: "bar" },
+        chart: {
+          type: "bar",
+          height: 350,
+        },
         plotOptions: {
           bar: {
             borderRadius: 4,
+            borderRadiusApplication: "end",
             horizontal: true,
           },
+        },
+        dataLabels: {
+          enabled: false,
+        },
+        xaxis: {
+          categories: ["Medición 1", "Medición 2", "Medición 3", "Medición 4"],
         },
       },
     },
@@ -61,6 +78,12 @@ const charts = ref([
     },
   },
 ]);
+
+watchEffect(() => {
+  if (props.userData?.datacompression) {
+    charts.value[0].data.series[0].data = props.userData.datacompression;
+  }
+});
 </script>
 
 <template>

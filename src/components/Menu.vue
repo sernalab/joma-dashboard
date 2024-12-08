@@ -1,48 +1,51 @@
 
 <template>
   <div class="flex justify-content-center w-full">
-    <Menubar :model="items" />
+    <Menubar :model="menuItems" />
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { computed } from "vue";
+import { useI18n } from "vue-i18n";
 
-const items = ref([
+const { t } = useI18n();
+
+const menuItems = computed(() => [
   {
-    label: "Home",
+    label: t("menu.home"),
     icon: "pi pi-home",
   },
   {
-    label: "Features",
+    label: t("menu.features"),
     icon: "pi pi-star",
   },
   {
-    label: "Projects",
+    label: t("menu.projects"),
     icon: "pi pi-search",
     items: [
       {
-        label: "Components",
+        label: t("menu.components"),
         icon: "pi pi-bolt",
       },
       {
-        label: "Blocks",
+        label: t("menu.blocks"),
         icon: "pi pi-server",
       },
       {
-        label: "UI Kit",
+        label: t("menu.uiKit"),
         icon: "pi pi-pencil",
       },
       {
-        label: "Templates",
+        label: t("menu.templates"),
         icon: "pi pi-palette",
         items: [
           {
-            label: "Apollo",
+            label: t("menu.apollo"),
             icon: "pi pi-palette",
           },
           {
-            label: "Ultima",
+            label: t("menu.ultima"),
             icon: "pi pi-palette",
           },
         ],
@@ -50,11 +53,7 @@ const items = ref([
     ],
   },
   {
-    label: "Contact",
-    icon: "pi pi-envelope",
-  },
-  {
-    label: "Print Reports",
+    label: t("menu.printReports"),
     icon: "pi pi-print",
   },
 ]);

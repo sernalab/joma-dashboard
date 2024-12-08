@@ -39,7 +39,7 @@ onMounted(() => {
 
       <Divider />
 
-      <ChartGrid />
+      <ChartGrid :userData="userData" />
     </div>
   </div>
 </template>
