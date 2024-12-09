@@ -87,7 +87,7 @@ watchEffect(() => {
 </script>
 
 <template>
-  <div class="grid">
+  <div id="charts-container" class="grid">
     <div v-for="chart in charts" :key="chart.title" class="col-12 md:col-6 p-2">
       <div class="surface-card p-4 border-round shadow-2">
         <h3 class="text-xl mb-4">{{ chart.title }}</h3>
@@ -101,3 +101,6 @@ watchEffect(() => {
     </div>
   </div>
 </template>
+
+<style>
+</style>

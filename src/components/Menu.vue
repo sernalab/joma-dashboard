@@ -11,6 +11,12 @@ import { useI18n } from "vue-i18n";
 
 const { t } = useI18n();
 
+import printContainer from "@/utils/pdfGenerator";
+
+const handlePrint = () => {
+  printContainer("charts-container");
+};
+
 const menuItems = computed(() => [
   {
     label: t("menu.home"),
@@ -55,6 +61,7 @@ const menuItems = computed(() => [
   {
     label: t("menu.printReports"),
     icon: "pi pi-print",
+    command: () => handlePrint(),
   },
 ]);
 </script>
