@@ -32,7 +32,12 @@ const chartOptions = ref({
     enabled: false,
   },
   xaxis: {
-    categories: ["Medición 1", "Medición 2", "Medición 3", "Medición 4"], // Etiquetas para cada valor
+    categories: [
+      t("extras.stadistics") + " 1",
+      t("extras.stadistics") + " 2",
+      t("extras.stadistics") + " 3",
+      t("extras.stadistics") + " 4",
+    ],
   },
 });
 
