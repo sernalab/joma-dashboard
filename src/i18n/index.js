@@ -23,6 +23,9 @@ export const messages = {
       ultima: "Ultima",
       printReports: "Print Reports",
     },
+    extras: {
+      cylinder: "Cilindro",
+    },
   },
   es: {
     login: {
@@ -47,6 +50,9 @@ export const messages = {
       apollo: "Apollo",
       ultima: "Ultima",
       printReports: "Imprimir Informes",
+    },
+    extras: {
+      cylinder: "Cilindro",
     },
   },
   it: {

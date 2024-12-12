@@ -1,6 +1,10 @@
 <script setup>
 import { ref, watchEffect } from "vue";
 
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
+
 const props = defineProps({
   datos: {
     type: Array,
@@ -33,10 +37,10 @@ const chartOptions = ref({
   },
   xaxis: {
     categories: [
-      t("extras.stadistics") + " 1",
-      t("extras.stadistics") + " 2",
-      t("extras.stadistics") + " 3",
-      t("extras.stadistics") + " 4",
+      t("extras.cylinder") + " 1",
+      t("extras.cylinder") + " 2",
+      t("extras.cylinder") + " 3",
+      t("extras.cylinder") + " 4",
     ],
   },
 });
