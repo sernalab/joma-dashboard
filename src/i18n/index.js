@@ -1,233 +1,33 @@
+import en from "./locales/en";
+import es from "./locales/es";
+import fr from "./locales/fr";
+import it from "./locales/it";
+import pl from "./locales/pl";
+import nl from "./locales/nl";
+import pt from "./locales/pt";
+import de from "./locales/de";
+import hu from "./locales/hu";
+
 export const messages = {
-  en: {
-    login: {
-      title: "Welcome",
-      subtitle: "Enter your credentials",
-      userId: "User ID",
-      password: "Password",
-      submit: "Login",
-      error: {
-        credentials: "Invalid credentials",
-        required: "Please enter all credentials",
-      },
-    },
-    menu: {
-      home: "Home",
-      features: "Features",
-      projects: "Projects",
-      components: "Components",
-      blocks: "Blocks",
-      uiKit: "UI Kit",
-      templates: "Templates",
-      apollo: "Apollo",
-      ultima: "Ultima",
-      printReports: "Print Reports",
-    },
-    extras: {
-      cylinder: "Cilindro",
-    },
-  },
-  es: {
-    login: {
-      title: "Bienvenido",
-      subtitle: "Introduce tus credenciales",
-      userId: "ID de Usuario",
-      password: "Contraseña",
-      submit: "Iniciar Sesión",
-      error: {
-        credentials: "Credenciales inválidas",
-        required: "Por favor, introduce todas las credenciales",
-      },
-    },
-    menu: {
-      home: "Inicio",
-      features: "Características",
-      projects: "Proyectos",
-      components: "Componentes",
-      blocks: "Bloques",
-      uiKit: "Kit de UI",
-      templates: "Plantillas",
-      apollo: "Apollo",
-      ultima: "Ultima",
-      printReports: "Imprimir Informes",
-    },
-    extras: {
-      cylinder: "Cilindro",
-    },
-  },
-  it: {
-    login: {
-      title: "Benvenuto",
-      subtitle: "Inserisci le tue credenziali",
-      userId: "ID Utente",
-      password: "Password",
-      submit: "Accedi",
-      error: {
-        credentials: "Credenziali non valide",
-        required: "Inserisci tutte le credenziali",
-      },
-    },
-    menu: {
-      home: "Home",
-      features: "Funzionalità",
-      projects: "Progetti",
-      components: "Componenti",
-      blocks: "Blocchi",
-      uiKit: "Kit UI",
-      templates: "Modelli",
-      apollo: "Apollo",
-      ultima: "Ultima",
-      printReports: "Stampa Rapporti",
-    },
-  },
-  fr: {
-    login: {
-      title: "Bienvenue",
-      subtitle: "Entrez vos identifiants",
-      userId: "ID Utilisateur",
-      password: "Mot de passe",
-      submit: "Connexion",
-      error: {
-        credentials: "Identifiants invalides",
-        required: "Veuillez saisir tous les identifiants",
-      },
-    },
-    menu: {
-      home: "Accueil",
-      features: "Fonctionnalités",
-      projects: "Projets",
-      components: "Composants",
-      blocks: "Blocs",
-      uiKit: "Kit UI",
-      templates: "Modèles",
-      apollo: "Apollo",
-      ultima: "Ultima",
-      printReports: "Imprimer Rapports",
-    },
-  },
-  pl: {
-    login: {
-      title: "Witamy",
-      subtitle: "Wprowadź dane logowania",
-      userId: "ID Użytkownika",
-      password: "Hasło",
-      submit: "Zaloguj",
-      error: {
-        credentials: "Nieprawidłowe dane logowania",
-        required: "Proszę wprowadzić wszystkie dane",
-      },
-    },
-    menu: {
-      home: "Strona główna",
-      features: "Funkcje",
-      projects: "Projekty",
-      components: "Komponenty",
-      blocks: "Bloki",
-      uiKit: "Zestaw UI",
-      templates: "Szablony",
-      apollo: "Apollo",
-      ultima: "Ultima",
-      printReports: "Drukuj Raporty",
-    },
-  },
-  nl: {
-    login: {
-      title: "Welkom",
-      subtitle: "Voer uw inloggegevens in",
-      userId: "Gebruikers-ID",
-      password: "Wachtwoord",
-      submit: "Inloggen",
-      error: {
-        credentials: "Ongeldige inloggegevens",
-        required: "Voer alle inloggegevens in",
-      },
-    },
-    menu: {
-      home: "Home",
-      features: "Functies",
-      projects: "Projecten",
-      components: "Componenten",
-      blocks: "Blokken",
-      uiKit: "UI Kit",
-      templates: "Sjablonen",
-      apollo: "Apollo",
-      ultima: "Ultima",
-      printReports: "Rapporten Afdrukken",
-    },
-  },
-  pt: {
-    login: {
-      title: "Bem-vindo",
-      subtitle: "Insira suas credenciais",
-      userId: "ID do Usuário",
-      password: "Senha",
-      submit: "Entrar",
-      error: {
-        credentials: "Credenciais inválidas",
-        required: "Por favor, insira todas as credenciais",
-      },
-    },
-    menu: {
-      home: "Início",
-      features: "Recursos",
-      projects: "Projetos",
-      components: "Componentes",
-      blocks: "Blocos",
-      uiKit: "Kit UI",
-      templates: "Modelos",
-      apollo: "Apollo",
-      ultima: "Ultima",
-      printReports: "Imprimir Relatórios",
-    },
-  },
-  de: {
-    login: {
-      title: "Willkommen",
-      subtitle: "Geben Sie Ihre Anmeldedaten ein",
-      userId: "Benutzer-ID",
-      password: "Passwort",
-      submit: "Anmelden",
-      error: {
-        credentials: "Ungültige Anmeldedaten",
-        required: "Bitte geben Sie alle Anmeldedaten ein",
-      },
-    },
-    menu: {
-      home: "Startseite",
-      features: "Funktionen",
-      projects: "Projekte",
-      components: "Komponenten",
-      blocks: "Blöcke",
-      uiKit: "UI Kit",
-      templates: "Vorlagen",
-      apollo: "Apollo",
-      ultima: "Ultima",
-      printReports: "Berichte Drucken",
-    },
-  },
-  hu: {
-    login: {
-      title: "Üdvözöljük",
-      subtitle: "Adja meg hitelesítő adatait",
-      userId: "Felhasználói azonosító",
-      password: "Jelszó",
-      submit: "Bejelentkezés",
-      error: {
-        credentials: "Érvénytelen hitelesítő adatok",
-        required: "Kérjük, adja meg az összes hitelesítő adatot",
-      },
-    },
-    menu: {
-      home: "Kezdőlap",
-      features: "Funkciók",
-      projects: "Projektek",
-      components: "Komponensek",
-      blocks: "Blokkok",
-      uiKit: "UI Készlet",
-      templates: "Sablonok",
-      apollo: "Apollo",
-      ultima: "Ultima",
-      printReports: "Jelentések Nyomtatása",
-    },
-  },
+  en,
+  es,
+  fr,
+  it,
+  pl,
+  nl,
+  pt,
+  de,
+  hu,
 };
+
+export const availableLocales = [
+  { code: "en", name: "English" },
+  { code: "es", name: "Español" },
+  { code: "fr", name: "Français" },
+  { code: "it", name: "Italiano" },
+  { code: "pl", name: "Polski" },
+  { code: "nl", name: "Nederlands" },
+  { code: "pt", name: "Português" },
+  { code: "de", name: "Deutsch" },
+  { code: "hu", name: "Magyar" },
+];

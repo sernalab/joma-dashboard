@@ -1,63 +1,63 @@
+// 1. Styles
 import "./assets/main.css";
+import "primeflex/primeflex.css";
+import "primeicons/primeicons.css";
 
+// 2. Vue Core
 import { createApp } from "vue";
-
 import { createI18n } from "vue-i18n";
-import { messages } from "./i18n";
-
-import VueApexCharts from "vue3-apexcharts";
-import PrimeVue from "primevue/config";
-import Aura from "@primevue/themes/aura";
 import App from "./App.vue";
 import router from "./router";
 
-import "primeflex/primeflex.css";
-import "primeicons/primeicons.css";
-import Ripple from "primevue/ripple";
-import StyleClass from "primevue/styleclass";
+// 3. Third Party Libraries
+import VueApexCharts from "vue3-apexcharts";
+import PrimeVue from "primevue/config";
+import Aura from "@primevue/themes/aura";
 
-// import components
-import Button from "primevue/button";
-import Avatar from "primevue/avatar";
-import Menubar from "primevue/menubar";
-import InputText from "primevue/inputtext";
-import Card from "primevue/card";
-import Divider from "primevue/divider";
-import ProgressSpinner from "primevue/progressspinner";
-import Message from "primevue/message";
+// 4. Local Imports
+import { messages } from "./i18n";
+import { setupPrimeVueComponents } from "./plugins/primevue-components";
 
-const i18n = createI18n({
-  locale: "en",
+// 5. i18n Configuration
+const browserLang = navigator.language.split("-")[0];
+const supportedLanguages = [
+  "en",
+  "es",
+  "it",
+  "fr",
+  "pl",
+  "nl",
+  "pt",
+  "de",
+  "hu",
+];
+const defaultLocale = supportedLanguages.includes(browserLang)
+  ? browserLang
+  : "en";
+
+export const i18n = createI18n({
+  legacy: false,
+  locale: defaultLocale,
   fallbackLocale: "en",
   messages,
 });
 
+// 6. App Setup
 const app = createApp(App);
 
-app.use(router);
-app.use(VueApexCharts);
-app.use(i18n);
-app.use(PrimeVue, {
-  theme: {
-    preset: Aura,
-    options: {
-      darkModeSelector: ".disable-dark-mode-completely",
+setupPrimeVueComponents(app);
+
+app
+  .use(router)
+  .use(VueApexCharts)
+  .use(i18n)
+  .use(PrimeVue, {
+    theme: {
+      preset: Aura,
+      options: {
+        darkModeSelector: ".disable-dark-mode-completely",
+      },
     },
-  },
-});
-
-// directives
-app.directive("styleclass", StyleClass);
-app.directive("ripple", Ripple);
-
-// register components
-app.component("Button", Button);
-app.component("Avatar", Avatar);
-app.component("Menubar", Menubar);
-app.component("InputText", InputText);
-app.component("Card", Card);
-app.component("Divider", Divider);
-app.component("ProgressSpinner", ProgressSpinner);
-app.component("Message", Message);
+  });
 
 app.mount("#app");
