@@ -12,6 +12,8 @@ export default {
   },
   menu: {
     home: "Inicio",
+    reports: "Informes",
+    settings: "Ajustes",
     features: "Características",
     projects: "Proyectos",
     components: "Componentes",

@@ -1,6 +1,6 @@
+<!-- components/charts/LineChart.vue (Temperatura en el tiempo) -->
 <script setup>
 import { ref, watchEffect } from "vue";
-
 import { useI18n } from "vue-i18n";
 
 const { t } = useI18n();
@@ -14,48 +14,52 @@ const props = defineProps({
 
 const series = ref([
   {
+    name: "Temperatura",
     data: props.datos,
   },
 ]);
 
 const chartOptions = ref({
   chart: {
-    type: "bar",
+    type: "line",
     height: 350,
   },
-  plotOptions: {
-    bar: {
-      borderRadius: 4,
-      borderRadiusApplication: "end",
-      horizontal: true,
-    },
+  stroke: {
+    curve: "smooth",
+    width: 3,
   },
-  dataLabels: {
-    enabled: false,
+  markers: {
+    size: 4,
   },
   xaxis: {
-    categories: [
-      t("extras.cylinder") + " 1",
-      t("extras.cylinder") + " 2",
-      t("extras.cylinder") + " 3",
-      t("extras.cylinder") + " 4",
-    ],
+    categories: ["0s", "10s", "20s", "30s", "40s", "50s", "60s"],
+  },
+  yaxis: {
+    title: {
+      text: "Temperatura (°C)",
+    },
+  },
+  tooltip: {
+    y: {
+      formatter: (value) => `${value}°C`,
+    },
   },
 });
 
 watchEffect(() => {
   series.value = [
     {
+      name: "Temperatura",
       data: props.datos,
     },
   ];
 });
 </script>
-    
+
 <template>
   <div id="chart">
     <apexchart
-      type="bar"
+      type="line"
       height="350"
       :options="chartOptions"
       :series="series"
