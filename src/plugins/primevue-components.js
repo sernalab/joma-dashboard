@@ -3,12 +3,14 @@ import Button from "primevue/button";
 import Avatar from "primevue/avatar";
 import Menubar from "primevue/menubar";
 import InputText from "primevue/inputtext";
+import MultiSelect from "primevue/multiselect";
 import Card from "primevue/card";
 import Divider from "primevue/divider";
 import ProgressSpinner from "primevue/progressspinner";
 import Message from "primevue/message";
 import Badge from "primevue/badge";
 import Menu from "primevue/menu";
+import { Form } from "@primevue/forms";
 
 // 2. Directive Imports
 import Ripple from "primevue/ripple";
@@ -25,12 +27,14 @@ const components = {
   Avatar,
   Menubar,
   InputText,
+  MultiSelect,
   Card,
   Divider,
   ProgressSpinner,
   Message,
   Badge,
   Menu,
+  Form,
 };
 
 // 4. Setup Function

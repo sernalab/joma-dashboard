@@ -18,7 +18,7 @@ import { useRouter } from "vue-router";
 const { t } = useI18n();
 const router = useRouter();
 
-const handlePrint = () => router.push("/print-client-report");
+const handlePrint = () => router.push("/dashboard/print-client-report");
 
 const items = [
   {
