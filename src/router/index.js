@@ -19,6 +19,56 @@ const router = createRouter({
           name: "dashboard",
           component: () => import("../views/DashboardView.vue"),
         },
+        {
+          path: "manometer",
+          name: "manometer",
+          component: () => import("../views/ChartViews/ManometerView.vue"),
+        },
+        {
+          path: "vacuum",
+          name: "vacuum", // Vacio
+          component: () => import("../views/ChartViews/VacuumView.vue"),
+        },
+        {
+          path: "oil-pressure",
+          name: "oil-pressure",
+          component: () => import("../views/ChartViews/OilPressureView.vue"),
+        },
+        {
+          path: "fuel-pressure",
+          name: "fuel-pressure",
+          component: () => import("../views/ChartViews/FuelPressureView.vue"),
+        },
+        {
+          path: "common-rail",
+          name: "common-rail",
+          component: () => import("../views/ChartViews/CommonRailView.vue"),
+        },
+        {
+          path: "compression",
+          name: "compression",
+          component: () => import("../views/ChartViews/CompresionView.vue"),
+        },
+        {
+          path: "turbo-pressure",
+          name: "turbo-pressure",
+          component: () => import("../views/ChartViews/TurboPresureView.vue"),
+        },
+        {
+          path: "brake-pressure",
+          name: "brake-pressure",
+          component: () => import("../views/ChartViews/BrakePressureView.vue"),
+        },
+        {
+          path: "dpf-pressure",
+          name: "dpf-pressure",
+          component: () => import("../views/ChartViews/DPFPressureView.vue"),
+        },
+        {
+          path: "adblue-pressure",
+          name: "adblue-pressure",
+          component: () => import("../views/ChartViews/AdbluePressureView.vue"),
+        },
       ],
     },
   ],
