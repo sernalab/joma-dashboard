@@ -13,8 +13,9 @@ export default {
   menu: {
     home: "Inicio",
     reports: "Informes",
-    settings: "Ajustes",
     features: "Características",
+    contact: "Contacto",
+    settings: "Ajustes",
     projects: "Proyectos",
     components: "Componentes",
     blocks: "Bloques",
@@ -26,5 +27,9 @@ export default {
   },
   extras: {
     cylinder: "Cilindro",
+    noDataAvailable: "No hay datos disponibles",
+    noDataAvailableDescription:
+      "Aún no hay mediciones para mostrar en esta sección.",
+    backToDashbaord: "Volver al Dashboard",
   },
 };
