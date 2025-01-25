@@ -69,6 +69,11 @@ const router = createRouter({
           name: "adblue-pressure",
           component: () => import("../views/ChartViews/AdbluePressureView.vue"),
         },
+        {
+          path: "print-client-report",
+          name: "print-client-report",
+          component: () => import("../views/PrintClientView.vue"),
+        },
       ],
     },
   ],

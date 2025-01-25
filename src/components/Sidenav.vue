@@ -9,8 +9,8 @@ export default {
 </script>
 <template>
   <div class="sidenav-container">
-    <div>
-      <img src="@/assets/beta-logo.png" height="40" />
+    <div class="flex justify-content-center">
+      <img src="@/assets/beta-logo.png" />
     </div>
 
     <SideMenu />
@@ -20,5 +20,9 @@ export default {
 <style>
 .sidenav-container {
   background-color: white;
+}
+
+img {
+  height: 50px;
 }
 </style>

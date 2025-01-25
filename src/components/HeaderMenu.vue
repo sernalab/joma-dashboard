@@ -1,6 +1,5 @@
 <template>
   <Menubar :model="items" class="border-none surface-0">
-    <template #start></template>
     <template #end>
       <Button
         @click="handlePrint"
@@ -11,68 +10,31 @@
     </template>
   </Menubar>
 </template>
-
-<script setup>
+ 
+ <script setup>
 import { useI18n } from "vue-i18n";
+import { useRouter } from "vue-router";
+
 const { t } = useI18n();
+const router = useRouter();
+
+const handlePrint = () => router.push("/print-client-report");
 
 const items = [
   {
     label: t("menu.home"),
     icon: "pi pi-home",
-    to: "/dashboard",
+    command: () => router.push("/dashboard"),
   },
   {
     label: t("menu.reports"),
     icon: "pi pi-chart-bar",
+    command: () => router.push("/reports"),
   },
   {
     label: t("menu.contact"),
     icon: "pi pi-cog",
+    command: () => router.push("/contact"),
   },
 ];
-
-const handlePrint = async () => {
-  const dashboard = document.querySelector(".grid");
-
-  try {
-    dashboard.classList.add("printing");
-
-    window.print();
-
-    dashboard.classList.remove("printing");
-  } catch (error) {
-    console.error("Error al imprimir:", error);
-  }
-};
 </script>
-
-<style>
-img {
-  height: 3rem;
-}
-
-.print-button {
-  background-color: #f07d13 !important;
-  border-color: #f07d13 !important;
-  transition: all 0.2s ease;
-}
-
-@media print {
-  body * {
-    visibility: hidden;
-  }
-
-  .grid.printing,
-  .grid.printing * {
-    visibility: visible;
-  }
-
-  .grid.printing {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-  }
-}
-</style>
