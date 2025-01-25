@@ -8,6 +8,7 @@ import Divider from "primevue/divider";
 import ProgressSpinner from "primevue/progressspinner";
 import Message from "primevue/message";
 import Badge from "primevue/badge";
+import Menu from "primevue/menu";
 
 // 2. Directive Imports
 import Ripple from "primevue/ripple";
@@ -29,6 +30,7 @@ const components = {
   ProgressSpinner,
   Message,
   Badge,
+  Menu,
 };
 
 // 4. Setup Function
