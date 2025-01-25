@@ -1,10 +1,6 @@
 <template>
   <Menubar :model="items" class="border-none surface-0">
-    <template #start>
-      <div class="flex align-items-center">
-        <img src="/src/assets/beta-logo.png" />
-      </div>
-    </template>
+    <template #start></template>
     <template #end>
       <Button
         @click="handlePrint"
@@ -31,7 +27,7 @@ const items = [
     icon: "pi pi-chart-bar",
   },
   {
-    label: t("menu.settings"),
+    label: t("menu.contact"),
     icon: "pi pi-cog",
   },
 ];
@@ -40,13 +36,10 @@ const handlePrint = async () => {
   const dashboard = document.querySelector(".grid");
 
   try {
-    // Añade una clase temporal para estilos de impresión
     dashboard.classList.add("printing");
 
-    // Usa la API nativa de impresión del navegador
     window.print();
 
-    // Elimina la clase temporal
     dashboard.classList.remove("printing");
   } catch (error) {
     console.error("Error al imprimir:", error);

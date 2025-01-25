@@ -1,12 +1,10 @@
 <script setup>
-// Define las props que recibirá cada card
 defineProps({
   title: String,
   icon: String,
   description: String,
 });
 
-// Emite el evento de click hacia arriba
 const emit = defineEmits(["cardClick"]);
 </script>
 

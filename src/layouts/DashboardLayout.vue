@@ -1,30 +1,39 @@
 <script>
-import Menu from "@/components/Menu.vue";
+import HeaderMenu from "@/components/HeaderMenu.vue";
+import Sidenav from "@/components/Sidenav.vue";
 
 export default {
   components: {
-    Menu,
+    HeaderMenu,
+    Sidenav,
   },
 };
 </script>
 <template>
-  <div class="min-h-screen flex flex-column">
-    <header class="surface-0 shadow-1">
-      <div class="mx-auto px-4">
-        <Menu />
-      </div>
-    </header>
-
-    <main class="main flex-1">
-      <div class="container mx-auto px-4 pt-5">
-        <RouterView />
-      </div>
-    </main>
+  <div class="layout-wrapper flex">
+    <Sidenav />
+    <div class="flex-1 flex flex-column">
+      <header class="shadow-1">
+        <div class="mx-auto px-4">
+          <HeaderMenu />
+        </div>
+      </header>
+      <main class="flex-1">
+        <div class="container mx-auto px-4 pt-5">
+          <RouterView />
+        </div>
+      </main>
+    </div>
   </div>
 </template>
 
 <style>
-.container {
-  background-color: #e5e7eb;
+.layout-wrapper {
+  min-height: 100vh;
+  background-color: #f9fafb;
+}
+
+header {
+  background-color: #fff;
 }
 </style>
