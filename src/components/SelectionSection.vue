@@ -9,55 +9,58 @@ const items = [
   {
     id: 2,
     title: "Vacío",
-    description: "",
+    description: "Medición de la presión negativa en sistemas de vacío.",
     route: "/dashboard/vacuum",
   },
   {
     id: 3,
     title: "Presión de aceite",
-    description: "Control de emisiones",
+    description: "Monitorización de la presión del aceite en el motor.",
     route: "/dashboard/oil-pressure",
   },
   {
     id: 4,
     title: "Presión de combustible",
-    description: "Estado del aceite",
+    description:
+      "Medición de la presión del sistema de inyección de combustible.",
     route: "/dashboard/fuel-pressure",
   },
   {
     id: 5,
     title: "Common rail",
-    description: "Sistema de frenos",
+    description:
+      "Diagnóstico de la presión en sistemas de inyección common rail.",
     route: "/dashboard/common-rail",
   },
   {
     id: 6,
     title: "Compresión",
-    description: "Estado de batería",
+    description: "Evaluación de la compresión en los cilindros del motor.",
     route: "/dashboard/compression",
   },
   {
     id: 7,
     title: "Presión turbo",
-    description: "Presión y desgaste",
+    description: "Control de la presión del sistema de turboalimentación.",
     route: "/dashboard/turbo-pressure",
   },
   {
     id: 8,
     title: "Presión de frenos",
-    description: "Sistema de suspensión",
+    description: "Medición de la presión en el circuito de frenos.",
     route: "/dashboard/brake-pressure",
   },
   {
     id: 9,
     title: "Presión filtro de partículas",
-    description: "Sistema de dirección",
+    description: "Monitorización de la presión diferencial en el DPF.",
     route: "/dashboard/dpf-pressure",
   },
   {
     id: 10,
     title: "Presión AdBlue",
-    description: "Diagnóstico general",
+    description:
+      "Medición de la presión en el sistema AdBlue para reducción de emisiones.",
     route: "/dashboard/adblue-pressure",
   },
 ];
