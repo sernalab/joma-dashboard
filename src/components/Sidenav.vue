@@ -8,7 +8,7 @@ export default {
 };
 </script>
 <template>
-  <div class="sidenav-container">
+  <div class="sidenav-container no-print">
     <div class="flex justify-content-center">
       <img src="@/assets/beta-logo.png" />
     </div>

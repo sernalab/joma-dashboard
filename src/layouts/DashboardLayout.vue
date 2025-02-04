@@ -13,7 +13,7 @@ export default {
   <div class="layout-wrapper flex">
     <Sidenav />
     <div class="flex-1 flex flex-column">
-      <header class="shadow-1">
+      <header class="shadow-1 no-print">
         <div class="mx-auto px-4">
           <HeaderMenu />
         </div>
