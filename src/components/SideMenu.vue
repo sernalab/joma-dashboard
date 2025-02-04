@@ -16,42 +16,52 @@ const items = ref([
       {
         label: "Manómetro",
         icon: "pi pi-angle-right",
+        command: () => router.push("/dashboard/manometer"),
       },
       {
         label: "Vacío",
         icon: "pi pi-angle-right",
+        command: () => router.push("/dashboard/vacuum"),
       },
       {
         label: "Presión de aceite",
         icon: "pi pi-angle-right",
+        command: () => router.push("/dashboard/oil-pressure"),
       },
       {
         label: "Presión de combustible",
         icon: "pi pi-angle-right",
+        command: () => router.push("/dashboard/fuel-pressure"),
       },
       {
         label: "Common rail",
         icon: "pi pi-angle-right",
+        command: () => router.push("/dashboard/common-rail"),
       },
       {
         label: "Compresión",
         icon: "pi pi-angle-right",
+        command: () => router.push("/dashboard/compression"),
       },
       {
         label: "Presión turbo",
         icon: "pi pi-angle-right",
+        command: () => router.push("/dashboard/turbo-pressure"),
       },
       {
         label: "Presión de frenos",
         icon: "pi pi-angle-right",
+        command: () => router.push("/dashboard/brake-pressure"),
       },
       {
         label: "Presión filtro de partículas",
         icon: "pi pi-angle-right",
+        command: () => router.push("/dashboard/dpf-pressure"),
       },
       {
         label: "Presión AdBlue",
         icon: "pi pi-angle-right",
+        command: () => router.push("/dashboard/adblue-pressure"),
       },
     ],
   },

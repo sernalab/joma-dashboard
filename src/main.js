@@ -6,6 +6,7 @@ import "primeicons/primeicons.css";
 // 2. Vue Core
 import { createApp } from "vue";
 import { createI18n } from "vue-i18n";
+import { createPinia } from "pinia";
 import App from "./App.vue";
 import router from "./router";
 
@@ -44,6 +45,7 @@ export const i18n = createI18n({
 
 // 6. App Setup
 const app = createApp(App);
+const pinia = createPinia();
 
 setupPrimeVueComponents(app);
 
@@ -51,6 +53,7 @@ app
   .use(router)
   .use(VueApexCharts)
   .use(i18n)
+  .use(pinia)
   .use(PrimeVue, {
     theme: {
       preset: Aura,
