@@ -1,9 +1,16 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
+import { useReportStore } from "@/store/reportStore";
 import EmptyDataView from "@/views/EmptyDataView.vue";
 import LineChart from "@/components/charts/LineChart.vue";
 
-const datos = ref([]);
+const reportStore = useReportStore();
+const graphData = ref(null);
+
+onMounted(async () => {
+  const data = await reportStore.fetchGraphData("manometer");
+  graphData.value = data;
+});
 </script>
 
 <template>
@@ -11,8 +18,8 @@ const datos = ref([]);
     <router-link to="/dashboard" class="p-3 text-700 no-underline">
       <i class="pi pi-arrow-left mr-2"></i>Volver al Dashboard
     </router-link>
-    <div v-if="datos.length">
-      <LineChart :datos="datos" />
+    <div v-if="graphData">
+      <LineChart :data="graphData" />
     </div>
     <EmptyDataView v-else />
   </div>

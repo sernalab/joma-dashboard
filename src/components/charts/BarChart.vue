@@ -1,20 +1,17 @@
 <script setup>
 import { ref, watchEffect } from "vue";
 
-import { useI18n } from "vue-i18n";
-
-const { t } = useI18n();
-
 const props = defineProps({
-  datos: {
-    type: Array,
-    default: () => [],
+  data: {
+    type: Object,
+    required: true,
   },
 });
 
 const series = ref([
   {
-    data: props.datos,
+    name: props.data.title || "Valor",
+    data: props.data.data || [], // Usar data directamente, no values
   },
 ]);
 
@@ -23,32 +20,23 @@ const chartOptions = ref({
     type: "bar",
     height: 350,
   },
-  plotOptions: {
-    bar: {
-      borderRadius: 4,
-      borderRadiusApplication: "end",
-      horizontal: true,
-    },
-  },
-  dataLabels: {
-    enabled: false,
-  },
   xaxis: {
-    categories: [
-      t("extras.cylinder") + " 1",
-      t("extras.cylinder") + " 2",
-      t("extras.cylinder") + " 3",
-      t("extras.cylinder") + " 4",
-    ],
+    categories: props.data.categories || [],
+  },
+  yaxis: {
+    title: {
+      text: props.data.yAxisTitle || "",
+    },
   },
 });
 
 watchEffect(() => {
-  series.value = [
-    {
-      data: props.datos,
-    },
-  ];
+  if (props.data) {
+    series.value[0].data = props.data.data;
+    series.value[0].name = props.data.title;
+    chartOptions.value.xaxis.categories = props.data.categories;
+    chartOptions.value.yaxis.title.text = props.data.yAxisTitle;
+  }
 });
 </script>
     
