@@ -26,11 +26,11 @@ const items = [
     icon: "pi pi-home",
     command: () => router.push("/dashboard"),
   },
-  {
-    label: t("menu.reports"),
-    icon: "pi pi-chart-bar",
-    command: () => router.push("/reports"),
-  },
+  // {
+  //   label: t("menu.reports"),
+  //   icon: "pi pi-chart-bar",
+  //   command: () => router.push("/reports"),
+  // },
   {
     label: t("menu.contact"),
     icon: "pi pi-cog",

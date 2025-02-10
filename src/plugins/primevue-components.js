@@ -3,6 +3,7 @@ import Button from "primevue/button";
 import Avatar from "primevue/avatar";
 import Menubar from "primevue/menubar";
 import InputText from "primevue/inputtext";
+import InputNumber from "primevue/inputnumber";
 import MultiSelect from "primevue/multiselect";
 import Card from "primevue/card";
 import Divider from "primevue/divider";
@@ -35,6 +36,7 @@ const components = {
   Badge,
   Menu,
   Form,
+  InputNumber,
 };
 
 // 4. Setup Function

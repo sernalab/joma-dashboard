@@ -1,7 +1,5 @@
-// stores/reportStore.js
 import { defineStore } from "pinia";
 import { mockFirebaseService } from "@/services/mockFirebase";
-import { MEASUREMENTS } from "@/constants/measurementTypes";
 
 export const useReportStore = defineStore("report", {
   state: () => ({
@@ -11,10 +9,15 @@ export const useReportStore = defineStore("report", {
 
   actions: {
     async fetchGraphData(graphType) {
+      if (this.graphsData.hasOwnProperty(graphType)) {
+        return this.graphsData[graphType];
+      }
+
       this.loading = true;
       try {
         const data = await mockFirebaseService.getGraphData(graphType);
         if (data) {
+          this.graphsData[graphType] = data;
           return data;
         }
         return null;
@@ -31,10 +34,12 @@ export const useReportStore = defineStore("report", {
       try {
         for (const graph of selectedGraphs) {
           const measurementId = graph.value;
-          const data = await mockFirebaseService.getGraphData(measurementId);
 
-          if (data) {
-            this.graphsData[measurementId] = data;
+          if (!this.graphsData.hasOwnProperty(measurementId)) {
+            const data = await mockFirebaseService.getGraphData(measurementId);
+            if (data) {
+              this.graphsData[measurementId] = data;
+            }
           }
         }
       } catch (error) {
@@ -42,6 +47,11 @@ export const useReportStore = defineStore("report", {
       } finally {
         this.loading = false;
       }
+    },
+
+    // Método para limpiar los datos de gráficos si es necesario
+    clearGraphsData() {
+      this.graphsData = {};
     },
   },
 });
