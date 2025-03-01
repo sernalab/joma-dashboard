@@ -1,29 +1,21 @@
-import { collection, getDocs } from "firebase/firestore";
+// firebase.service.js
+import { doc, getDoc, collection, getDocs } from "firebase/firestore";
 import { db } from "@/firebase.js";
 
 export const firebaseService = {
-  async fetchBetaData() {
+  async fetchUserData(userId) {
     try {
-      const querySnapshot = await getDocs(collection(db, "beta"));
-      const data = [];
-      querySnapshot.forEach((doc) => {
-        data.push({ id: doc.id, ...doc.data() });
-      });
-      return data;
+      const docRef = doc(db, "1464tn", userId);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        return { id: docSnap.id, ...docSnap.data() };
+      } else {
+        console.log("No existe el documento!");
+        return null;
+      }
     } catch (error) {
-      console.error("Error:", error);
-      throw error;
-    }
-  },
-  async fetchBetaUser(userId) {
-    try {
-      const querySnapshot = await getDocs(collection(db, "beta"));
-      const user = querySnapshot.docs
-        .map((doc) => doc.data())
-        .find((user) => user.id === userId);
-      return user || null;
-    } catch (error) {
-      console.error("Error:", error);
+      console.error("Error al obtener usuario:", error);
       throw error;
     }
   },

@@ -1,16 +1,14 @@
+// auth.service.js
 import { firebaseService } from "./firebase.service";
 
 export const authService = {
   async login(userId, password) {
     try {
-      const users = await firebaseService.fetchBetaData();
-      const user = users.find(
-        (u) => u.id === userId && u.password === password
-      );
+      const userData = await firebaseService.fetchUserData(userId);
 
-      if (user) {
-        localStorage.setItem("currentUser", JSON.stringify(user));
-        return user;
+      if (userData && userData.password === password) {
+        localStorage.setItem("currentUser", JSON.stringify(userData));
+        return userData;
       }
 
       throw new Error("Credenciales inválidas");
