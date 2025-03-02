@@ -3,6 +3,10 @@
 /**
  * Colección de funciones para transformar datos crudos a formato de gráficos
  */
+import { i18n } from "@/main";
+const t = (key) => {
+  return i18n.global.t(key);
+};
 export const dataTransformers = {
   // Transformador para datos de compresión
   datacompression: (rawData) => {
@@ -13,16 +17,20 @@ export const dataTransformers = {
       .sort((a, b) => parseInt(a) - parseInt(b))
       .forEach((key) => {
         data.push(parseFloat(rawData[key]));
-        categories.push(`Cylindre ${parseInt(key) + 1}`);
+        categories.push(
+          `${t("chartsData.datacompression.cylinderLabel")} ${
+            parseInt(key) + 1
+          }`
+        );
       });
 
     return {
       type: "bar",
       data,
       categories,
-      title: "Compression des Cylindres",
-      yAxisTitle: "Pression (Bar)",
-      description: "Mesures de compression des cylindres du moteur",
+      title: t("chartsData.datacompression.title"),
+      yAxisTitle: t("chartsData.datacompression.yAxisTitle"),
+      description: t("chartsData.datacompression.description"),
     };
   },
 
@@ -35,16 +43,18 @@ export const dataTransformers = {
       .sort((a, b) => parseInt(a) - parseInt(b))
       .forEach((key) => {
         data.push(parseFloat(rawData[key]));
-        categories.push(`Lecture ${parseInt(key) + 1}`);
+        categories.push(
+          `${t("chartsData.common-rail.readingLabel")} ${parseInt(key) + 1}`
+        );
       });
 
     return {
       type: "line",
       data,
       categories,
-      title: "Pression Common Rail",
-      yAxisTitle: "Pression (Bar)",
-      description: "Mesure de la pression du système Common Rail",
+      title: t("chartsData.common-rail.title"),
+      yAxisTitle: t("chartsData.common-rail.yAxisTitle"),
+      description: t("chartsData.common-rail.description"),
     };
   },
 
@@ -75,7 +85,7 @@ export const createGenericGraphData = (type, rawData) => {
   } else if (Array.isArray(rawData)) {
     rawData.forEach((value, index) => {
       data.push(value);
-      categories.push(`Punto ${index + 1}`);
+      categories.push(`${t("chartsData.generic.pointLabel")} ${index + 1}`);
     });
   }
 
@@ -89,7 +99,7 @@ export const createGenericGraphData = (type, rawData) => {
     data,
     categories,
     title,
-    yAxisTitle: "Valeur",
-    description: `Données de ${title}`,
+    yAxisTitle: t("chartsData.generic.valueLabel"),
+    description: `${t("chartsData.generic.dataLabel")} ${title}`,
   };
 };
