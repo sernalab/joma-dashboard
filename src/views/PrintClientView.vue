@@ -160,11 +160,11 @@ const onPrint = () => {
 
     <div id="printable-content" :class="{ hidden: !showPreview }" class="mt-4">
       <div class="print-header">
-        <h1>Informe Técnico</h1>
+        <h1 class="font-bold">Informe Técnico</h1>
       </div>
 
       <div class="client-info">
-        <h2>Información del Cliente</h2>
+        <h2 class="font-bold">Información del Cliente</h2>
         <div class="grid">
           <div v-if="formData.nombre" class="col-12 md:col-4">
             <p><strong>Cliente:</strong> {{ formData.nombre }}</p>
@@ -177,7 +177,7 @@ const onPrint = () => {
           </div>
         </div>
 
-        <h2 class="mt-3">Información del Vehículo</h2>
+        <h2 class="font-bold mt-3">Información del Vehículo</h2>
         <div class="grid">
           <div v-if="formData.marca" class="col-12 md:col-4">
             <p><strong>Marca:</strong> {{ formData.marca }}</p>
@@ -197,13 +197,13 @@ const onPrint = () => {
         </div>
 
         <div v-if="formData.observaciones" class="mt-3">
-          <h2>Observaciones</h2>
+          <h2 class="font-bold">Observaciones</h2>
           <p>{{ formData.observaciones }}</p>
         </div>
       </div>
 
       <div v-if="formData.graficos.length">
-        <h2>Gráficos Seleccionados</h2>
+        <h2 class="font-bold mt-5">Gráficos Seleccionados</h2>
         <div class="grid">
           <div
             v-for="grafico in formData.graficos"
