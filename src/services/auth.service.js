@@ -24,4 +24,9 @@ export const authService = {
   logout() {
     localStorage.removeItem("currentUser");
   },
+
+  getCurrentUser() {
+    const userJson = localStorage.getItem("currentUser");
+    return userJson ? JSON.parse(userJson) : null;
+  },
 };
