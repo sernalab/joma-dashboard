@@ -163,7 +163,10 @@ const onPrint = () => {
         <h1 class="font-bold">Informe Técnico</h1>
       </div>
 
-      <div class="client-info">
+      <div
+        v-if="formData.nombre || formData.telefono || formData.email"
+        class="client-info"
+      >
         <h2 class="font-bold">Información del Cliente</h2>
         <div class="grid">
           <div v-if="formData.nombre" class="col-12 md:col-4">
@@ -177,29 +180,40 @@ const onPrint = () => {
           </div>
         </div>
 
-        <h2 class="font-bold mt-3">Información del Vehículo</h2>
-        <div class="grid">
-          <div v-if="formData.marca" class="col-12 md:col-4">
-            <p><strong>Marca:</strong> {{ formData.marca }}</p>
-          </div>
-          <div v-if="formData.modelo" class="col-12 md:col-4">
-            <p><strong>Modelo:</strong> {{ formData.modelo }}</p>
-          </div>
-          <div v-if="formData.matricula" class="col-12 md:col-4">
-            <p><strong>Matrícula:</strong> {{ formData.matricula }}</p>
-          </div>
-          <div v-if="formData.año" class="col-12 md:col-4">
-            <p><strong>Año:</strong> {{ formData.año }}</p>
-          </div>
-          <div v-if="formData.kilometraje" class="col-12 md:col-4">
-            <p><strong>Kilometraje:</strong> {{ formData.kilometraje }} km</p>
+        <div
+          v-if="
+            formData.marca ||
+            formData.modelo ||
+            formData.matricula ||
+            formData.año ||
+            formData.kilometraje
+          "
+          class="vehicle-info"
+        >
+          <h2 class="font-bold mt-3">Información del Vehículo</h2>
+          <div class="grid">
+            <div v-if="formData.marca" class="col-12 md:col-4">
+              <p><strong>Marca:</strong> {{ formData.marca }}</p>
+            </div>
+            <div v-if="formData.modelo" class="col-12 md:col-4">
+              <p><strong>Modelo:</strong> {{ formData.modelo }}</p>
+            </div>
+            <div v-if="formData.matricula" class="col-12 md:col-4">
+              <p><strong>Matrícula:</strong> {{ formData.matricula }}</p>
+            </div>
+            <div v-if="formData.año" class="col-12 md:col-4">
+              <p><strong>Año:</strong> {{ formData.año }}</p>
+            </div>
+            <div v-if="formData.kilometraje" class="col-12 md:col-4">
+              <p><strong>Kilometraje:</strong> {{ formData.kilometraje }} km</p>
+            </div>
           </div>
         </div>
+      </div>
 
-        <div v-if="formData.observaciones" class="mt-3">
-          <h2 class="font-bold">Observaciones</h2>
-          <p>{{ formData.observaciones }}</p>
-        </div>
+      <div v-if="formData.observaciones" class="mt-3">
+        <h2 class="font-bold">Observaciones</h2>
+        <p>{{ formData.observaciones }}</p>
       </div>
 
       <div v-if="formData.graficos.length">
@@ -272,7 +286,7 @@ const onPrint = () => {
   }
 
   .client-info {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
   }
 
   .client-info p {
@@ -291,7 +305,7 @@ const onPrint = () => {
 
   .grid {
     display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-columns: repeat(3, 1fr) !important;
     gap: 20px !important;
   }
 
