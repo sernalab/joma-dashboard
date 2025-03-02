@@ -113,10 +113,23 @@ export default {
     print: "Imprimir",
     selectMeasurements: "Seleccionar Mediciones",
   },
-  chartData: {
-    compressionTitle: "Compresión de Cilindros",
-    compressionYAxis: "Presión (Bar)",
-    compressionDescription:
-      "Mediciones de compresión de los cilindros del motor",
+  chartsData: {
+    datacompression: {
+      title: "Compresión de Cilindros",
+      yAxisTitle: "Presión (Bar)",
+      description: "Mediciones de compresión de los cilindros del motor",
+      cylinderLabel: "Cilindro",
+    },
+    "common-rail": {
+      title: "Presión Common Rail",
+      yAxisTitle: "Presión (Bar)",
+      description: "Medición de presión del sistema Common Rail",
+      readingLabel: "Lectura",
+    },
+    generic: {
+      valueLabel: "Valor",
+      pointLabel: "Punto",
+      dataLabel: "Datos de",
+    },
   },
 };
