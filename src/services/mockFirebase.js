@@ -19,7 +19,7 @@ export const mockGraphData = {
     type: "bar",
     data: [8.5, 11.2, 9.8, 12.3, 10.5, 9.9, 11.8],
     categories: ["T1", "T2", "T3", "T4", "T5", "T6", "T7"],
-    title: "Presión AdBlue",
+    title: "Manometer",
     yAxisTitle: "Presión (Bar)",
     description: "Medición de presión del sistema AdBlue",
   },
