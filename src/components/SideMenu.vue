@@ -83,3 +83,10 @@ const items = ref([
     <Menu :model="items" />
   </div>
 </template>
+
+<style>
+.p-menu {
+  border: none !important;
+  box-shadow: none !important;
+}
+</style>

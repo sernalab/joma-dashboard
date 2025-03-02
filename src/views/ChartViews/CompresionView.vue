@@ -2,14 +2,29 @@
 import { ref, onMounted } from "vue";
 import { useReportStore } from "@/store/reportStore";
 import EmptyDataView from "@/views/EmptyDataView.vue";
-import LineChart from "@/components/charts/LineChart.vue";
+import BarChart from "@/components/charts/BarChart.vue";
 
 const reportStore = useReportStore();
 const graphData = ref(null);
+const loading = ref(true);
+const error = ref(null);
 
 onMounted(async () => {
-  const data = await reportStore.fetchGraphData("manometer");
-  graphData.value = data;
+  try {
+    // Cambiamos "manometer" por "datacompression" para obtener los datos reales
+    const data = await reportStore.fetchGraphData("datacompression");
+
+    if (data) {
+      graphData.value = data;
+    } else {
+      error.value = "No hay datos de compresión disponibles";
+    }
+  } catch (err) {
+    error.value = "Error al cargar los datos";
+    console.error(err);
+  } finally {
+    loading.value = false;
+  }
 });
 </script>
 
@@ -18,10 +33,26 @@ onMounted(async () => {
     <router-link to="/dashboard" class="p-3 text-700 no-underline">
       <i class="pi pi-arrow-left mr-2"></i>Volver al Dashboard
     </router-link>
-    <div v-if="graphData">
-      <h2>Compresión</h2>
-      <LineChart :data="graphData" />
+
+    <div v-if="loading" class="flex justify-content-center my-5">
+      <ProgressSpinner />
     </div>
+
+    <div v-else-if="graphData" class="my-5">
+      <h2>Compresión</h2>
+      <p v-if="graphData.description" class="text-500">
+        {{ graphData.description }}
+      </p>
+      <BarChart id="chart" :data="graphData" :horizontal="true" />
+    </div>
+
     <EmptyDataView v-else />
   </div>
 </template>
+
+<style>
+#chart {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+</style>
