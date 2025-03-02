@@ -1,11 +1,14 @@
 <script setup>
 import { ref, watchEffect } from "vue";
+import { useI18n } from "vue-i18n";
+
 import { useReportStore } from "@/store/reportStore";
 import BarChart from "@/components/charts/BarChart.vue";
 import LineChart from "@/components/charts/LineChart.vue";
 import AreaChart from "@/components/charts/AreaChart.vue";
 import PieChart from "@/components/charts/PieChart.vue";
 
+const { t } = useI18n();
 const reportStore = useReportStore();
 const loading = ref(false);
 const showPreview = ref(false);
@@ -15,7 +18,6 @@ const formData = ref({
   telefono: "",
   email: "",
 
-  // Datos del Vehículo
   vehiculo: "",
   marca: "",
   modelo: "",
@@ -23,10 +25,8 @@ const formData = ref({
   matricula: "",
   kilometraje: null,
 
-  // Mediciones
   graficos: [],
 
-  // Información Adicional
   observaciones: "",
   fechaMedicion: new Date(),
   tecnico: "",
@@ -46,16 +46,16 @@ const chartComponents = {
 };
 
 const availableCharts = [
-  { name: "Manómetro", value: "manometer" },
-  { name: "Vacío", value: "vacuum" },
-  { name: "Presión de aceite", value: "oil-pressure" },
-  { name: "Presión de combustible", value: "fuel-pressure" },
-  { name: "Common rail", value: "common-rail" },
-  { name: "Compresión", value: "datacompression" },
-  { name: "Presión turbo", value: "turbo-pressure" },
-  { name: "Presión de frenos", value: "brake-pressure" },
-  { name: "Presión filtro de partículas", value: "dpf-pressure" },
-  { name: "Presión AdBlue", value: "adblue-pressure" },
+  { name: t("selectionView.manometer.title"), value: "manometer" },
+  { name: t("selectionView.vacuum.title"), value: "vacuum" },
+  { name: t("selectionView.oilPressure.title"), value: "oil-pressure" },
+  { name: t("selectionView.fuelPressure.title"), value: "fuel-pressure" },
+  { name: t("selectionView.commonRail.title"), value: "common-rail" },
+  { name: t("selectionView.compression.title"), value: "datacompression" },
+  { name: t("selectionView.turboPressure.title"), value: "turbo-pressure" },
+  { name: t("selectionView.brakePressure.title"), value: "brake-pressure" },
+  { name: t("selectionView.dpfPressure.title"), value: "dpf-pressure" },
+  { name: t("selectionView.adbluePressure.title"), value: "adblue-pressure" },
 ];
 
 watchEffect(async () => {
@@ -76,44 +76,44 @@ const onPrint = () => {
   <div class="surface-card p-4">
     <div class="flex flex-column gap-3 no-print">
       <div class="mb-4">
-        <h2 class="text-xl mb-3">Datos del Cliente</h2>
+        <h2 class="text-xl mb-3">{{ t("printView.clientData") }}</h2>
         <div class="grid">
           <div class="col-12 md:col-4">
-            <label class="block mb-2">Nombre del Cliente</label>
+            <label class="block mb-2">{{ t("printView.name") }}</label>
             <InputText v-model="formData.nombre" class="w-full" />
           </div>
           <div class="col-12 md:col-4">
-            <label class="block mb-2">telefono</label>
+            <label class="block mb-2">{{ t("printView.phone") }}</label>
             <InputText v-model="formData.telefono" class="w-full" />
           </div>
           <div class="col-12 md:col-4">
-            <label class="block mb-2">email</label>
+            <label class="block mb-2">{{ t("printView.email") }}</label>
             <InputText v-model="formData.email" class="w-full" />
           </div>
         </div>
       </div>
 
       <div class="mb-4">
-        <h2 class="text-xl mb-3">Detalles del Vehículo</h2>
+        <h2 class="text-xl mb-3">{{ t("printView.vehicleDetails") }}</h2>
         <div class="grid">
           <div class="col-12 md:col-4">
-            <label class="block mb-2">Marca</label>
+            <label class="block mb-2">{{ t("printView.brand") }}</label>
             <InputText v-model="formData.marca" class="w-full" />
           </div>
           <div class="col-12 md:col-4">
-            <label class="block mb-2">Modelo</label>
+            <label class="block mb-2">{{ t("printView.model") }}</label>
             <InputText v-model="formData.modelo" class="w-full" />
           </div>
           <div class="col-12 md:col-4">
-            <label class="block mb-2">Matrícula</label>
+            <label class="block mb-2">{{ t("printView.plate") }}</label>
             <InputText v-model="formData.matricula" class="w-full" />
           </div>
           <div class="col-12 md:col-4">
-            <label class="block mb-2">Año</label>
+            <label class="block mb-2">{{ t("printView.year") }}</label>
             <InputNumber v-model="formData.año" class="w-full" />
           </div>
           <div class="col-12 md:col-4">
-            <label class="block mb-2">Kilometraje</label>
+            <label class="block mb-2">{{ t("printView.mileage") }}</label>
             <InputNumber
               v-model="formData.kilometraje"
               suffix=" km"
@@ -124,30 +124,30 @@ const onPrint = () => {
       </div>
 
       <div class="mb-4">
-        <h2 class="text-xl mb-3">Mediciones a Realizar</h2>
+        <h2 class="text-xl mb-3">{{ t("printView.measurements") }}</h2>
         <MultiSelect
           v-model="formData.graficos"
           :options="availableCharts"
           optionLabel="name"
-          placeholder="Seleccionar mediciones"
+          :placeholder="t('printView.selectMeasurements')"
           class="w-full"
         />
       </div>
 
       <div class="mb-4">
-        <h2 class="text-xl mb-3">Observaciones</h2>
+        <h2 class="text-xl mb-3">{{ t("printView.observations") }}</h2>
         <Textarea
           v-model="formData.observaciones"
           rows="3"
           class="w-full"
-          placeholder="Añadir notas o comentarios sobre las mediciones"
+          :placeholder="t('printView.addNotes')"
         />
       </div>
 
       <div class="flex justify-content-center">
         <Button
           @click="onPrint"
-          label="Generar Informe"
+          :label="t('printView.generateReport')"
           icon="pi pi-print"
           :loading="loading"
           :disabled="!formData.graficos.length"
@@ -158,23 +158,30 @@ const onPrint = () => {
 
     <div id="printable-content" :class="{ hidden: !showPreview }" class="mt-4">
       <div class="print-header">
-        <h1 class="font-bold">Informe Técnico</h1>
+        <h1 class="font-bold">{{ t("printView.technicalReport") }}</h1>
       </div>
 
       <div
         v-if="formData.nombre || formData.telefono || formData.email"
         class="client-info"
       >
-        <h2 class="font-bold">Información del Cliente</h2>
+        <h2 class="font-bold">{{ t("printView.clientData") }}</h2>
         <div class="grid">
           <div v-if="formData.nombre" class="col-12 md:col-4">
-            <p><strong>Cliente:</strong> {{ formData.nombre }}</p>
+            <p>
+              <strong>{{ t("printView.name") }}:</strong> {{ formData.nombre }}
+            </p>
           </div>
           <div v-if="formData.telefono" class="col-12 md:col-4">
-            <p><strong>Teléfono:</strong> {{ formData.telefono }}</p>
+            <p>
+              <strong>{{ t("printView.phone") }}:</strong>
+              {{ formData.telefono }}
+            </p>
           </div>
           <div v-if="formData.email" class="col-12 md:col-4">
-            <p><strong>Email:</strong> {{ formData.email }}</p>
+            <p>
+              <strong>{{ t("printView.email") }}:</strong> {{ formData.email }}
+            </p>
           </div>
         </div>
 
@@ -188,34 +195,48 @@ const onPrint = () => {
           "
           class="vehicle-info"
         >
-          <h2 class="font-bold mt-3">Información del Vehículo</h2>
+          <h2 class="font-bold mt-3">{{ t("printView.vehicleDetails") }}</h2>
           <div class="grid">
             <div v-if="formData.marca" class="col-12 md:col-4">
-              <p><strong>Marca:</strong> {{ formData.marca }}</p>
+              <p>
+                <strong>{{ t("printView.brand") }}:</strong>
+                {{ formData.marca }}
+              </p>
             </div>
             <div v-if="formData.modelo" class="col-12 md:col-4">
-              <p><strong>Modelo:</strong> {{ formData.modelo }}</p>
+              <p>
+                <strong>{{ t("printView.model") }}:</strong>
+                {{ formData.modelo }}
+              </p>
             </div>
             <div v-if="formData.matricula" class="col-12 md:col-4">
-              <p><strong>Matrícula:</strong> {{ formData.matricula }}</p>
+              <p>
+                <strong>{{ t("printView.plate") }}:</strong>
+                {{ formData.matricula }}
+              </p>
             </div>
             <div v-if="formData.año" class="col-12 md:col-4">
-              <p><strong>Año:</strong> {{ formData.año }}</p>
+              <p>
+                <strong>{{ t("printView.year") }}:</strong> {{ formData.año }}
+              </p>
             </div>
             <div v-if="formData.kilometraje" class="col-12 md:col-4">
-              <p><strong>Kilometraje:</strong> {{ formData.kilometraje }} km</p>
+              <p>
+                <strong>{{ t("printView.mileage") }}:</strong>
+                {{ formData.kilometraje }} km
+              </p>
             </div>
           </div>
         </div>
       </div>
 
       <div v-if="formData.observaciones" class="mt-3">
-        <h2 class="font-bold">Observaciones</h2>
+        <h2 class="font-bold">{{ t("printView.observations") }}</h2>
         <p>{{ formData.observaciones }}</p>
       </div>
 
       <div v-if="formData.graficos.length">
-        <h2 class="font-bold mt-5">Gráficos Seleccionados</h2>
+        <h2 class="font-bold mt-5">{{ t("printView.selectedCharts") }}</h2>
         <div class="grid">
           <div
             v-for="grafico in formData.graficos"
@@ -247,7 +268,9 @@ const onPrint = () => {
                 />
               </template>
               <p v-else class="text-center p-3 text-red-600">
-                No hay datos disponibles para {{ grafico.name }}.
+                {{
+                  t("printView.noDataAvailable", { chartName: grafico.name })
+                }}
               </p>
             </div>
           </div>

@@ -1,5 +1,8 @@
 <script setup>
 import { ref } from "vue";
+import { useI18n } from "vue-i18n";
+const { t } = useI18n();
+
 import { useRouter } from "vue-router";
 import { authService } from "@/services/auth.service";
 
@@ -11,65 +14,65 @@ const handleLogout = () => {
 };
 const items = ref([
   {
-    label: "Graficos",
+    label: t("sideMenu.graphics"),
     items: [
       {
-        label: "Manómetro",
+        label: t("sideMenu.manometer"),
         icon: "pi pi-angle-right",
         command: () => router.push("/dashboard/manometer"),
       },
       {
-        label: "Vacío",
+        label: t("sideMenu.vacuum"),
         icon: "pi pi-angle-right",
         command: () => router.push("/dashboard/vacuum"),
       },
       {
-        label: "Presión de aceite",
+        label: t("sideMenu.oilPressure"),
         icon: "pi pi-angle-right",
         command: () => router.push("/dashboard/oil-pressure"),
       },
       {
-        label: "Presión de combustible",
+        label: t("sideMenu.fuelPressure"),
         icon: "pi pi-angle-right",
         command: () => router.push("/dashboard/fuel-pressure"),
       },
       {
-        label: "Common rail",
+        label: t("sideMenu.commonRail"),
         icon: "pi pi-angle-right",
         command: () => router.push("/dashboard/common-rail"),
       },
       {
-        label: "Compresión",
+        label: t("sideMenu.compression"),
         icon: "pi pi-angle-right",
         command: () => router.push("/dashboard/compression"),
       },
       {
-        label: "Presión turbo",
+        label: t("sideMenu.turboPressure"),
         icon: "pi pi-angle-right",
         command: () => router.push("/dashboard/turbo-pressure"),
       },
       {
-        label: "Presión de frenos",
+        label: t("sideMenu.brakePressure"),
         icon: "pi pi-angle-right",
         command: () => router.push("/dashboard/brake-pressure"),
       },
       {
-        label: "Presión filtro de partículas",
+        label: t("sideMenu.dpfPressure"),
         icon: "pi pi-angle-right",
         command: () => router.push("/dashboard/dpf-pressure"),
       },
       {
-        label: "Presión AdBlue",
+        label: t("sideMenu.adbluePressure"),
         icon: "pi pi-angle-right",
         command: () => router.push("/dashboard/adblue-pressure"),
       },
     ],
   },
   {
-    label: "Profile",
+    label: t("sideMenu.profile"),
     items: [
       {
-        label: "Logout",
+        label: t("sideMenu.logout"),
         icon: "pi pi-sign-out",
         command: handleLogout,
       },

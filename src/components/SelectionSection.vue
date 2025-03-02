@@ -1,66 +1,56 @@
 <script setup>
+const { t } = useI18n();
+import { useI18n } from "vue-i18n";
+
 const items = [
   {
     id: 1,
-    title: "Manómetro",
-    description: "Manómetro de 80 bar",
+    key: "manometer",
     route: "/dashboard/manometer",
   },
   {
     id: 2,
-    title: "Vacío",
-    description: "Medición de la presión negativa en sistemas de vacío.",
+    key: "vacuum",
     route: "/dashboard/vacuum",
   },
   {
     id: 3,
-    title: "Presión de aceite",
-    description: "Monitorización de la presión del aceite en el motor.",
+    key: "oilPressure",
     route: "/dashboard/oil-pressure",
   },
   {
     id: 4,
-    title: "Presión de combustible",
-    description:
-      "Medición de la presión del sistema de inyección de combustible.",
+    key: "fuelPressure",
     route: "/dashboard/fuel-pressure",
   },
   {
     id: 5,
-    title: "Common rail",
-    description:
-      "Diagnóstico de la presión en sistemas de inyección common rail.",
+    key: "commonRail",
     route: "/dashboard/common-rail",
   },
   {
     id: 6,
-    title: "Compresión",
-    description: "Evaluación de la compresión en los cilindros del motor.",
+    key: "compression",
     route: "/dashboard/compression",
   },
   {
     id: 7,
-    title: "Presión turbo",
-    description: "Control de la presión del sistema de turboalimentación.",
+    key: "turboPressure",
     route: "/dashboard/turbo-pressure",
   },
   {
     id: 8,
-    title: "Presión de frenos",
-    description: "Medición de la presión en el circuito de frenos.",
+    key: "brakePressure",
     route: "/dashboard/brake-pressure",
   },
   {
     id: 9,
-    title: "Presión filtro de partículas",
-    description: "Monitorización de la presión diferencial en el DPF.",
+    key: "dpfPressure",
     route: "/dashboard/dpf-pressure",
   },
   {
     id: 10,
-    title: "Presión AdBlue",
-    description:
-      "Medición de la presión en el sistema AdBlue para reducción de emisiones.",
+    key: "adbluePressure",
     route: "/dashboard/adblue-pressure",
   },
 ];
@@ -79,8 +69,12 @@ const items = [
         <div class="p-4">
           <div class="flex justify-content-between align-items-center gap-3">
             <div class="flex-grow-1">
-              <h3 class="text-700 font-semibold mb-2">{{ item.title }}</h3>
-              <p class="text-sm text-700">{{ item.description }}</p>
+              <h3 class="text-700 font-semibold mb-2">
+                {{ t(`selectionView.${item.key}.title`) }}
+              </h3>
+              <p class="text-sm text-700">
+                {{ t(`selectionView.${item.key}.description`) }}
+              </p>
             </div>
             <i class="pi pi-chevron-right text-700"></i>
           </div>

@@ -13,16 +13,16 @@ export const dataTransformers = {
       .sort((a, b) => parseInt(a) - parseInt(b))
       .forEach((key) => {
         data.push(parseFloat(rawData[key]));
-        categories.push(`Cilindro ${parseInt(key) + 1}`);
+        categories.push(`Cylindre ${parseInt(key) + 1}`);
       });
 
     return {
       type: "bar",
       data,
       categories,
-      title: "Compresión de Cilindros",
-      yAxisTitle: "Presión (Bar)",
-      description: "Mediciones de compresión de los cilindros del motor",
+      title: "Compression des Cylindres",
+      yAxisTitle: "Pression (Bar)",
+      description: "Mesures de compression des cylindres du moteur",
     };
   },
 
@@ -35,16 +35,16 @@ export const dataTransformers = {
       .sort((a, b) => parseInt(a) - parseInt(b))
       .forEach((key) => {
         data.push(parseFloat(rawData[key]));
-        categories.push(`Lectura ${parseInt(key) + 1}`);
+        categories.push(`Lecture ${parseInt(key) + 1}`);
       });
 
     return {
       type: "line",
       data,
       categories,
-      title: "Presión Common Rail",
-      yAxisTitle: "Presión (Bar)",
-      description: "Medición de presión del sistema Common Rail",
+      title: "Pression Common Rail",
+      yAxisTitle: "Pression (Bar)",
+      description: "Mesure de la pression du système Common Rail",
     };
   },
 
@@ -89,7 +89,7 @@ export const createGenericGraphData = (type, rawData) => {
     data,
     categories,
     title,
-    yAxisTitle: "Valor",
-    description: `Datos de ${title}`,
+    yAxisTitle: "Valeur",
+    description: `Données de ${title}`,
   };
 };

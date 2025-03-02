@@ -34,7 +34,7 @@ const items = [
   {
     label: t("menu.contact"),
     icon: "pi pi-cog",
-    command: () => router.push("/contact"),
+    command: () => router.push("/dashboard"),
   },
 ];
 </script>
