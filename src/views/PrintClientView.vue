@@ -6,8 +6,6 @@ import LineChart from "@/components/charts/LineChart.vue";
 import AreaChart from "@/components/charts/AreaChart.vue";
 import PieChart from "@/components/charts/PieChart.vue";
 
-import { generatePDF } from "@/utils/pdfGenerator";
-
 const reportStore = useReportStore();
 const loading = ref(false);
 const showPreview = ref(false);
@@ -70,7 +68,7 @@ watchEffect(async () => {
 });
 
 const onPrint = () => {
-  generatePDF("printable-content");
+  window.print();
 };
 </script>
 
@@ -270,6 +268,7 @@ const onPrint = () => {
 }
 
 @media print {
+  /* Estilos generales de impresión */
   .no-print {
     display: none !important;
   }
@@ -278,21 +277,38 @@ const onPrint = () => {
     display: block !important;
     padding: 0;
     border: none;
+    width: 100%;
   }
 
-  .print-header {
-    text-align: center;
-    margin-bottom: 20px;
+  /* Ajustes para títulos */
+  h1,
+  h2,
+  h3 {
+    color: #333 !important;
+    margin-bottom: 10px !important;
   }
 
-  .client-info {
-    margin-bottom: 10px;
+  /* Ajustes para la información del cliente y vehículo */
+  .client-info,
+  .vehicle-info {
+    margin-bottom: 20px !important;
   }
 
-  .client-info p {
-    margin: 10px 0;
+  /* IMPORTANTE: Forzar que el grid se muestre correctamente */
+  .grid {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    width: 100% !important;
   }
 
+  /* Ajustar columnas para que se vean como en la vista previa */
+  .col-12.md\:col-4 {
+    width: 33.3333% !important;
+    padding-right: 15px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Ajustes para los gráficos */
   .apexcharts-canvas {
     width: 100% !important;
     height: auto !important;
@@ -303,21 +319,22 @@ const onPrint = () => {
     height: auto !important;
   }
 
-  .grid {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 20px !important;
-  }
-
-  .col-12 {
-    width: 100% !important;
-    padding: 0 !important;
-  }
-
+  /* Prevenir cortes entre páginas */
   .surface-card {
-    break-inside: avoid;
-    page-break-inside: avoid;
-    margin-bottom: 20px;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    margin-bottom: 15px !important;
+  }
+
+  /* Eliminar elementos de UI de Apex Charts en impresión */
+  .apexcharts-toolbar,
+  .apexcharts-menu-icon {
+    display: none !important;
+  }
+
+  /* Ajustar márgenes de página */
+  @page {
+    margin: 1cm;
   }
 }
 
