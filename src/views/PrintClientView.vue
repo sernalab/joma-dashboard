@@ -76,9 +76,7 @@ const onPrint = () => {
 
 <template>
   <div class="surface-card p-4">
-    <!-- Formulario -->
     <div class="flex flex-column gap-3 no-print">
-      <!-- Sección Datos del Cliente -->
       <div class="mb-4">
         <h2 class="text-xl mb-3">Datos del Cliente</h2>
         <div class="grid">
@@ -87,17 +85,16 @@ const onPrint = () => {
             <InputText v-model="formData.nombre" class="w-full" />
           </div>
           <div class="col-12 md:col-4">
-            <label class="block mb-2">Vehículo</label>
-            <InputText v-model="formData.vehiculo" class="w-full" />
+            <label class="block mb-2">telefono</label>
+            <InputText v-model="formData.telefono" class="w-full" />
           </div>
           <div class="col-12 md:col-4">
-            <label class="block mb-2">Matrícula</label>
-            <InputText v-model="formData.matricula" class="w-full" />
+            <label class="block mb-2">email</label>
+            <InputText v-model="formData.email" class="w-full" />
           </div>
         </div>
       </div>
 
-      <!-- Sección Detalles del Vehículo (Nuevos campos) -->
       <div class="mb-4">
         <h2 class="text-xl mb-3">Detalles del Vehículo</h2>
         <div class="grid">
@@ -110,10 +107,14 @@ const onPrint = () => {
             <InputText v-model="formData.modelo" class="w-full" />
           </div>
           <div class="col-12 md:col-4">
+            <label class="block mb-2">Matrícula</label>
+            <InputText v-model="formData.matricula" class="w-full" />
+          </div>
+          <div class="col-12 md:col-4">
             <label class="block mb-2">Año</label>
             <InputNumber v-model="formData.año" class="w-full" />
           </div>
-          <div class="col-12">
+          <div class="col-12 md:col-4">
             <label class="block mb-2">Kilometraje</label>
             <InputNumber
               v-model="formData.kilometraje"
@@ -124,7 +125,6 @@ const onPrint = () => {
         </div>
       </div>
 
-      <!-- Sección Mediciones -->
       <div class="mb-4">
         <h2 class="text-xl mb-3">Mediciones a Realizar</h2>
         <MultiSelect
@@ -136,7 +136,6 @@ const onPrint = () => {
         />
       </div>
 
-      <!-- Sección Observaciones -->
       <div class="mb-4">
         <h2 class="text-xl mb-3">Observaciones</h2>
         <Textarea
@@ -147,7 +146,6 @@ const onPrint = () => {
         />
       </div>
 
-      <!-- Botón de impresión -->
       <div class="flex justify-content-center">
         <Button
           @click="onPrint"
@@ -160,16 +158,48 @@ const onPrint = () => {
       </div>
     </div>
 
-    <!-- Preview siempre visible cuando hay datos -->
     <div id="printable-content" :class="{ hidden: !showPreview }" class="mt-4">
       <div class="print-header">
         <h1>Informe Técnico</h1>
       </div>
 
       <div class="client-info">
-        <p><strong>Cliente:</strong> {{ formData.nombre }}</p>
-        <p><strong>Vehículo:</strong> {{ formData.vehiculo }}</p>
-        <p><strong>Matrícula:</strong> {{ formData.matricula }}</p>
+        <h2>Información del Cliente</h2>
+        <div class="grid">
+          <div v-if="formData.nombre" class="col-12 md:col-4">
+            <p><strong>Cliente:</strong> {{ formData.nombre }}</p>
+          </div>
+          <div v-if="formData.telefono" class="col-12 md:col-4">
+            <p><strong>Teléfono:</strong> {{ formData.telefono }}</p>
+          </div>
+          <div v-if="formData.email" class="col-12 md:col-4">
+            <p><strong>Email:</strong> {{ formData.email }}</p>
+          </div>
+        </div>
+
+        <h2 class="mt-3">Información del Vehículo</h2>
+        <div class="grid">
+          <div v-if="formData.marca" class="col-12 md:col-4">
+            <p><strong>Marca:</strong> {{ formData.marca }}</p>
+          </div>
+          <div v-if="formData.modelo" class="col-12 md:col-4">
+            <p><strong>Modelo:</strong> {{ formData.modelo }}</p>
+          </div>
+          <div v-if="formData.matricula" class="col-12 md:col-4">
+            <p><strong>Matrícula:</strong> {{ formData.matricula }}</p>
+          </div>
+          <div v-if="formData.año" class="col-12 md:col-4">
+            <p><strong>Año:</strong> {{ formData.año }}</p>
+          </div>
+          <div v-if="formData.kilometraje" class="col-12 md:col-4">
+            <p><strong>Kilometraje:</strong> {{ formData.kilometraje }} km</p>
+          </div>
+        </div>
+
+        <div v-if="formData.observaciones" class="mt-3">
+          <h2>Observaciones</h2>
+          <p>{{ formData.observaciones }}</p>
+        </div>
       </div>
 
       <div v-if="formData.graficos.length">
@@ -178,9 +208,20 @@ const onPrint = () => {
           <div
             v-for="grafico in formData.graficos"
             :key="grafico.value"
-            class="col-12 md:col-6 lg:col-4 p-3"
+            :class="{
+              'col-12 md:col-6 lg:col-4 p-3': formData.graficos.length > 1,
+              'col-12 p-3 flex justify-content-center':
+                formData.graficos.length === 1,
+            }"
           >
-            <div class="surface-card p-3 border-round">
+            <div
+              class="surface-card p-3 border-round mt-5"
+              :style="
+                formData.graficos.length === 1
+                  ? 'width: 600px; max-width: 100%;'
+                  : ''
+              "
+            >
               <h3>{{ grafico.name }}</h3>
               <template
                 v-if="
@@ -209,7 +250,6 @@ const onPrint = () => {
   display: none;
 }
 
-/* Estilos para el preview en pantalla */
 #printable-content {
   margin-top: 2rem;
   padding: 20px;
@@ -239,7 +279,6 @@ const onPrint = () => {
     margin: 10px 0;
   }
 
-  /* Asegurar que los gráficos se impriman correctamente */
   .apexcharts-canvas {
     width: 100% !important;
     height: auto !important;
@@ -250,7 +289,6 @@ const onPrint = () => {
     height: auto !important;
   }
 
-  /* Ajustar grid para impresión */
   .grid {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
@@ -262,7 +300,6 @@ const onPrint = () => {
     padding: 0 !important;
   }
 
-  /* Asegurar que cada gráfico esté en su propia página si es necesario */
   .surface-card {
     break-inside: avoid;
     page-break-inside: avoid;
