@@ -4,8 +4,8 @@ import { useReportStore } from "@/store/reportStore";
 import EmptyDataView from "@/views/EmptyDataView.vue";
 import BarChart from "@/components/charts/BarChart.vue";
 import { useI18n } from "vue-i18n";
-const { t } = useI18n();
 
+const { t } = useI18n();
 const reportStore = useReportStore();
 const graphData = ref(null);
 const loading = ref(true);
@@ -13,7 +13,6 @@ const error = ref(null);
 
 onMounted(async () => {
   try {
-    // Cambiamos "manometer" por "datacompression" para obtener los datos reales
     const data = await reportStore.fetchGraphData("datacompression");
 
     if (data) {
@@ -40,8 +39,12 @@ onMounted(async () => {
       <ProgressSpinner />
     </div>
 
+    <div v-else-if="error" class="my-5">
+      <Message severity="error">{{ error }}</Message>
+    </div>
+
     <div v-else-if="graphData" class="my-5">
-      <h2>Compresión</h2>
+      <h2>{{ graphData.title }}</h2>
       <p v-if="graphData.description" class="text-500">
         {{ graphData.description }}
       </p>

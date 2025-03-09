@@ -3,15 +3,37 @@ import { ref, onMounted } from "vue";
 import { useReportStore } from "@/store/reportStore";
 import EmptyDataView from "@/views/EmptyDataView.vue";
 import { useI18n } from "vue-i18n";
-
 import LineChart from "@/components/charts/LineChart.vue";
+
 const { t } = useI18n();
 const reportStore = useReportStore();
 const graphData = ref(null);
+const loading = ref(true);
+const error = ref(null);
 
 onMounted(async () => {
-  const data = await reportStore.fetchGraphData("common-rail");
-  graphData.value = data;
+  try {
+    // Actualizamos para usar datacommonrail (el nuevo nombre del campo)
+    // Pero mantenemos el soporte para el alias "common-rail" por compatibilidad
+    const data = await reportStore.fetchGraphData("datacommonrail");
+
+    if (data) {
+      graphData.value = data;
+    } else {
+      // Intentamos con el alias antiguo si no hay datos con el nuevo nombre
+      const legacyData = await reportStore.fetchGraphData("common-rail");
+      if (legacyData) {
+        graphData.value = legacyData;
+      } else {
+        error.value = "No hay datos de Common Rail disponibles";
+      }
+    }
+  } catch (err) {
+    error.value = "Error al cargar los datos";
+    console.error(err);
+  } finally {
+    loading.value = false;
+  }
 });
 </script>
 
@@ -20,12 +42,25 @@ onMounted(async () => {
     <router-link to="/dashboard" class="p-3 text-700 no-underline">
       <i class="pi pi-arrow-left mr-2"></i>{{ t("extras.backToDashbaord") }}
     </router-link>
-    <div v-if="graphData">
+
+    <div v-if="loading" class="flex justify-content-center my-5">
+      <ProgressSpinner />
+    </div>
+
+    <div v-else-if="error" class="my-5">
+      <Message severity="error">{{ error }}</Message>
+    </div>
+
+    <div v-else-if="graphData">
       <div class="surface-card p-4 border-round">
-        <h2>Medición de Compresión</h2>
+        <h2>{{ graphData.title }}</h2>
+        <p v-if="graphData.description" class="text-500">
+          {{ graphData.description }}
+        </p>
         <LineChart :data="graphData" />
       </div>
     </div>
+
     <EmptyDataView v-else />
   </div>
 </template>
