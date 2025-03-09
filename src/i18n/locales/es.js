@@ -120,10 +120,46 @@ export default {
       description: "Mediciones de compresión de los cilindros del motor",
       cylinderLabel: "Cilindro",
     },
-    "common-rail": {
+    commonRail: {
       title: "Presión Common Rail",
       yAxisTitle: "Presión (Bar)",
       description: "Medición de presión del sistema Common Rail",
+      readingLabel: "Lectura",
+    },
+    adblue: {
+      title: "Presión AdBlue",
+      yAxisTitle: "Presión (Bar)",
+      description: "Medición de presión del sistema AdBlue",
+      readingLabel: "Lectura",
+    },
+    fuel: {
+      title: "Presión de Combustible",
+      yAxisTitle: "Presión (Bar)",
+      description: "Medición de presión del sistema de combustible",
+      readingLabel: "Lectura",
+    },
+    manometer: {
+      title: "Manómetro",
+      yAxisTitle: "Presión (Bar)",
+      description: "Mediciones de presión con manómetro",
+      readingLabel: "Lectura",
+    },
+    oil: {
+      title: "Presión de Aceite",
+      yAxisTitle: "Presión (Bar)",
+      description: "Medición de presión del sistema de aceite",
+      readingLabel: "Lectura",
+    },
+    turbo: {
+      title: "Presión Turbo",
+      yAxisTitle: "Presión (Bar)",
+      description: "Medición de presión del turbo",
+      readingLabel: "Lectura",
+    },
+    vacuum: {
+      title: "Vacío",
+      yAxisTitle: "Presión (mBar)",
+      description: "Medición de vacío del sistema",
       readingLabel: "Lectura",
     },
     generic: {
