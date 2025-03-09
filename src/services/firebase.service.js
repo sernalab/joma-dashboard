@@ -1,10 +1,7 @@
 // firebase.service.js
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/firebase.js";
-import {
-  dataTransformers,
-  createGenericGraphData,
-} from "@/utils/dataTransformers";
+import { dataTransformers } from "@/utils/dataTransformers";
 
 export const firebaseService = {
   async fetchUserData(userId) {
@@ -35,14 +32,8 @@ export const firebaseService = {
       if (userData[type]) {
         console.log(`Datos de ${type} encontrados:`, userData[type]);
 
-        // Usamos el transformador correspondiente si existe
-        if (dataTransformers[type]) {
-          return dataTransformers[type](userData[type]);
-        } else {
-          console.warn(`No hay transformador definido para el tipo ${type}`);
-          // Usamos el transformador genérico
-          return createGenericGraphData(type, userData[type]);
-        }
+        // Usar el método transform del nuevo sistema
+        return dataTransformers.transform(type, userData[type]);
       }
 
       console.log(`No se encontraron datos para el tipo ${type}`);
