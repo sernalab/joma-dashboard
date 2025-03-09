@@ -7,6 +7,7 @@ import BarChart from "@/components/charts/BarChart.vue";
 import LineChart from "@/components/charts/LineChart.vue";
 import AreaChart from "@/components/charts/AreaChart.vue";
 import PieChart from "@/components/charts/PieChart.vue";
+import NegativeColumnChart from "@/components/charts/NegativeColumnChart.vue";
 
 const { t } = useI18n();
 const reportStore = useReportStore();
@@ -33,29 +34,30 @@ const formData = ref({
 });
 
 const chartComponents = {
-  manometer: LineChart,
-  vacuum: BarChart,
-  "oil-pressure": AreaChart,
-  "fuel-pressure": LineChart,
-  "common-rail": BarChart,
+  datamanometer80: BarChart,
+  datavacuum: NegativeColumnChart,
+  dataoil: BarChart,
+  datafuel: LineChart,
+  datacommonrail: BarChart,
   datacompression: BarChart,
-  "turbo-pressure": BarChart,
+  dataturbo: BarChart,
   "brake-pressure": AreaChart,
   "dpf-pressure": PieChart,
   "adblue-pressure": BarChart,
+  dataadblue: BarChart,
 };
 
 const availableCharts = [
-  { name: t("selectionView.manometer.title"), value: "manometer" },
-  { name: t("selectionView.vacuum.title"), value: "vacuum" },
-  { name: t("selectionView.oilPressure.title"), value: "oil-pressure" },
-  { name: t("selectionView.fuelPressure.title"), value: "fuel-pressure" },
-  { name: t("selectionView.commonRail.title"), value: "common-rail" },
+  { name: t("selectionView.manometer.title"), value: "datamanometer80" },
+  { name: t("selectionView.vacuum.title"), value: "datavacuum" },
+  { name: t("selectionView.oilPressure.title"), value: "dataoil" },
+  { name: t("selectionView.fuelPressure.title"), value: "datafuel" },
+  { name: t("selectionView.commonRail.title"), value: "datacommonrail" },
   { name: t("selectionView.compression.title"), value: "datacompression" },
-  { name: t("selectionView.turboPressure.title"), value: "turbo-pressure" },
+  { name: t("selectionView.turboPressure.title"), value: "dataturbo" },
   { name: t("selectionView.brakePressure.title"), value: "brake-pressure" },
   { name: t("selectionView.dpfPressure.title"), value: "dpf-pressure" },
-  { name: t("selectionView.adbluePressure.title"), value: "adblue-pressure" },
+  { name: t("selectionView.adbluePressure.title"), value: "dataadblue" },
 ];
 
 watchEffect(async () => {
@@ -161,10 +163,7 @@ const onPrint = () => {
         <h1 class="font-bold">{{ t("printView.technicalReport") }}</h1>
       </div>
 
-      <div
-        v-if="formData.nombre || formData.telefono || formData.email"
-        class="client-info"
-      >
+      <div class="client-info">
         <h2 class="font-bold">{{ t("printView.clientData") }}</h2>
         <div class="grid">
           <div v-if="formData.nombre" class="col-12 md:col-4">
@@ -230,25 +229,19 @@ const onPrint = () => {
         </div>
       </div>
 
-      <div v-if="formData.observaciones" class="mt-3">
-        <h2 class="font-bold">{{ t("printView.observations") }}</h2>
-        <p>{{ formData.observaciones }}</p>
-      </div>
-
       <div v-if="formData.graficos.length">
         <h2 class="font-bold mt-5">{{ t("printView.selectedCharts") }}</h2>
-        <div class="grid">
+        <div class="chart-container">
           <div
             v-for="grafico in formData.graficos"
             :key="grafico.value"
             :class="{
-              'col-12 md:col-6 lg:col-4 p-3': formData.graficos.length > 1,
-              'col-12 p-3 flex justify-content-center':
-                formData.graficos.length === 1,
+              'single-chart': formData.graficos.length === 1,
+              'multi-chart': formData.graficos.length > 1,
             }"
           >
             <div
-              class="surface-card p-3 border-round mt-5"
+              class="surface-card p-3 border-round mt-3"
               :style="
                 formData.graficos.length === 1
                   ? 'width: 600px; max-width: 100%;'
@@ -288,6 +281,24 @@ const onPrint = () => {
 #printable-content {
   margin-top: 2rem;
   padding: 20px;
+}
+
+.chart-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.single-chart {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.multi-chart {
+  width: 100%;
+  margin-bottom: 2rem;
 }
 
 @media print {
