@@ -37,7 +37,7 @@ const { t } = useI18n();
 <template>
   <div class="flex h-screen">
     <div class="w-full flex align-items-center justify-content-center">
-      <div class="surface-card p-4 shadow-2 border-round w-full lg:w-4">
+      <div class="p-4 shadow-2 border-round w-full lg:w-4">
         <div class="text-center mb-5">
           <img src="/src/assets/beta-logo.png" height="50" />
           <div class="text-900 text-3xl font-medium mb-3">
