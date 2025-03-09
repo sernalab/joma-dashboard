@@ -2,7 +2,7 @@
 import { ref, onMounted } from "vue";
 import { useReportStore } from "@/store/reportStore";
 import EmptyDataView from "@/views/EmptyDataView.vue";
-import LineChart from "@/components/charts/LineChart.vue";
+import BarChart from "@/components/charts/BarChart.vue";
 import { useI18n } from "vue-i18n";
 
 const { t } = useI18n();
@@ -50,7 +50,7 @@ onMounted(async () => {
         <p v-if="graphData.description" class="text-500">
           {{ graphData.description }}
         </p>
-        <LineChart :data="graphData" />
+        <BarChart :data="graphData" />
       </div>
     </div>
 
