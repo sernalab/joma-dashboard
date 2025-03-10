@@ -12,7 +12,6 @@ export const firebaseService = {
       if (docSnap.exists()) {
         return { id: docSnap.id, ...docSnap.data() };
       } else {
-        console.log("No existe el documento!");
         return null;
       }
     } catch (error) {
@@ -30,13 +29,10 @@ export const firebaseService = {
       }
 
       if (userData[type]) {
-        console.log(`Datos de ${type} encontrados:`, userData[type]);
-
         // Usar el método transform del nuevo sistema
         return dataTransformers.transform(type, userData[type]);
       }
 
-      console.log(`No se encontraron datos para el tipo ${type}`);
       return null;
     } catch (error) {
       console.error(`Error al obtener datos de gráfico para ${type}:`, error);
