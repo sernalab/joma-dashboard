@@ -24,7 +24,7 @@ function createTransformedData(type, rawData, config) {
   // Determinar la configuración a usar
   const chartConfig = config || chartConfigs[type] || {};
   const chartType = chartConfig.type || "line";
-  const labelKey = chartConfig.labelKey || "chartsData.generic.pointLabel";
+  const labelKey = chartConfig.labelKey || "";
 
   // Procesar los datos (funciona con arrays u objetos)
   if (Array.isArray(rawData)) {
@@ -116,6 +116,6 @@ export function registerTransformer(type, config) {
 export const createGenericGraphData = (type, rawData) => {
   return createTransformedData(type, rawData, {
     type: "line",
-    labelKey: "chartsData.generic.pointLabel",
+    labelKey: "",
   });
 };
