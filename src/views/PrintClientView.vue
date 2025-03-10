@@ -175,33 +175,30 @@ const onPrint = () => {
     box-sizing: border-box !important;
   }
 
-  /* Ajustes para los gráficos */
-  .apexcharts-canvas {
-    width: 100% !important;
-    height: auto !important;
-  }
-
-  .apexcharts-svg {
-    width: 100% !important;
-    height: auto !important;
-  }
-
   /* Prevenir cortes entre páginas */
   .surface-card {
-    break-inside: avoid !important;
-    page-break-inside: avoid !important;
     margin-bottom: 15px !important;
   }
 
-  /* Eliminar elementos de UI de Apex Charts en impresión */
-  .apexcharts-toolbar,
-  .apexcharts-menu-icon {
-    display: none !important;
+  /* Ocultar URL y hora */
+  @page {
+    margin-bottom: 0 !important;
+    margin-top: 1cm !important;
   }
 
-  /* Ajustar márgenes de página */
+  /* Esta regla oculta la URL que los navegadores automáticamente añaden */
+  html {
+    height: 100%;
+  }
+
+  body::after {
+    content: none !important;
+  }
+
+  /* Ocultar el pie de página del navegador */
   @page {
-    margin: 1cm;
+    size: auto;
+    margin-bottom: 0;
   }
 }
 

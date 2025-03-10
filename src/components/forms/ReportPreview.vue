@@ -105,25 +105,14 @@ const props = defineProps({
 
     <!-- Gráficos -->
     <div v-if="formData.graficos.length">
-      <h2 class="font-bold mt-5">{{ t("printView.selectedCharts") }}</h2>
+      <h2 class="font-bold my-5">{{ t("printView.selectedCharts") }}</h2>
       <div class="grid">
         <div
           v-for="grafico in formData.graficos"
           :key="grafico.value"
-          :class="{
-            'col-12 md:col-6 lg:col-4 p-3': formData.graficos.length > 1,
-            'col-12 p-3 flex justify-content-center':
-              formData.graficos.length === 1,
-          }"
+          class="col-12"
         >
-          <div
-            class="surface-card p-3 border-round mt-5"
-            :style="
-              formData.graficos.length === 1
-                ? 'width: 600px; max-width: 100%;'
-                : ''
-            "
-          >
+          <div class="surface-card p-3 border-round">
             <h3>{{ grafico.name }}</h3>
             <template
               v-if="
@@ -147,29 +136,4 @@ const props = defineProps({
 </template>
 
 <style scoped>
-.observations-section {
-  margin-top: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-@media print {
-  .observations-section {
-    display: block !important;
-    margin-top: 20px !important;
-    margin-bottom: 20px !important;
-    page-break-inside: avoid !important;
-  }
-
-  .observations-section h2 {
-    display: block !important;
-    color: #333 !important;
-    margin-bottom: 10px !important;
-    font-weight: bold !important;
-  }
-
-  .observations-section p {
-    display: block !important;
-    margin-bottom: 15px !important;
-  }
-}
 </style>

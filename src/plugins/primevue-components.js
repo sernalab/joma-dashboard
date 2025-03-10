@@ -12,6 +12,7 @@ import Message from "primevue/message";
 import Badge from "primevue/badge";
 import Menu from "primevue/menu";
 import { Form } from "@primevue/forms";
+import Textarea from "primevue/textarea";
 
 // 2. Directive Imports
 import Ripple from "primevue/ripple";
@@ -37,6 +38,7 @@ const components = {
   Menu,
   Form,
   InputNumber,
+  Textarea,
 };
 
 // 4. Setup Function
