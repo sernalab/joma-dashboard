@@ -1,8 +1,16 @@
 <script setup>
-import { ref, watchEffect } from "vue";
+import { ref, watchEffect, watch } from "vue";
 import { useI18n } from "vue-i18n";
-
 import { useReportStore } from "@/store/reportStore";
+
+// Importar componentes modulares
+import ClientForm from "@/components/forms/ClientForm.vue";
+import VehicleForm from "@/components/forms/VehicleForm.vue";
+import ChartSelector from "@/components/forms/ChartSelector.vue";
+import ObservationsForm from "@/components/forms/ObservationsForm.vue";
+import ReportPreview from "@/components/forms/ReportPreview.vue";
+
+// Importar componentes de gráficos
 import BarChart from "@/components/charts/BarChart.vue";
 import LineChart from "@/components/charts/LineChart.vue";
 import AreaChart from "@/components/charts/AreaChart.vue";
@@ -26,13 +34,11 @@ const formData = ref({
   matricula: "",
   kilometraje: null,
 
-  graficos: [],
-
   observaciones: "",
-  fechaMedicion: new Date(),
-  tecnico: "",
+  graficos: [],
 });
 
+// Mapeo de componentes de gráficos a tipos de datos
 const chartComponents = {
   datamanometer80: BarChart,
   datavacuum: NegativeColumnChart,
@@ -47,6 +53,7 @@ const chartComponents = {
   dataadblue: BarChart,
 };
 
+// Lista de gráficos disponibles
 const availableCharts = [
   { name: t("selectionView.manometer.title"), value: "datamanometer80" },
   { name: t("selectionView.vacuum.title"), value: "datavacuum" },
@@ -60,6 +67,15 @@ const availableCharts = [
   { name: t("selectionView.adbluePressure.title"), value: "dataadblue" },
 ];
 
+watch(
+  () => formData.value,
+  () => {
+    showPreview.value = true;
+  },
+  { deep: true, immediate: true }
+);
+
+// Observar cambios en los gráficos seleccionados
 watchEffect(async () => {
   if (formData.value.graficos.length) {
     loading.value = true;
@@ -76,76 +92,17 @@ const onPrint = () => {
 
 <template>
   <div class="surface-card p-4">
+    <!-- Formulario (no imprimible) -->
     <div class="flex flex-column gap-3 no-print">
-      <div class="mb-4">
-        <h2 class="text-xl mb-3">{{ t("printView.clientData") }}</h2>
-        <div class="grid">
-          <div class="col-12 md:col-4">
-            <label class="block mb-2">{{ t("printView.name") }}</label>
-            <InputText v-model="formData.nombre" class="w-full" />
-          </div>
-          <div class="col-12 md:col-4">
-            <label class="block mb-2">{{ t("printView.phone") }}</label>
-            <InputText v-model="formData.telefono" class="w-full" />
-          </div>
-          <div class="col-12 md:col-4">
-            <label class="block mb-2">{{ t("printView.email") }}</label>
-            <InputText v-model="formData.email" class="w-full" />
-          </div>
-        </div>
-      </div>
+      <ClientForm v-model="formData" />
+      <VehicleForm v-model="formData" />
+      <ChartSelector
+        v-model="formData.graficos"
+        :availableCharts="availableCharts"
+      />
+      <ObservationsForm v-model="formData" />
 
-      <div class="mb-4">
-        <h2 class="text-xl mb-3">{{ t("printView.vehicleDetails") }}</h2>
-        <div class="grid">
-          <div class="col-12 md:col-4">
-            <label class="block mb-2">{{ t("printView.brand") }}</label>
-            <InputText v-model="formData.marca" class="w-full" />
-          </div>
-          <div class="col-12 md:col-4">
-            <label class="block mb-2">{{ t("printView.model") }}</label>
-            <InputText v-model="formData.modelo" class="w-full" />
-          </div>
-          <div class="col-12 md:col-4">
-            <label class="block mb-2">{{ t("printView.plate") }}</label>
-            <InputText v-model="formData.matricula" class="w-full" />
-          </div>
-          <div class="col-12 md:col-4">
-            <label class="block mb-2">{{ t("printView.year") }}</label>
-            <InputNumber v-model="formData.año" class="w-full" />
-          </div>
-          <div class="col-12 md:col-4">
-            <label class="block mb-2">{{ t("printView.mileage") }}</label>
-            <InputNumber
-              v-model="formData.kilometraje"
-              suffix=" km"
-              class="w-full"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div class="mb-4">
-        <h2 class="text-xl mb-3">{{ t("printView.measurements") }}</h2>
-        <MultiSelect
-          v-model="formData.graficos"
-          :options="availableCharts"
-          optionLabel="name"
-          :placeholder="t('printView.selectMeasurements')"
-          class="w-full"
-        />
-      </div>
-
-      <div class="mb-4">
-        <h2 class="text-xl mb-3">{{ t("printView.observations") }}</h2>
-        <Textarea
-          v-model="formData.observaciones"
-          rows="3"
-          class="w-full"
-          :placeholder="t('printView.addNotes')"
-        />
-      </div>
-
+      <!-- Botón de impresión -->
       <div class="flex justify-content-center">
         <Button
           @click="onPrint"
@@ -158,118 +115,12 @@ const onPrint = () => {
       </div>
     </div>
 
-    <div id="printable-content" :class="{ hidden: !showPreview }" class="mt-4">
-      <div class="print-header">
-        <h1 class="font-bold">{{ t("printView.technicalReport") }}</h1>
-      </div>
-
-      <div class="client-info">
-        <h2 class="font-bold">{{ t("printView.clientData") }}</h2>
-        <div class="grid">
-          <div v-if="formData.nombre" class="col-12 md:col-4">
-            <p>
-              <strong>{{ t("printView.name") }}:</strong> {{ formData.nombre }}
-            </p>
-          </div>
-          <div v-if="formData.telefono" class="col-12 md:col-4">
-            <p>
-              <strong>{{ t("printView.phone") }}:</strong>
-              {{ formData.telefono }}
-            </p>
-          </div>
-          <div v-if="formData.email" class="col-12 md:col-4">
-            <p>
-              <strong>{{ t("printView.email") }}:</strong> {{ formData.email }}
-            </p>
-          </div>
-        </div>
-
-        <div
-          v-if="
-            formData.marca ||
-            formData.modelo ||
-            formData.matricula ||
-            formData.año ||
-            formData.kilometraje
-          "
-          class="vehicle-info"
-        >
-          <h2 class="font-bold mt-3">{{ t("printView.vehicleDetails") }}</h2>
-          <div class="grid">
-            <div v-if="formData.marca" class="col-12 md:col-4">
-              <p>
-                <strong>{{ t("printView.brand") }}:</strong>
-                {{ formData.marca }}
-              </p>
-            </div>
-            <div v-if="formData.modelo" class="col-12 md:col-4">
-              <p>
-                <strong>{{ t("printView.model") }}:</strong>
-                {{ formData.modelo }}
-              </p>
-            </div>
-            <div v-if="formData.matricula" class="col-12 md:col-4">
-              <p>
-                <strong>{{ t("printView.plate") }}:</strong>
-                {{ formData.matricula }}
-              </p>
-            </div>
-            <div v-if="formData.año" class="col-12 md:col-4">
-              <p>
-                <strong>{{ t("printView.year") }}:</strong> {{ formData.año }}
-              </p>
-            </div>
-            <div v-if="formData.kilometraje" class="col-12 md:col-4">
-              <p>
-                <strong>{{ t("printView.mileage") }}:</strong>
-                {{ formData.kilometraje }} km
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div v-if="formData.graficos.length">
-        <h2 class="font-bold mt-5">{{ t("printView.selectedCharts") }}</h2>
-        <div class="chart-container">
-          <div
-            v-for="grafico in formData.graficos"
-            :key="grafico.value"
-            :class="{
-              'single-chart': formData.graficos.length === 1,
-              'multi-chart': formData.graficos.length > 1,
-            }"
-          >
-            <div
-              class="surface-card p-3 border-round mt-3"
-              :style="
-                formData.graficos.length === 1
-                  ? 'width: 600px; max-width: 100%;'
-                  : ''
-              "
-            >
-              <h3>{{ grafico.name }}</h3>
-              <template
-                v-if="
-                  reportStore.graphsData[grafico.value] &&
-                  reportStore.graphsData[grafico.value].data?.length
-                "
-              >
-                <component
-                  :is="chartComponents[grafico.value]"
-                  :data="reportStore.graphsData[grafico.value]"
-                />
-              </template>
-              <p v-else class="text-center p-3 text-red-600">
-                {{
-                  t("printView.noDataAvailable", { chartName: grafico.name })
-                }}
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <ReportPreview
+      :formData="formData"
+      :reportStore="reportStore"
+      :chartComponents="chartComponents"
+      :showPreview="showPreview"
+    />
   </div>
 </template>
 
@@ -281,24 +132,6 @@ const onPrint = () => {
 #printable-content {
   margin-top: 2rem;
   padding: 20px;
-}
-
-.chart-container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.single-chart {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin-bottom: 1.5rem;
-}
-
-.multi-chart {
-  width: 100%;
-  margin-bottom: 2rem;
 }
 
 @media print {
