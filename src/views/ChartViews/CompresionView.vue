@@ -9,20 +9,13 @@ const { t } = useI18n();
 const reportStore = useReportStore();
 const graphData = ref(null);
 const loading = ref(true);
-const error = ref(null);
 
 onMounted(async () => {
   try {
     const data = await reportStore.fetchGraphData("datacompression");
-
-    if (data) {
-      graphData.value = data;
-    } else {
-      error.value = "No hay datos de compresión disponibles";
-    }
+    graphData.value = data || null;
   } catch (err) {
-    error.value = "Error al cargar los datos";
-    console.error(err);
+    console.error("Error al cargar los datos:", err);
   } finally {
     loading.value = false;
   }
@@ -39,16 +32,14 @@ onMounted(async () => {
       <ProgressSpinner />
     </div>
 
-    <div v-else-if="error" class="my-5">
-      <Message severity="error">{{ error }}</Message>
-    </div>
-
     <div v-else-if="graphData" class="my-5">
-      <h2>{{ graphData.title }}</h2>
-      <p v-if="graphData.description" class="text-500">
-        {{ graphData.description }}
-      </p>
-      <BarChart id="chart" :data="graphData" :horizontal="true" />
+      <div class="surface-card p-4 border-round">
+        <h2>{{ graphData.title }}</h2>
+        <p v-if="graphData.description" class="text-500">
+          {{ graphData.description }}
+        </p>
+        <BarChart id="chart" :data="graphData" :horizontal="true" />
+      </div>
     </div>
 
     <EmptyDataView v-else />

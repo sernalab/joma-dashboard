@@ -9,21 +9,13 @@ const { t } = useI18n();
 const reportStore = useReportStore();
 const graphData = ref(null);
 const loading = ref(true);
-const error = ref(null);
 
 onMounted(async () => {
   try {
-    // Usar el nuevo nombre de campo datafuel
     const data = await reportStore.fetchGraphData("datafuel");
-
-    if (data) {
-      graphData.value = data;
-    } else {
-      error.value = "No hay datos de combustible disponibles";
-    }
+    graphData.value = data || null;
   } catch (err) {
-    error.value = "Error al cargar los datos";
-    console.error(err);
+    console.error("Error al cargar los datos:", err);
   } finally {
     loading.value = false;
   }
@@ -38,10 +30,6 @@ onMounted(async () => {
 
     <div v-if="loading" class="flex justify-content-center my-5">
       <ProgressSpinner />
-    </div>
-
-    <div v-else-if="error" class="my-5">
-      <Message severity="error">{{ error }}</Message>
     </div>
 
     <div v-else-if="graphData" class="my-5">

@@ -40,17 +40,17 @@ const formData = ref({
 
 // Mapeo de componentes de gráficos a tipos de datos
 const chartComponents = {
-  datamanometer80: BarChart,
-  datavacuum: NegativeColumnChart,
-  dataoil: BarChart,
+  datamanometer80: LineChart,
+  datavacuum: LineChart,
+  dataoil: LineChart,
   datafuel: LineChart,
-  datacommonrail: BarChart,
+  datacommonrail: LineChart,
   datacompression: BarChart,
-  dataturbo: BarChart,
+  dataturbo: LineChart,
   "brake-pressure": AreaChart,
   "dpf-pressure": PieChart,
-  "adblue-pressure": BarChart,
-  dataadblue: BarChart,
+  "adblue-pressure": LineChart,
+  dataadblue: LineChart,
 };
 
 // Lista de gráficos disponibles
