@@ -25,12 +25,29 @@ const props = defineProps({
 
 <template>
   <div id="printable-content" :class="{ hidden: !showPreview }" class="mt-4">
-    <div class="print-header">
+    <div
+      v-if="
+        formData.nombre ||
+        formData.telefono ||
+        formData.email ||
+        formData.marca ||
+        formData.modelo ||
+        formData.matricula ||
+        formData.año ||
+        formData.kilometraje ||
+        formData.observaciones ||
+        formData.graficos.length
+      "
+      class="print-header"
+    >
       <h1 class="font-bold">{{ t("printView.technicalReport") }}</h1>
     </div>
 
     <!-- Información del cliente -->
-    <div class="client-info">
+    <div
+      v-if="formData.nombre || formData.telefono || formData.email"
+      class="client-info"
+    >
       <h2 class="font-bold">{{ t("printView.clientData") }}</h2>
       <div class="grid">
         <div v-if="formData.nombre" class="col-12 md:col-4">
@@ -123,6 +140,7 @@ const props = defineProps({
               <component
                 :is="chartComponents[grafico.value]"
                 :data="reportStore.graphsData[grafico.value]"
+                :horizontal="grafico.value === 'datacompression'"
               />
             </template>
             <p v-else class="text-center p-3 text-red-600">
