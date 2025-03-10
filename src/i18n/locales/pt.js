@@ -1,18 +1,21 @@
 export default {
   login: {
     title: "Bem-vindo",
-    subtitle: "Insira suas credenciais",
+    subtitle: "Digite suas credenciais",
     userId: "ID do Usuário",
     password: "Senha",
     submit: "Entrar",
     error: {
       credentials: "Credenciais inválidas",
-      required: "Por favor, insira todas as credenciais",
+      required: "Por favor, insira todas as credenciais necessárias",
     },
   },
   menu: {
     home: "Início",
-    features: "Recursos",
+    reports: "Relatórios",
+    features: "Funcionalidades",
+    contact: "Contato",
+    settings: "Configurações",
     projects: "Projetos",
     components: "Componentes",
     blocks: "Blocos",
@@ -21,5 +24,148 @@ export default {
     apollo: "Apollo",
     ultima: "Ultima",
     printReports: "Imprimir Relatórios",
+  },
+  extras: {
+    cylinder: "Cilindro",
+    noDataAvailable: "Nenhum dado disponível",
+    noDataAvailableDescription:
+      "Ainda não há medições disponíveis nesta seção.",
+    backToDashbaord: "Voltar para o Painel",
+  },
+  selectionView: {
+    manometer: {
+      title: "Manômetro",
+      description: "Manômetro com alcance de 80 bar",
+    },
+    vacuum: {
+      title: "Vácuo",
+      description: "Medição da pressão negativa em sistemas de vácuo.",
+    },
+    oilPressure: {
+      title: "Pressão do Óleo",
+      description: "Monitoramento da pressão do óleo no motor.",
+    },
+    fuelPressure: {
+      title: "Pressão do Combustível",
+      description: "Medição da pressão no sistema de injeção de combustível.",
+    },
+    commonRail: {
+      title: "Common Rail",
+      description:
+        "Diagnóstico da pressão nos sistemas de injeção Common Rail.",
+    },
+    compression: {
+      title: "Compressão",
+      description: "Avaliação da compressão nos cilindros do motor.",
+    },
+    turboPressure: {
+      title: "Pressão do Turbo",
+      description: "Controle da pressão no sistema de turboalimentação.",
+    },
+    brakePressure: {
+      title: "Pressão dos Freios",
+      description: "Medição da pressão no circuito de freios.",
+    },
+    dpfPressure: {
+      title: "Pressão do Filtro de Partículas",
+      description:
+        "Monitoramento da pressão diferencial no filtro de partículas (DPF).",
+    },
+    adbluePressure: {
+      title: "Pressão AdBlue",
+      description:
+        "Medição da pressão no sistema AdBlue para redução de emissões.",
+    },
+  },
+  sideMenu: {
+    graphics: "Gráficos",
+    manometer: "Manômetro",
+    vacuum: "Vácuo",
+    oilPressure: "Pressão do Óleo",
+    fuelPressure: "Pressão do Combustível",
+    commonRail: "Common Rail",
+    compression: "Compressão",
+    turboPressure: "Pressão do Turbo",
+    brakePressure: "Pressão dos Freios",
+    dpfPressure: "Pressão do Filtro de Partículas",
+    adbluePressure: "Pressão AdBlue",
+    profile: "Perfil",
+    logout: "Sair",
+  },
+  printView: {
+    clientData: "Dados do Cliente",
+    name: "Nome do Cliente",
+    phone: "Telefone",
+    email: "E-mail",
+    vehicleDetails: "Detalhes do Veículo",
+    brand: "Marca",
+    model: "Modelo",
+    plate: "Placa",
+    year: "Ano",
+    mileage: "Quilometragem",
+    measurements: "Medições a Realizar",
+    observations: "Observações",
+    addNotes: "Adicionar notas ou comentários sobre as medições",
+    generateReport: "Gerar Relatório",
+    technicalReport: "Relatório Técnico",
+    noDataAvailable: "Nenhum dado disponível para {chartName}.",
+    selectedCharts: "Gráficos Selecionados",
+    print: "Imprimir",
+    selectMeasurements: "Selecionar Medições",
+  },
+  chartsData: {
+    datacompression: {
+      title: "Compressão dos Cilindros",
+      yAxisTitle: "Pressão (Bar)",
+      description: "Medições de compressão nos cilindros do motor",
+      cylinderLabel: "Cilindro",
+    },
+    commonRail: {
+      title: "Pressão Common Rail",
+      yAxisTitle: "Pressão (Bar)",
+      description: "Medição da pressão no sistema Common Rail",
+      readingLabel: "Leitura",
+    },
+    adblue: {
+      title: "Pressão AdBlue",
+      yAxisTitle: "Pressão (Bar)",
+      description: "Medição da pressão no sistema AdBlue",
+      readingLabel: "Leitura",
+    },
+    fuel: {
+      title: "Pressão do Combustível",
+      yAxisTitle: "Pressão (Bar)",
+      description: "Medição da pressão no sistema de combustível",
+      readingLabel: "Leitura",
+    },
+    manometer: {
+      title: "Manômetro",
+      yAxisTitle: "Pressão (Bar)",
+      description: "Medições de pressão com manômetro",
+      readingLabel: "Leitura",
+    },
+    oil: {
+      title: "Pressão do Óleo",
+      yAxisTitle: "Pressão (Bar)",
+      description: "Medição da pressão no sistema de óleo",
+      readingLabel: "Leitura",
+    },
+    turbo: {
+      title: "Pressão do Turbo",
+      yAxisTitle: "Pressão (Bar)",
+      description: "Medição da pressão no turbo",
+      readingLabel: "Leitura",
+    },
+    vacuum: {
+      title: "Vácuo",
+      yAxisTitle: "Pressão (mBar)",
+      description: "Medição do vácuo no sistema",
+      readingLabel: "Leitura",
+    },
+    generic: {
+      valueLabel: "Valor",
+      pointLabel: "Ponto",
+      dataLabel: "Dados de",
+    },
   },
 };

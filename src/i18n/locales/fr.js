@@ -7,7 +7,7 @@ export default {
     submit: "Connexion",
     error: {
       credentials: "Identifiants invalides",
-      required: "Veuillez saisir tous les identifiants",
+      required: "Veuillez saisir tous les identifiants requis",
     },
   },
   menu: {
@@ -23,19 +23,19 @@ export default {
     templates: "Modèles",
     apollo: "Apollo",
     ultima: "Ultima",
-    printReports: "Imprimer Rapports",
+    printReports: "Imprimer les rapports",
   },
   extras: {
     cylinder: "Cylindre",
     noDataAvailable: "Aucune donnée disponible",
     noDataAvailableDescription:
-      "Il n'y a pas encore de mesures à afficher dans cette section.",
-    backToDashbaord: "Retour au Tableau de Bord",
+      "Il n'y a pas encore de mesures disponibles dans cette section.",
+    backToDashbaord: "Retour au tableau de bord",
   },
   selectionView: {
     manometer: {
       title: "Manomètre",
-      description: "Manomètre de 80 bar",
+      description: "Manomètre de 80 bars",
     },
     vacuum: {
       title: "Vide",
@@ -50,18 +50,17 @@ export default {
       description: "Mesure de la pression du système d'injection de carburant.",
     },
     commonRail: {
-      title: "Common rail",
+      title: "Common Rail",
       description:
-        "Diagnostic de la pression dans les systèmes d'injection common rail.",
+        "Diagnostic de la pression dans les systèmes d'injection Common Rail.",
     },
     compression: {
       title: "Compression",
       description: "Évaluation de la compression dans les cylindres du moteur.",
     },
     turboPressure: {
-      title: "Pression turbo",
-      description:
-        "Contrôle de la pression du système de suralimentation (turbo).",
+      title: "Pression du turbo",
+      description: "Contrôle de la pression du système de suralimentation.",
     },
     brakePressure: {
       title: "Pression des freins",
@@ -69,8 +68,7 @@ export default {
     },
     dpfPressure: {
       title: "Pression du filtre à particules",
-      description:
-        "Surveillance de la pression différentielle dans le DPF (filtre à particules).",
+      description: "Surveillance de la pression différentielle dans le DPF.",
     },
     adbluePressure: {
       title: "Pression AdBlue",
@@ -83,48 +81,84 @@ export default {
     manometer: "Manomètre",
     vacuum: "Vide",
     oilPressure: "Pression d'huile",
-    fuelPressure: "Pression du carburant",
-    commonRail: "Common rail",
+    fuelPressure: "Pression de carburant",
+    commonRail: "Common Rail",
     compression: "Compression",
     turboPressure: "Pression du turbo",
-    brakePressure: "Pression de freinage",
+    brakePressure: "Pression des freins",
     dpfPressure: "Pression du filtre à particules",
     adbluePressure: "Pression AdBlue",
     profile: "Profil",
     logout: "Se déconnecter",
   },
   printView: {
-    clientData: "Données du Client",
-    name: "Nom du Client",
+    clientData: "Données du client",
+    name: "Nom du client",
     phone: "Téléphone",
     email: "E-mail",
-    vehicleDetails: "Détails du Véhicule",
+    vehicleDetails: "Détails du véhicule",
     brand: "Marque",
     model: "Modèle",
     plate: "Plaque d'immatriculation",
     year: "Année",
     mileage: "Kilométrage",
-    measurements: "Mesures à Réaliser",
+    measurements: "Mesures à effectuer",
     observations: "Observations",
     addNotes: "Ajouter des notes ou des commentaires sur les mesures",
-    generateReport: "Générer le Rapport",
-    technicalReport: "Rapport Technique",
+    generateReport: "Générer le rapport",
+    technicalReport: "Rapport technique",
     noDataAvailable: "Aucune donnée disponible pour {chartName}.",
-    selectedCharts: "Graphiques Sélectionnés",
+    selectedCharts: "Graphiques sélectionnés",
     print: "Imprimer",
     selectMeasurements: "Sélectionner des mesures",
   },
   chartsData: {
     datacompression: {
-      title: "Compression des Cylindres",
+      title: "Compression des cylindres",
       yAxisTitle: "Pression (Bar)",
       description: "Mesures de compression des cylindres du moteur",
       cylinderLabel: "Cylindre",
     },
-    "common-rail": {
+    commonRail: {
       title: "Pression Common Rail",
       yAxisTitle: "Pression (Bar)",
-      description: "Mesure de la pression dans le système Common Rail",
+      description: "Mesure de la pression du système Common Rail",
+      readingLabel: "Lecture",
+    },
+    adblue: {
+      title: "Pression AdBlue",
+      yAxisTitle: "Pression (Bar)",
+      description: "Mesure de la pression du système AdBlue",
+      readingLabel: "Lecture",
+    },
+    fuel: {
+      title: "Pression de carburant",
+      yAxisTitle: "Pression (Bar)",
+      description: "Mesure de la pression du système de carburant",
+      readingLabel: "Lecture",
+    },
+    manometer: {
+      title: "Manomètre",
+      yAxisTitle: "Pression (Bar)",
+      description: "Mesures de pression avec un manomètre",
+      readingLabel: "Lecture",
+    },
+    oil: {
+      title: "Pression d'huile",
+      yAxisTitle: "Pression (Bar)",
+      description: "Mesure de la pression du système d'huile",
+      readingLabel: "Lecture",
+    },
+    turbo: {
+      title: "Pression du turbo",
+      yAxisTitle: "Pression (Bar)",
+      description: "Mesure de la pression du turbo",
+      readingLabel: "Lecture",
+    },
+    vacuum: {
+      title: "Vide",
+      yAxisTitle: "Pression (mBar)",
+      description: "Mesure du vide du système",
       readingLabel: "Lecture",
     },
     generic: {

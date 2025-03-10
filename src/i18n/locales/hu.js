@@ -12,7 +12,10 @@ export default {
   },
   menu: {
     home: "Kezdőlap",
+    reports: "Jelentések",
     features: "Funkciók",
+    contact: "Kapcsolat",
+    settings: "Beállítások",
     projects: "Projektek",
     components: "Komponensek",
     blocks: "Blokkok",
@@ -21,5 +24,147 @@ export default {
     apollo: "Apollo",
     ultima: "Ultima",
     printReports: "Jelentések Nyomtatása",
+  },
+  extras: {
+    cylinder: "Henger",
+    noDataAvailable: "Nincs elérhető adat",
+    noDataAvailableDescription:
+      "Ebben a szakaszban még nincsenek elérhető mérések.",
+    backToDashbaord: "Vissza az irányítópultra",
+  },
+  selectionView: {
+    manometer: {
+      title: "Manométer",
+      description: "80 baros manométer",
+    },
+    vacuum: {
+      title: "Vákuum",
+      description: "Negatív nyomás mérése vákuumrendszerekben.",
+    },
+    oilPressure: {
+      title: "Olajnyomás",
+      description: "A motorolaj nyomásának figyelése.",
+    },
+    fuelPressure: {
+      title: "Üzemanyag nyomás",
+      description: "Az üzemanyag-befecskendező rendszer nyomásának mérése.",
+    },
+    commonRail: {
+      title: "Common Rail",
+      description:
+        "Nyomásdiagnosztika a Common Rail befecskendező rendszerekben.",
+    },
+    compression: {
+      title: "Kompresszió",
+      description: "A motor hengereinek kompressziójának értékelése.",
+    },
+    turboPressure: {
+      title: "Turbónyomás",
+      description: "A turbófeltöltő rendszer nyomásának szabályozása.",
+    },
+    brakePressure: {
+      title: "Féknyomás",
+      description: "A fékrendszer nyomásának mérése.",
+    },
+    dpfPressure: {
+      title: "DPF nyomás",
+      description: "A részecskeszűrő (DPF) nyomáskülönbségének figyelése.",
+    },
+    adbluePressure: {
+      title: "AdBlue nyomás",
+      description:
+        "Az AdBlue rendszer nyomásának mérése a kibocsátáscsökkentés érdekében.",
+    },
+  },
+  sideMenu: {
+    graphics: "Grafikonok",
+    manometer: "Manométer",
+    vacuum: "Vákuum",
+    oilPressure: "Olajnyomás",
+    fuelPressure: "Üzemanyag nyomás",
+    commonRail: "Common Rail",
+    compression: "Kompresszió",
+    turboPressure: "Turbónyomás",
+    brakePressure: "Féknyomás",
+    dpfPressure: "DPF nyomás",
+    adbluePressure: "AdBlue nyomás",
+    profile: "Profil",
+    logout: "Kijelentkezés",
+  },
+  printView: {
+    clientData: "Ügyfél adatai",
+    name: "Ügyfél neve",
+    phone: "Telefon",
+    email: "E-mail",
+    vehicleDetails: "Jármű adatai",
+    brand: "Márka",
+    model: "Modell",
+    plate: "Rendszám",
+    year: "Év",
+    mileage: "Kilométeróra állása",
+    measurements: "Elvégzendő mérések",
+    observations: "Megjegyzések",
+    addNotes: "Megjegyzések vagy észrevételek hozzáadása a mérésekhez",
+    generateReport: "Jelentés generálása",
+    technicalReport: "Műszaki jelentés",
+    noDataAvailable: "Nincs elérhető adat ehhez: {chartName}.",
+    selectedCharts: "Kiválasztott grafikonok",
+    print: "Nyomtatás",
+    selectMeasurements: "Mérések kiválasztása",
+  },
+  chartsData: {
+    datacompression: {
+      title: "Hengerkompresszió",
+      yAxisTitle: "Nyomás (Bar)",
+      description: "A motor hengereinek kompressziómérése",
+      cylinderLabel: "Henger",
+    },
+    commonRail: {
+      title: "Common Rail nyomás",
+      yAxisTitle: "Nyomás (Bar)",
+      description: "Common Rail rendszer nyomásának mérése",
+      readingLabel: "Leolvasás",
+    },
+    adblue: {
+      title: "AdBlue nyomás",
+      yAxisTitle: "Nyomás (Bar)",
+      description: "AdBlue rendszer nyomásának mérése",
+      readingLabel: "Leolvasás",
+    },
+    fuel: {
+      title: "Üzemanyag nyomás",
+      yAxisTitle: "Nyomás (Bar)",
+      description: "Üzemanyagrendszer nyomásának mérése",
+      readingLabel: "Leolvasás",
+    },
+    manometer: {
+      title: "Manométer",
+      yAxisTitle: "Nyomás (Bar)",
+      description: "Manométeres nyomásmérés",
+      readingLabel: "Leolvasás",
+    },
+    oil: {
+      title: "Olajnyomás",
+      yAxisTitle: "Nyomás (Bar)",
+      description: "Olajrendszer nyomásának mérése",
+      readingLabel: "Leolvasás",
+    },
+    turbo: {
+      title: "Turbónyomás",
+      yAxisTitle: "Nyomás (Bar)",
+      description: "Turbó nyomásának mérése",
+      readingLabel: "Leolvasás",
+    },
+    vacuum: {
+      title: "Vákuum",
+      yAxisTitle: "Nyomás (mBar)",
+      description: "A rendszer vákuumának mérése",
+      readingLabel: "Leolvasás",
+    },
+    generic: {
+      valueLabel: "Érték",
+      pointLabel: "Pont",
+      dataLabel: "Adatok",
+    },
   },
 };

@@ -14,7 +14,7 @@ export default {
     home: "Home",
     reports: "Report",
     features: "Funzionalità",
-    contact: "Contatto",
+    contact: "Contatti",
     settings: "Impostazioni",
     projects: "Progetti",
     components: "Componenti",
@@ -35,41 +35,41 @@ export default {
   selectionView: {
     manometer: {
       title: "Manometro",
-      description: "Manometro con scala fino a 80 bar",
+      description: "Manometro da 80 bar",
     },
     vacuum: {
       title: "Vuoto",
       description: "Misurazione della pressione negativa nei sistemi di vuoto.",
     },
     oilPressure: {
-      title: "Pressione Olio",
+      title: "Pressione dell'olio",
       description: "Monitoraggio della pressione dell'olio motore.",
     },
     fuelPressure: {
-      title: "Pressione Carburante",
+      title: "Pressione del carburante",
       description:
-        "Misurazione della pressione nel sistema di iniezione carburante.",
+        "Misurazione della pressione del sistema di iniezione carburante.",
     },
     commonRail: {
       title: "Common Rail",
       description:
-        "Diagnosi della pressione nei sistemi di iniezione common rail.",
+        "Diagnosi della pressione nei sistemi di iniezione Common Rail.",
     },
     compression: {
       title: "Compressione",
       description: "Valutazione della compressione nei cilindri del motore.",
     },
     turboPressure: {
-      title: "Pressione Turbo",
+      title: "Pressione del turbo",
       description:
         "Controllo della pressione nel sistema di sovralimentazione.",
     },
     brakePressure: {
-      title: "Pressione Freni",
-      description: "Misurazione della pressione nel circuito frenante.",
+      title: "Pressione dei freni",
+      description: "Misurazione della pressione nel circuito dei freni.",
     },
     dpfPressure: {
-      title: "Pressione Filtro Antiparticolato",
+      title: "Pressione DPF",
       description:
         "Monitoraggio della pressione differenziale nel filtro antiparticolato (DPF).",
     },
@@ -83,13 +83,13 @@ export default {
     graphics: "Grafici",
     manometer: "Manometro",
     vacuum: "Vuoto",
-    oilPressure: "Pressione Olio",
-    fuelPressure: "Pressione Carburante",
+    oilPressure: "Pressione dell'olio",
+    fuelPressure: "Pressione del carburante",
     commonRail: "Common Rail",
     compression: "Compressione",
-    turboPressure: "Pressione Turbo",
-    brakePressure: "Pressione Freni",
-    dpfPressure: "Pressione Filtro Antiparticolato",
+    turboPressure: "Pressione del turbo",
+    brakePressure: "Pressione dei freni",
+    dpfPressure: "Pressione DPF",
     adbluePressure: "Pressione AdBlue",
     profile: "Profilo",
     logout: "Disconnetti",
@@ -99,7 +99,7 @@ export default {
     name: "Nome Cliente",
     phone: "Telefono",
     email: "Email",
-    vehicleDetails: "Dettagli Veicolo",
+    vehicleDetails: "Dettagli del Veicolo",
     brand: "Marca",
     model: "Modello",
     plate: "Targa",
@@ -113,7 +113,7 @@ export default {
     noDataAvailable: "Nessun dato disponibile per {chartName}.",
     selectedCharts: "Grafici Selezionati",
     print: "Stampa",
-    selectMeasurements: "Seleziona misurazioni",
+    selectMeasurements: "Seleziona Misurazioni",
   },
   chartsData: {
     datacompression: {
@@ -122,10 +122,46 @@ export default {
       description: "Misurazioni della compressione nei cilindri del motore",
       cylinderLabel: "Cilindro",
     },
-    "common-rail": {
+    commonRail: {
       title: "Pressione Common Rail",
       yAxisTitle: "Pressione (Bar)",
       description: "Misurazione della pressione nel sistema Common Rail",
+      readingLabel: "Lettura",
+    },
+    adblue: {
+      title: "Pressione AdBlue",
+      yAxisTitle: "Pressione (Bar)",
+      description: "Misurazione della pressione nel sistema AdBlue",
+      readingLabel: "Lettura",
+    },
+    fuel: {
+      title: "Pressione del Carburante",
+      yAxisTitle: "Pressione (Bar)",
+      description: "Misurazione della pressione nel sistema di alimentazione",
+      readingLabel: "Lettura",
+    },
+    manometer: {
+      title: "Manometro",
+      yAxisTitle: "Pressione (Bar)",
+      description: "Misurazioni di pressione con manometro",
+      readingLabel: "Lettura",
+    },
+    oil: {
+      title: "Pressione dell'Olio",
+      yAxisTitle: "Pressione (Bar)",
+      description: "Misurazione della pressione del sistema dell'olio",
+      readingLabel: "Lettura",
+    },
+    turbo: {
+      title: "Pressione del Turbo",
+      yAxisTitle: "Pressione (Bar)",
+      description: "Misurazione della pressione del turbo",
+      readingLabel: "Lettura",
+    },
+    vacuum: {
+      title: "Vuoto",
+      yAxisTitle: "Pressione (mBar)",
+      description: "Misurazione del vuoto nel sistema",
       readingLabel: "Lettura",
     },
     generic: {

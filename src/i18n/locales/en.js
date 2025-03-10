@@ -4,7 +4,7 @@ export default {
     subtitle: "Enter your credentials",
     userId: "User ID",
     password: "Password",
-    submit: "Login",
+    submit: "Log In",
     error: {
       credentials: "Invalid credentials",
       required: "Please enter all required credentials",
@@ -89,7 +89,7 @@ export default {
     dpfPressure: "DPF Pressure",
     adbluePressure: "AdBlue Pressure",
     profile: "Profile",
-    logout: "Logout",
+    logout: "Log Out",
   },
   printView: {
     clientData: "Client Data",
@@ -110,7 +110,7 @@ export default {
     noDataAvailable: "No data available for {chartName}.",
     selectedCharts: "Selected Charts",
     print: "Print",
-    selectMeasurements: "Select measurements",
+    selectMeasurements: "Select Measurements",
   },
   chartsData: {
     datacompression: {
@@ -119,10 +119,46 @@ export default {
       description: "Measurements of compression in engine cylinders",
       cylinderLabel: "Cylinder",
     },
-    "common-rail": {
+    commonRail: {
       title: "Common Rail Pressure",
       yAxisTitle: "Pressure (Bar)",
       description: "Measurement of pressure in the Common Rail system",
+      readingLabel: "Reading",
+    },
+    adblue: {
+      title: "AdBlue Pressure",
+      yAxisTitle: "Pressure (Bar)",
+      description: "Measurement of pressure in the AdBlue system",
+      readingLabel: "Reading",
+    },
+    fuel: {
+      title: "Fuel Pressure",
+      yAxisTitle: "Pressure (Bar)",
+      description: "Measurement of pressure in the fuel system",
+      readingLabel: "Reading",
+    },
+    manometer: {
+      title: "Manometer",
+      yAxisTitle: "Pressure (Bar)",
+      description: "Pressure measurements with a manometer",
+      readingLabel: "Reading",
+    },
+    oil: {
+      title: "Oil Pressure",
+      yAxisTitle: "Pressure (Bar)",
+      description: "Measurement of oil system pressure",
+      readingLabel: "Reading",
+    },
+    turbo: {
+      title: "Turbo Pressure",
+      yAxisTitle: "Pressure (Bar)",
+      description: "Measurement of turbo pressure",
+      readingLabel: "Reading",
+    },
+    vacuum: {
+      title: "Vacuum",
+      yAxisTitle: "Pressure (mBar)",
+      description: "Measurement of system vacuum",
       readingLabel: "Reading",
     },
     generic: {
