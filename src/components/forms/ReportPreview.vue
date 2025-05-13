@@ -30,6 +30,7 @@ const props = defineProps({
         formData.nombre ||
         formData.telefono ||
         formData.email ||
+        formData.nombreTaller ||
         formData.marca ||
         formData.modelo ||
         formData.matricula ||
@@ -41,6 +42,9 @@ const props = defineProps({
       class="print-header"
     >
       <h1 class="font-bold">{{ t("printView.technicalReport") }}</h1>
+      <div v-if="formData.nombreTaller" class="workshop-info mt-2 mb-4">
+        <h3 class="font-bold text-xl">{{ formData.nombreTaller }}</h3>
+      </div>
     </div>
 
     <!-- Información del cliente -->

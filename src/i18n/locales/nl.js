@@ -93,6 +93,7 @@ export default {
   },
   printView: {
     clientData: "Klantgegevens",
+    workshopName: "Naam Werkplaats",
     name: "Klantnaam",
     phone: "Telefoon",
     email: "E-mail",

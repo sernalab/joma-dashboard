@@ -93,6 +93,7 @@ export default {
   },
   printView: {
     clientData: "Ügyfél adatai",
+    workshopName: "Műhely Neve",
     name: "Ügyfél neve",
     phone: "Telefon",
     email: "E-mail",

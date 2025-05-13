@@ -94,6 +94,7 @@ export default {
   },
   printView: {
     clientData: "Datos del Cliente",
+    workshopName: "Nombre del Taller",
     name: "Nombre del Cliente",
     phone: "Teléfono",
     email: "Correo Electrónico",

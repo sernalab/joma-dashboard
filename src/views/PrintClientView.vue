@@ -26,6 +26,7 @@ const formData = ref({
   nombre: "",
   telefono: "",
   email: "",
+  nombreTaller: "", // Nuevo campo para el nombre del taller
 
   vehiculo: "",
   marca: "",
