@@ -169,4 +169,24 @@ export default {
       dataLabel: "Dades de",
     },
   },
+  validation: {
+    required: "Aquest camp és obligatori",
+    invalidEmail: "Si us plau, introdueix una adreça de correu electrònic vàlida",
+    invalidPhone: "Si us plau, introdueix un número de telèfon vàlid",
+    phoneTooShort: "El telèfon ha de tenir almenys 6 dígits",
+    invalidYear: "Si us plau, introdueix un any entre {min} i {max}",
+    invalidLicensePlate: "Si us plau, introdueix una matrícula vàlida",
+    mustBePositive: "El valor ha de ser positiu",
+    minLength: "La longitud mínima és de {min} caràcters",
+    maxLength: "La longitud màxima és de {max} caràcters",
+    pleaseCorrectErrors: "Si us plau, corregeix els errors del formulari",
+    selectAtLeastOne: "Si us plau, selecciona almenys una mesura",
+  },
+  common: {
+    loading: "Carregant...",
+    retry: "Torna a provar",
+  },
+  errors: {
+    loadingData: "Error en carregar les dades",
+  },
 };

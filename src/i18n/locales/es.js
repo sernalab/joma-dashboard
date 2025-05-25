@@ -169,4 +169,24 @@ export default {
       dataLabel: "Datos de",
     },
   },
+  validation: {
+    required: "Este campo es obligatorio",
+    invalidEmail: "Por favor, introduce un email válido",
+    invalidPhone: "Por favor, introduce un teléfono válido",
+    phoneTooShort: "El teléfono debe tener al menos 6 dígitos",
+    invalidYear: "Por favor, introduce un año entre {min} y {max}",
+    invalidLicensePlate: "Por favor, introduce una matrícula válida",
+    mustBePositive: "El valor debe ser positivo",
+    minLength: "La longitud mínima es de {min} caracteres",
+    maxLength: "La longitud máxima es de {max} caracteres",
+    pleaseCorrectErrors: "Por favor, corrige los errores del formulario",
+    selectAtLeastOne: "Por favor, selecciona al menos una medición",
+  },
+  common: {
+    loading: "Cargando...",
+    retry: "Reintentar",
+  },
+  errors: {
+    loadingData: "Error al cargar los datos",
+  },
 };

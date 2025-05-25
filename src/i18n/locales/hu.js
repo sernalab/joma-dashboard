@@ -168,4 +168,24 @@ export default {
       dataLabel: "Adatok",
     },
   },
+  validation: {
+    required: "Ez a mező kötelező",
+    invalidEmail: "Kérjük, adjon meg egy érvényes e-mail címet",
+    invalidPhone: "Kérjük, adjon meg egy érvényes telefonszámot",
+    phoneTooShort: "A telefonszámnak legalább 6 számjegyből kell állnia",
+    invalidYear: "Kérjük, adjon meg egy évet {min} és {max} között",
+    invalidLicensePlate: "Kérjük, adjon meg egy érvényes rendszámot",
+    mustBePositive: "Az értéknek pozitívnak kell lennie",
+    minLength: "A minimális hossz {min} karakter",
+    maxLength: "A maximális hossz {max} karakter",
+    pleaseCorrectErrors: "Kérjük, javítsa ki a hibákat az űrlapon",
+    selectAtLeastOne: "Kérjük, válasszon ki legalább egy mérést",
+  },
+  common: {
+    loading: "Betöltés...",
+    retry: "Újra",
+  },
+  errors: {
+    loadingData: "Hiba az adatok betöltése során",
+  },
 };

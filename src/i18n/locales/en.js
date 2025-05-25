@@ -168,4 +168,24 @@ export default {
       dataLabel: "Data of",
     },
   },
+  validation: {
+    required: "This field is required",
+    invalidEmail: "Please enter a valid email address",
+    invalidPhone: "Please enter a valid phone number",
+    phoneTooShort: "Phone must be at least 6 digits",
+    invalidYear: "Please enter a year between {min} and {max}",
+    invalidLicensePlate: "Please enter a valid license plate",
+    mustBePositive: "Value must be positive",
+    minLength: "Minimum length is {min} characters",
+    maxLength: "Maximum length is {max} characters",
+    pleaseCorrectErrors: "Please correct the errors in the form",
+    selectAtLeastOne: "Please select at least one measurement",
+  },
+  common: {
+    loading: "Loading...",
+    retry: "Retry",
+  },
+  errors: {
+    loadingData: "Error loading data",
+  },
 };

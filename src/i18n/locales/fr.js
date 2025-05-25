@@ -168,4 +168,24 @@ export default {
       dataLabel: "Données de",
     },
   },
+  validation: {
+    required: "Ce champ est obligatoire",
+    invalidEmail: "Veuillez entrer une adresse email valide",
+    invalidPhone: "Veuillez entrer un numéro de téléphone valide",
+    phoneTooShort: "Le téléphone doit comporter au moins 6 chiffres",
+    invalidYear: "Veuillez entrer une année entre {min} et {max}",
+    invalidLicensePlate: "Veuillez entrer une plaque d'immatriculation valide",
+    mustBePositive: "La valeur doit être positive",
+    minLength: "La longueur minimale est de {min} caractères",
+    maxLength: "La longueur maximale est de {max} caractères",
+    pleaseCorrectErrors: "Veuillez corriger les erreurs dans le formulaire",
+    selectAtLeastOne: "Veuillez sélectionner au moins une mesure",
+  },
+  common: {
+    loading: "Chargement...",
+    retry: "Réessayer",
+  },
+  errors: {
+    loadingData: "Erreur lors du chargement des données",
+  },
 };

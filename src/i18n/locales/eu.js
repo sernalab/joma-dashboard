@@ -165,4 +165,24 @@ export default {
       dataLabel: "Datuak",
     },
   },
+  validation: {
+    required: "Eremu hau beharrezkoa da",
+    invalidEmail: "Mesedez, idatzi baliozko helbide elektroniko bat",
+    invalidPhone: "Mesedez, idatzi baliozko telefono zenbaki bat",
+    phoneTooShort: "Telefonoak gutxienez 6 digitu izan behar ditu",
+    invalidYear: "Mesedez, idatzi {min} eta {max} arteko urte bat",
+    invalidLicensePlate: "Mesedez, idatzi baliozko matrikula bat",
+    mustBePositive: "Balioak positiboa izan behar du",
+    minLength: "Gutxieneko luzera {min} karaktere da",
+    maxLength: "Gehienezko luzera {max} karaktere da",
+    pleaseCorrectErrors: "Mesedez, zuzendu formularioko akatsak",
+    selectAtLeastOne: "Mesedez, hautatu gutxienez neurketa bat",
+  },
+  common: {
+    loading: "Kargatzen...",
+    retry: "Saiatu berriro",
+  },
+  errors: {
+    loadingData: "Errorea datuak kargatzean",
+  },
 };

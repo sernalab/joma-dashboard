@@ -166,4 +166,24 @@ export default {
       dataLabel: "Dane dla",
     },
   },
+  validation: {
+    required: "To pole jest wymagane",
+    invalidEmail: "Proszę wprowadzić poprawny adres e-mail",
+    invalidPhone: "Proszę wprowadzić poprawny numer telefonu",
+    phoneTooShort: "Telefon musi mieć co najmniej 6 cyfr",
+    invalidYear: "Proszę wprowadzić rok pomiędzy {min} a {max}",
+    invalidLicensePlate: "Proszę wprowadzić poprawną tablicę rejestracyjną",
+    mustBePositive: "Wartość musi być dodatnia",
+    minLength: "Minimalna długość to {min} znaków",
+    maxLength: "Maksymalna długość to {max} znaków",
+    pleaseCorrectErrors: "Proszę poprawić błędy w formularzu",
+    selectAtLeastOne: "Proszę wybrać co najmniej jeden pomiar",
+  },
+  common: {
+    loading: "Ładowanie...",
+    retry: "Spróbuj ponownie",
+  },
+  errors: {
+    loadingData: "Błąd podczas ładowania danych",
+  },
 };

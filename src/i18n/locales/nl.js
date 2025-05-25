@@ -168,4 +168,24 @@ export default {
       dataLabel: "Gegevens van",
     },
   },
+  validation: {
+    required: "Dit veld is verplicht",
+    invalidEmail: "Voer een geldig e-mailadres in",
+    invalidPhone: "Voer een geldig telefoonnummer in",
+    phoneTooShort: "Telefoon moet minimaal 6 cijfers bevatten",
+    invalidYear: "Voer een jaar in tussen {min} en {max}",
+    invalidLicensePlate: "Voer een geldig kenteken in",
+    mustBePositive: "Waarde moet positief zijn",
+    minLength: "Minimale lengte is {min} tekens",
+    maxLength: "Maximale lengte is {max} tekens",
+    pleaseCorrectErrors: "Corrigeer de fouten in het formulier",
+    selectAtLeastOne: "Selecteer minimaal één meting",
+  },
+  common: {
+    loading: "Laden...",
+    retry: "Opnieuw proberen",
+  },
+  errors: {
+    loadingData: "Fout bij het laden van gegevens",
+  },
 };

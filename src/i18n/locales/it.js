@@ -171,4 +171,24 @@ export default {
       dataLabel: "Dati di",
     },
   },
+  validation: {
+    required: "Questo campo è obbligatorio",
+    invalidEmail: "Inserisci un indirizzo email valido",
+    invalidPhone: "Inserisci un numero di telefono valido",
+    phoneTooShort: "Il telefono deve avere almeno 6 cifre",
+    invalidYear: "Inserisci un anno tra {min} e {max}",
+    invalidLicensePlate: "Inserisci una targa valida",
+    mustBePositive: "Il valore deve essere positivo",
+    minLength: "La lunghezza minima è di {min} caratteri",
+    maxLength: "La lunghezza massima è di {max} caratteri",
+    pleaseCorrectErrors: "Correggi gli errori nel modulo",
+    selectAtLeastOne: "Seleziona almeno una misurazione",
+  },
+  common: {
+    loading: "Caricamento...",
+    retry: "Riprova",
+  },
+  errors: {
+    loadingData: "Errore nel caricamento dei dati",
+  },
 };

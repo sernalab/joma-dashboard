@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watchEffect, watch } from "vue";
+import { ref, watchEffect, watch, computed } from "vue";
 import { useI18n } from "vue-i18n";
 import { useReportStore } from "@/store/reportStore";
 
@@ -21,6 +21,9 @@ const { t } = useI18n();
 const reportStore = useReportStore();
 const loading = ref(false);
 const showPreview = ref(false);
+const clientFormRef = ref(null);
+const vehicleFormRef = ref(null);
+const validationError = ref(false);
 
 const formData = ref({
   nombre: "",
@@ -77,6 +80,17 @@ watch(
 );
 
 // Observar cambios en los gráficos seleccionados
+// Computed para verificar si los campos requeridos están llenos
+const hasRequiredFields = computed(() => {
+  return (
+    formData.value.nombreTaller?.trim() &&
+    formData.value.nombre?.trim() &&
+    formData.value.marca?.trim() &&
+    formData.value.modelo?.trim() &&
+    formData.value.graficos.length > 0
+  );
+});
+
 watchEffect(async () => {
   if (formData.value.graficos.length) {
     loading.value = true;
@@ -86,7 +100,21 @@ watchEffect(async () => {
   }
 });
 
-const onPrint = () => {
+const onPrint = async () => {
+  // Solo validar si hay gráficos seleccionados
+  if (formData.value.graficos.length === 0) {
+    return;
+  }
+  
+  // Validar formularios
+  const clientValid = await clientFormRef.value?.validate();
+  const vehicleValid = await vehicleFormRef.value?.validate();
+  
+  if (!clientFormRef.value?.isValid() || !vehicleFormRef.value?.isValid()) {
+    validationError.value = true;
+    return;
+  }
+  
   window.print();
 };
 </script>
@@ -95,8 +123,17 @@ const onPrint = () => {
   <div class="surface-card p-4">
     <!-- Formulario (no imprimible) -->
     <div class="flex flex-column gap-3 no-print">
-      <ClientForm v-model="formData" />
-      <VehicleForm v-model="formData" />
+      <!-- Mensaje de error de validación -->
+      <Message 
+        v-if="validationError" 
+        severity="error" 
+        :closable="true"
+        @close="validationError = false"
+      >
+        {{ t('validation.pleaseCorrectErrors') }}
+      </Message>
+      <ClientForm ref="clientFormRef" v-model="formData" />
+      <VehicleForm ref="vehicleFormRef" v-model="formData" />
       <ChartSelector
         v-model="formData.graficos"
         :availableCharts="availableCharts"
@@ -110,7 +147,7 @@ const onPrint = () => {
           :label="t('printView.generateReport')"
           icon="pi pi-print"
           :loading="loading"
-          :disabled="!formData.graficos.length"
+          :disabled="!hasRequiredFields"
           class="w-auto"
         />
       </div>
