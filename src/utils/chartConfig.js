@@ -15,6 +15,7 @@ export const chartConfigs = {
     titleKey: "chartsData.datacompression.title",
     yAxisTitleKey: "chartsData.datacompression.yAxisTitle",
     descriptionKey: "chartsData.datacompression.description",
+    labelKey: "chartsData.generic.pointLabel",
   },
 
   datacommonrail: {
@@ -22,6 +23,7 @@ export const chartConfigs = {
     titleKey: "chartsData.commonRail.title",
     yAxisTitleKey: "chartsData.commonRail.yAxisTitle",
     descriptionKey: "chartsData.commonRail.description",
+    labelKey: "chartsData.generic.pointLabel",
   },
 
   dataadblue: {
@@ -29,6 +31,7 @@ export const chartConfigs = {
     titleKey: "chartsData.adblue.title",
     yAxisTitleKey: "chartsData.adblue.yAxisTitle",
     descriptionKey: "chartsData.adblue.description",
+    labelKey: "chartsData.generic.pointLabel",
   },
 
   datafuel: {
@@ -36,6 +39,7 @@ export const chartConfigs = {
     titleKey: "chartsData.fuel.title",
     yAxisTitleKey: "chartsData.fuel.yAxisTitle",
     descriptionKey: "chartsData.fuel.description",
+    labelKey: "chartsData.generic.pointLabel",
   },
 
   datamanometer80: {
@@ -43,6 +47,7 @@ export const chartConfigs = {
     titleKey: "chartsData.manometer.title",
     yAxisTitleKey: "chartsData.manometer.yAxisTitle",
     descriptionKey: "chartsData.manometer.description",
+    labelKey: "chartsData.generic.pointLabel",
   },
 
   dataoil: {
@@ -50,6 +55,7 @@ export const chartConfigs = {
     titleKey: "chartsData.oil.title",
     yAxisTitleKey: "chartsData.oil.yAxisTitle",
     descriptionKey: "chartsData.oil.description",
+    labelKey: "chartsData.generic.pointLabel",
   },
 
   dataturbo: {
@@ -57,6 +63,7 @@ export const chartConfigs = {
     titleKey: "chartsData.turbo.title",
     yAxisTitleKey: "chartsData.turbo.yAxisTitle",
     descriptionKey: "chartsData.turbo.description",
+    labelKey: "chartsData.generic.pointLabel",
   },
 
   datavacuum: {
@@ -64,6 +71,7 @@ export const chartConfigs = {
     titleKey: "chartsData.vacuum.title",
     yAxisTitleKey: "chartsData.vacuum.yAxisTitle",
     descriptionKey: "chartsData.vacuum.description",
+    labelKey: "chartsData.generic.pointLabel",
   },
 
   "common-rail": {
@@ -71,5 +79,6 @@ export const chartConfigs = {
     titleKey: "chartsData.commonRail.title",
     yAxisTitleKey: "chartsData.commonRail.yAxisTitle",
     descriptionKey: "chartsData.commonRail.description",
+    labelKey: "chartsData.generic.pointLabel",
   },
 };

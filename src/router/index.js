@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import LoginView from "../views/LoginView.vue";
-import DashboardLayout from "../layouts/DashboardLayout.vue";
+import ModernDashboardLayout from "../layouts/ModernDashboardLayout.vue";
 import { authService } from "@/services/auth.service";
 
 const router = createRouter({
@@ -13,14 +13,14 @@ const router = createRouter({
     },
     {
       path: "/dashboard",
-      component: DashboardLayout,
+      component: ModernDashboardLayout,
       meta: { requiresAuth: true }, // Protege todas las rutas dentro de Dashboard
       children: [
         {
           path: "",
           name: "dashboard",
-          component: () => import("../views/DashboardView.vue"),
-          meta: { requiresAuth: true },
+          component: () => import("../views/ModernDashboardView.vue"),
+          meta: { requiresAuth: true, title: "Dashboard" },
         },
         {
           path: "manometer",

@@ -1,6 +1,26 @@
 @import "./base.css";
 
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--p-surface-ground, #f9fafb);
+  color: var(--p-text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Dark mode body background */
+.app-dark body {
+  background: var(--p-surface-950, #0f172a);
+}
+
 #app {
   margin: 0 auto;
   font-weight: normal;
+  min-height: 100vh;
+  background: transparent;
+}
+
+/* Prevent transition on initial load */
+body.preload * {
+  transition: none !important;
 }

@@ -30,10 +30,12 @@ export default {
 <style>
 .layout-wrapper {
   min-height: 100vh;
-  background-color: #f9fafb;
+  background-color: var(--p-surface-ground);
+  transition: background-color 0.3s;
 }
 
 header {
-  background-color: #fff;
+  background-color: var(--p-surface-0);
+  transition: background-color 0.3s;
 }
 </style>

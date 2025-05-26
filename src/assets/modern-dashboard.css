@@ -1,0 +1,381 @@
+/* ========================================
+   Modern Dashboard Styles
+   Beta Dashboard - Using PrimeVue Design Tokens
+   ======================================== */
+
+/* Ensure smooth dark mode transitions */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Prevent transition on page load */
+.preload * {
+  transition: none !important;
+}
+
+/* Layout dimensions */
+:root {
+  --sidebar-width: 280px;
+  --header-height: 70px;
+  
+  /* Color scheme for cards - Light mode */
+  --color-blue-bg: #dbeafe;
+  --color-blue-text: #1e40af;
+  --color-green-bg: #d1fae5;
+  --color-green-text: #065f46;
+  --color-orange-bg: #fef3c7;
+  --color-orange-text: #92400e;
+  --color-purple-bg: #e0e7ff;
+  --color-purple-text: #3730a3;
+  --color-red-bg: #fee2e2;
+  --color-red-text: #991b1b;
+}
+
+/* Dark mode colors */
+.app-dark {
+  --color-blue-bg: #1e3a8a;
+  --color-blue-text: #93bbfc;
+  --color-green-bg: #064e3b;
+  --color-green-text: #6ee7b7;
+  --color-orange-bg: #78350f;
+  --color-orange-text: #fcd34d;
+  --color-purple-bg: #312e81;
+  --color-purple-text: #a5b4fc;
+  --color-red-bg: #7f1d1d;
+  --color-red-text: #fca5a5;
+}
+
+/* ========================================
+   Global Styles
+   ======================================== */
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--p-surface-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--p-surface-400);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--p-surface-500);
+}
+
+/* Animations for interactive elements */
+button, a, .nav-item, .user-section {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+/* ========================================
+   Component Styles
+   ======================================== */
+
+/* PrimeVue Card improvements */
+.p-card {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: none;
+}
+
+/* Button styles with orange primary color */
+
+/* Default text buttons - use orange */
+.p-button-text {
+  color: var(--p-primary-color) !important;
+}
+
+.p-button-text:hover {
+  background: rgba(245, 158, 11, 0.1) !important;
+}
+
+/* Primary buttons - ensure white text on orange background */
+.p-button-primary {
+  background: var(--p-primary-color);
+  border-color: var(--p-primary-color);
+  color: white !important;
+}
+
+.p-button-primary:hover {
+  background: var(--p-primary-600);
+  border-color: var(--p-primary-600);
+  color: white !important;
+}
+
+/* Buttons in the purple welcome section */
+.welcome-section .p-button {
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  color: white !important;
+}
+
+.welcome-section .p-button:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-color: white !important;
+  color: white !important;
+}
+
+/* Fix text buttons in cards to use orange */
+.measurement-card .p-button-text,
+.activity-card .p-button-text {
+  color: var(--p-primary-color) !important;
+}
+
+/* Ensure proper contrast in dark mode */
+.app-dark .p-button-text {
+  color: var(--p-primary-400) !important;
+}
+
+.app-dark .p-button-text:hover {
+  background: rgba(245, 158, 11, 0.2) !important;
+}
+
+/* ========================================
+   Dashboard Specific Styles
+   ======================================== */
+
+/* Measurement card content spacing */
+.measurement-card .p-card-content {
+  padding-top: 0;
+}
+
+/* Measurement card button hover - orange light */
+.measurement-card .p-button-text:hover {
+  background: rgba(245, 158, 11, 0.1) !important;
+  color: var(--p-primary-color) !important;
+}
+
+/* Activity icon backgrounds */
+.activity-success {
+  background: rgba(16, 185, 129, 0.1);
+  color: rgb(16, 185, 129);
+}
+
+.activity-info {
+  background: rgba(59, 130, 246, 0.1);
+  color: rgb(59, 130, 246);
+}
+
+.activity-warning {
+  background: #f59e0b;
+  color: white;
+}
+
+/* Fix stat card icon colors */
+.stat-icon {
+  transition: none !important;
+}
+
+/* Ensure proper text contrast on colored backgrounds */
+.card-header[style*="#fef3c7"] .card-icon {
+  color: #f59e0b !important;
+}
+
+/* Navigation badges with orange primary */
+.nav-item .p-badge {
+  background: var(--p-primary-color);
+  color: white;
+}
+
+/* Fix focus rings to use orange */
+:focus-visible {
+  outline: 2px solid var(--p-primary-color);
+  outline-offset: 2px;
+}
+
+/* ========================================
+   Responsive Utilities
+   ======================================== */
+
+.hide-mobile {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .hide-mobile {
+    display: none;
+  }
+}
+
+.show-mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .show-mobile {
+    display: block;
+  }
+}
+
+/* Safe area for iPhone X and above */
+@supports (padding: max(0px)) {
+  .main-header {
+    padding-top: max(1rem, env(safe-area-inset-top));
+  }
+
+  .sidebar {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+}
+
+/* ========================================
+   Animations
+   ======================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Animation utilities */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-slide-in {
+  animation: slideInFromLeft 0.3s ease-out;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.3s ease-out;
+}
+
+/* ========================================
+   Dark Mode Specific Styles
+   ======================================== */
+
+/* Better dark mode surface colors */
+.app-dark {
+  background-color: var(--p-surface-950);
+}
+
+/* Ensure main content area changes background */
+.app-dark .main-content {
+  background: var(--p-surface-950) !important;
+}
+
+.app-dark .content-wrapper {
+  background: transparent;
+}
+
+.app-dark .p-card {
+  background: var(--p-surface-900);
+  border-color: var(--p-surface-800);
+}
+
+/* Fix inputs in dark mode */
+.app-dark .p-inputtext {
+  background: var(--p-surface-800);
+  border-color: var(--p-surface-700);
+  color: var(--p-text-color);
+}
+
+.app-dark .p-inputtext:enabled:hover {
+  border-color: var(--p-surface-600);
+}
+
+.app-dark .p-inputtext:enabled:focus {
+  border-color: var(--p-primary-color);
+}
+
+/* Fix dropdowns in dark mode */
+.app-dark .p-dropdown {
+  background: var(--p-surface-800);
+  border-color: var(--p-surface-700);
+}
+
+.app-dark .p-dropdown-panel {
+  background: var(--p-surface-800);
+  border-color: var(--p-surface-700);
+}
+
+.app-dark .p-dropdown-item:not(.p-highlight):not(.p-disabled):hover {
+  background: var(--p-surface-700);
+}
+
+/* Sidebar in dark mode */
+.app-dark .sidebar {
+  background: var(--p-surface-900);
+  border-right-color: var(--p-surface-800);
+}
+
+.app-dark .nav-item:hover {
+  background: var(--p-surface-800);
+}
+
+.app-dark .nav-item.active {
+  background: var(--p-primary-900);
+  color: var(--p-primary-300);
+}
+
+/* Header in dark mode */
+.app-dark .main-header {
+  background: var(--p-surface-900);
+  border-bottom-color: var(--p-surface-800);
+}
+
+/* Activity colors in dark mode */
+.app-dark .activity-success {
+  background: rgba(16, 185, 129, 0.2);
+  color: #6ee7b7;
+}
+
+.app-dark .activity-info {
+  background: rgba(59, 130, 246, 0.2);
+  color: #93bbfc;
+}
+
+.app-dark .activity-warning {
+  background: rgba(245, 158, 11, 0.2);
+  color: #fcd34d;
+}
+
+/* Stat card icons in dark mode */
+.app-dark .stat-icon {
+  opacity: 0.9;
+}
+
+/* Fix scrollbar in dark mode */
+.app-dark ::-webkit-scrollbar-track {
+  background: var(--p-surface-800);
+}
+
+.app-dark ::-webkit-scrollbar-thumb {
+  background: var(--p-surface-600);
+}
+
+.app-dark ::-webkit-scrollbar-thumb:hover {
+  background: var(--p-surface-500);
+}

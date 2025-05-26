@@ -35,9 +35,9 @@ const { t } = useI18n();
 </script>
 
 <template>
-  <div class="flex h-screen">
+  <div class="flex h-screen login-container">
     <div class="w-full flex align-items-center justify-content-center">
-      <div class="p-4 shadow-2 border-round w-full lg:w-4">
+      <div class="p-4 border-round w-full lg:w-4 login-card">
         <div class="text-center mb-5">
           <img src="/src/assets/beta-logo.png" height="50" />
           <div class="text-900 text-3xl font-medium mb-3">
@@ -79,28 +79,30 @@ const { t } = useI18n();
   </div>
 </template>
 
-<style>
-/* Joma Colors */
-/* .p-button {
-  background-color: #386ec7 !important;
-  border: #386ec7 !important;
+<style scoped>
+/* Login specific styles */
+.login-container {
+  background: var(--p-surface-100);
+  min-height: 100vh;
 }
 
-.p-inputtext:focus {
-  border-color: #386ec7 !important;
-} */
-
-/* Beta Colors */
-.p-button {
-  background-color: #ec7d13 !important;
-  border: #ec7d13 !important;
-}
-
-.p-inputtext:focus {
-  border-color: #ec7d13 !important;
+.login-card {
+  background: var(--p-surface-0);
+  border: 1px solid var(--p-surface-border);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 img {
   height: 100px;
+}
+
+/* Dark mode adjustments */
+.app-dark .login-container {
+  background: var(--p-surface-950);
+}
+
+.app-dark .login-card {
+  background: var(--p-surface-900);
+  border: 1px solid var(--p-surface-800);
 }
 </style>

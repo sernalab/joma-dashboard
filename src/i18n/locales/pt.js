@@ -1,4 +1,34 @@
 export default {
+  common: {
+    language: "Idioma",
+    logout: "Sair",
+    darkMode: "Modo Escuro",
+    profile: "Perfil",
+    settings: "Configurações",
+    dashboard: "Painel",
+    reports: "Relatórios",
+    clients: "Clientes",
+    newMeasurement: "Nova Medição",
+    viewAll: "Ver Todos",
+    recent: "Recente",
+    today: "Hoje",
+    thisWeek: "Esta Semana",
+    thisMonth: "Este Mês",
+    noData: "Sem Dados",
+    trend: "Tendência",
+    statistics: "Estatísticas",
+    activities: "Atividades",
+    quickActions: "Ações Rápidas"
+  },
+  measurements: {
+    title: "Medições"
+  },
+  validation: {
+    required: "Este campo é obrigatório",
+    email: "Por favor, insira um endereço de e-mail válido",
+    minLength: "O comprimento mínimo é {min} caracteres",
+    invalidFormat: "Formato inválido"
+  },
   login: {
     title: "Bem-vindo",
     subtitle: "Digite suas credenciais",

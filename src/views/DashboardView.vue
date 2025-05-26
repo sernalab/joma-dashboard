@@ -26,7 +26,8 @@ onMounted(() => {
 
 <style>
 .widget {
-  background-color: #fff;
+  background-color: var(--p-surface-0);
   border-radius: 10px;
+  transition: background-color 0.3s;
 }
 </style>

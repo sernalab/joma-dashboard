@@ -64,7 +64,7 @@ const items = [
     >
       <router-link
         :to="item.route"
-        class="flex flex-column bg-white border-round-xl cursor-pointer h-full shadow-1 hover:shadow-3 transition-all transition-duration-300 no-underline"
+        class="flex flex-column surface-card border-round-xl cursor-pointer h-full shadow-1 hover:shadow-3 transition-all transition-duration-300 no-underline"
       >
         <div class="p-4">
           <div class="flex justify-content-between align-items-center gap-3">
@@ -87,6 +87,7 @@ const items = [
 <style>
 a {
   text-decoration: none;
-  color: #1f2937;
+  color: var(--p-text-color);
+  transition: color 0.3s;
 }
 </style>

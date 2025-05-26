@@ -1,4 +1,34 @@
 export default {
+  common: {
+    language: "Idioma",
+    logout: "Tancar sessió",
+    darkMode: "Mode Fosc",
+    profile: "Perfil",
+    settings: "Configuració",
+    dashboard: "Tauler",
+    reports: "Informes",
+    clients: "Clients",
+    newMeasurement: "Nova Mesura",
+    viewAll: "Veure Tot",
+    recent: "Recent",
+    today: "Avui",
+    thisWeek: "Aquesta Setmana",
+    thisMonth: "Aquest Mes",
+    noData: "Sense Dades",
+    trend: "Tendència",
+    statistics: "Estadístiques",
+    activities: "Activitats",
+    quickActions: "Accions Ràpides"
+  },
+  measurements: {
+    title: "Mesures"
+  },
+  validation: {
+    required: "Aquest camp és obligatori",
+    email: "Si us plau, introdueix una adreça de correu electrònic vàlida",
+    minLength: "La longitud mínima és {min} caràcters",
+    invalidFormat: "Format no vàlid"
+  },
   login: {
     title: "Benvingut",
     subtitle: "Introdueix les teves credencials",

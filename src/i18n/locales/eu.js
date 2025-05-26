@@ -1,4 +1,34 @@
 export default {
+  common: {
+    language: "Hizkuntza",
+    logout: "Saioa amaitu",
+    darkMode: "Modu Iluna",
+    profile: "Profila",
+    settings: "Ezarpenak",
+    dashboard: "Aginte-panela",
+    reports: "Txostenak",
+    clients: "Bezeroak",
+    newMeasurement: "Neurketa Berria",
+    viewAll: "Ikusi Guztiak",
+    recent: "Oraintsukoa",
+    today: "Gaur",
+    thisWeek: "Aste Honetan",
+    thisMonth: "Hilabete Honetan",
+    noData: "Daturik Gabe",
+    trend: "Joera",
+    statistics: "Estatistikak",
+    activities: "Jarduerak",
+    quickActions: "Ekintza Azkarrak"
+  },
+  measurements: {
+    title: "Neurketak"
+  },
+  validation: {
+    required: "Eremu hau beharrezkoa da",
+    email: "Mesedez, sartu baliozko helbide elektroniko bat",
+    minLength: "Gutxieneko luzera {min} karaktere da",
+    invalidFormat: "Formatu baliogabea"
+  },
   login: {
     title: "Ongi etorri",
     subtitle: "Sartu zure kredentzialak",

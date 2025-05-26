@@ -1,4 +1,34 @@
 export default {
+  common: {
+    language: "Język",
+    logout: "Wyloguj",
+    darkMode: "Tryb Ciemny",
+    profile: "Profil",
+    settings: "Ustawienia",
+    dashboard: "Panel",
+    reports: "Raporty",
+    clients: "Klienci",
+    newMeasurement: "Nowy Pomiar",
+    viewAll: "Zobacz Wszystko",
+    recent: "Ostatnie",
+    today: "Dzisiaj",
+    thisWeek: "Ten Tydzień",
+    thisMonth: "Ten Miesiąc",
+    noData: "Brak Danych",
+    trend: "Trend",
+    statistics: "Statystyki",
+    activities: "Aktywności",
+    quickActions: "Szybkie Akcje"
+  },
+  measurements: {
+    title: "Pomiary"
+  },
+  validation: {
+    required: "To pole jest wymagane",
+    email: "Proszę wprowadzić prawidłowy adres e-mail",
+    minLength: "Minimalna długość to {min} znaków",
+    invalidFormat: "Nieprawidłowy format"
+  },
   login: {
     title: "Witamy",
     subtitle: "Wprowadź swoje dane logowania",

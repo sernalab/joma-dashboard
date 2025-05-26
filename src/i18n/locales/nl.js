@@ -1,4 +1,34 @@
 export default {
+  common: {
+    language: "Taal",
+    logout: "Uitloggen",
+    darkMode: "Donkere Modus",
+    profile: "Profiel",
+    settings: "Instellingen",
+    dashboard: "Dashboard",
+    reports: "Rapporten",
+    clients: "Klanten",
+    newMeasurement: "Nieuwe Meting",
+    viewAll: "Alles Bekijken",
+    recent: "Recent",
+    today: "Vandaag",
+    thisWeek: "Deze Week",
+    thisMonth: "Deze Maand",
+    noData: "Geen Gegevens",
+    trend: "Trend",
+    statistics: "Statistieken",
+    activities: "Activiteiten",
+    quickActions: "Snelle Acties"
+  },
+  measurements: {
+    title: "Metingen"
+  },
+  validation: {
+    required: "Dit veld is verplicht",
+    email: "Voer een geldig e-mailadres in",
+    minLength: "Minimale lengte is {min} tekens",
+    invalidFormat: "Ongeldig formaat"
+  },
   login: {
     title: "Welkom",
     subtitle: "Voer uw inloggegevens in",

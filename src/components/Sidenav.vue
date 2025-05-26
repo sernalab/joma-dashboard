@@ -20,7 +20,8 @@ export default {
 
 <style>
 .sidenav-container {
-  background-color: white;
+  background-color: var(--p-surface-0);
+  transition: background-color 0.3s;
 }
 
 img {

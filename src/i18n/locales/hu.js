@@ -1,4 +1,34 @@
 export default {
+  common: {
+    language: "Nyelv",
+    logout: "Kijelentkezés",
+    darkMode: "Sötét Mód",
+    profile: "Profil",
+    settings: "Beállítások",
+    dashboard: "Irányítópult",
+    reports: "Jelentések",
+    clients: "Ügyfelek",
+    newMeasurement: "Új Mérés",
+    viewAll: "Összes Megtekintése",
+    recent: "Legutóbbi",
+    today: "Ma",
+    thisWeek: "Ezen a Héten",
+    thisMonth: "Ebben a Hónapban",
+    noData: "Nincs Adat",
+    trend: "Trend",
+    statistics: "Statisztikák",
+    activities: "Tevékenységek",
+    quickActions: "Gyors Műveletek"
+  },
+  measurements: {
+    title: "Mérések"
+  },
+  validation: {
+    required: "Ez a mező kötelező",
+    email: "Kérjük, adjon meg érvényes e-mail címet",
+    minLength: "A minimális hossz {min} karakter",
+    invalidFormat: "Érvénytelen formátum"
+  },
   login: {
     title: "Üdvözöljük",
     subtitle: "Adja meg hitelesítő adatait",
