@@ -1,21 +1,18 @@
 <script setup>
-import { defineProps } from 'vue';
-import Badge from 'primevue/badge';
+import Badge from "primevue/badge";
 
 defineProps({
   stats: {
     type: Array,
-    required: true
-  }
+    required: true,
+  },
 });
 </script>
 
 <template>
   <div class="stats-grid">
     <div v-for="stat in stats" :key="stat.label" class="stat-card">
-      <div
-        :class="['stat-icon', `stat-icon-${stat.colorClass || 'blue'}`]"
-      >
+      <div :class="['stat-icon', `stat-icon-${stat.colorClass || 'blue'}`]">
         <i :class="stat.icon"></i>
       </div>
       <div class="stat-content">
@@ -23,6 +20,7 @@ defineProps({
         <div class="stat-value-row">
           <h3 class="stat-value">{{ stat.value }}</h3>
           <Badge
+            v-if="stat.change"
             :value="stat.change"
             :severity="stat.change.startsWith('+') ? 'success' : 'danger'"
           />
@@ -36,30 +34,37 @@ defineProps({
 /* Stats Grid */
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
 .stat-card {
   background: var(--p-surface-0);
   border-radius: 0.75rem;
-  padding: 1.5rem;
+  padding: 1.25rem;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.875rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   border: 1px solid var(--p-surface-border);
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .stat-icon {
-  width: 60px;
-  height: 60px;
-  border-radius: 0.75rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 0.625rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
+  flex-shrink: 0;
 }
 
 /* Stat icon color classes */
@@ -121,10 +126,11 @@ defineProps({
 }
 
 .stat-value {
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-weight: 700;
   color: var(--p-text-color);
   margin: 0;
+  line-height: 1;
 }
 
 /* Responsive */

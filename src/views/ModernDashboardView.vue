@@ -22,21 +22,21 @@ const measurementCards = ref([]);
 
 // Mapeo de mediciones posibles con sus configuraciones visuales
 const measurementConfigs = {
-  "manometer": {
+  manometer: {
     title: () => t("selectionView.manometer.title"),
     description: () => t("selectionView.manometer.description"),
     icon: "pi pi-gauge",
     route: "/dashboard/manometer",
     color: "#3b82f6",
-    bgColor: "#dbeafe"
+    bgColor: "#dbeafe",
   },
-  "vacuum": {
+  vacuum: {
     title: () => t("selectionView.vacuum.title"),
     description: () => t("selectionView.vacuum.description"),
     icon: "pi pi-circle",
     route: "/dashboard/vacuum",
     color: "#8b5cf6",
-    bgColor: "#ede9fe"
+    bgColor: "#ede9fe",
   },
   "oil-pressure": {
     title: () => t("selectionView.oilPressure.title"),
@@ -44,7 +44,7 @@ const measurementConfigs = {
     icon: "pi pi-filter",
     route: "/dashboard/oil-pressure",
     color: "#f59e0b",
-    bgColor: "#fef3c7"
+    bgColor: "#fef3c7",
   },
   "fuel-pressure": {
     title: () => t("selectionView.fuelPressure.title"),
@@ -52,7 +52,7 @@ const measurementConfigs = {
     icon: "pi pi-bolt",
     route: "/dashboard/fuel-pressure",
     color: "#10b981",
-    bgColor: "#d1fae5"
+    bgColor: "#d1fae5",
   },
   "common-rail": {
     title: () => t("selectionView.commonRail.title"),
@@ -60,15 +60,15 @@ const measurementConfigs = {
     icon: "pi pi-server",
     route: "/dashboard/common-rail",
     color: "#ef4444",
-    bgColor: "#fee2e2"
+    bgColor: "#fee2e2",
   },
-  "compression": {
+  compression: {
     title: () => t("selectionView.compression.title"),
     description: () => t("selectionView.compression.description"),
     icon: "pi pi-chart-bar",
     route: "/dashboard/compression",
     color: "#6366f1",
-    bgColor: "#e0e7ff"
+    bgColor: "#e0e7ff",
   },
   "turbo-pressure": {
     title: () => t("selectionView.turboPressure.title"),
@@ -76,7 +76,7 @@ const measurementConfigs = {
     icon: "pi pi-sync",
     route: "/dashboard/turbo-pressure",
     color: "#10b981",
-    bgColor: "#d1fae5"
+    bgColor: "#d1fae5",
   },
   "adblue-pressure": {
     title: () => t("selectionView.adbluePressure.title"),
@@ -84,17 +84,48 @@ const measurementConfigs = {
     icon: "pi pi-box",
     route: "/dashboard/adblue-pressure",
     color: "#6366f1",
-    bgColor: "#e0e7ff"
-  }
+    bgColor: "#e0e7ff",
+  },
 };
 
 // Estadísticas generales
 const stats = ref([
+  // Estadísticas reales (nuevas)
+  {
+    label: t("dashboard.activeMeasurementTypes"),
+    value: "0",
+    icon: "pi pi-check-circle",
+    color: "#3b82f6",
+    colorClass: "blue",
+  },
+  {
+    label: t("dashboard.totalMeasurements"),
+    value: "0",
+    icon: "pi pi-chart-line",
+    color: "#10b981",
+    colorClass: "green",
+  },
+  {
+    label: t("dashboard.mostUsedMeasurement"),
+    value: "-",
+    icon: "pi pi-star",
+    color: "#f59e0b",
+    colorClass: "orange",
+  },
+  {
+    label: t("dashboard.dataCompleteness"),
+    value: "0%",
+    icon: "pi pi-percentage",
+    color: "#ef4444",
+    colorClass: "red",
+  },
+  // Estadísticas antiguas (simuladas)
   {
     label: t("dashboard.totalMeasurements"),
     value: "248",
     icon: "pi pi-chart-line",
     color: "#3b82f6",
+    colorClass: "blue",
     change: "+12%",
   },
   {
@@ -102,6 +133,7 @@ const stats = ref([
     value: "24",
     icon: "pi pi-calendar",
     color: "#10b981",
+    colorClass: "green",
     change: "+8%",
   },
   {
@@ -109,7 +141,7 @@ const stats = ref([
     value: "3",
     icon: "pi pi-tablet",
     color: "#f59e0b",
-    textColor: "white",
+    colorClass: "orange",
     change: "0%",
   },
   {
@@ -117,9 +149,56 @@ const stats = ref([
     value: "156",
     icon: "pi pi-file-pdf",
     color: "#ef4444",
+    colorClass: "red",
     change: "+24%",
   },
 ]);
+
+// Función para calcular estadísticas reales
+const calculateStats = (measurementData) => {
+  let activeMeasurements = 0;
+  let totalMeasurements = 0;
+  let mostUsedType = { name: "-", count: 0 };
+  let measurementsWithData = 0;
+  const totalPossibleTypes = 10; // Total de tipos de medición posibles
+
+  Object.entries(measurementData).forEach(([id, data]) => {
+    if (data.hasData) {
+      activeMeasurements++;
+      measurementsWithData++;
+      totalMeasurements += data.dataCount || 0;
+
+      if (data.dataCount > mostUsedType.count) {
+        mostUsedType = {
+          name: id,
+          count: data.dataCount,
+        };
+      }
+    }
+  });
+
+  // Actualizar stats
+  stats.value[0].value = activeMeasurements.toString();
+  stats.value[1].value = totalMeasurements.toString();
+
+  // Traducir el nombre del tipo más usado
+  const measurementTypeNames = {
+    manometer: t("selectionView.manometer.title"),
+    vacuum: t("selectionView.vacuum.title"),
+    "oil-pressure": t("selectionView.oilPressure.title"),
+    "fuel-pressure": t("selectionView.fuelPressure.title"),
+    "common-rail": t("selectionView.commonRail.title"),
+    compression: t("selectionView.compression.title"),
+    "turbo-pressure": t("selectionView.turboPressure.title"),
+    "adblue-pressure": t("selectionView.adbluePressure.title"),
+    "brake-pressure": t("selectionView.brakePressure.title"),
+    "dpf-pressure": t("selectionView.dpfPressure.title"),
+  };
+
+  stats.value[2].value = measurementTypeNames[mostUsedType.name] || "-";
+  stats.value[3].value =
+    Math.round((measurementsWithData / totalPossibleTypes) * 100) + "%";
+};
 
 // Actividad reciente
 const recentActivity = ref([
@@ -158,11 +237,6 @@ const showAllMeasurements = () => {
 // Quick actions
 const quickActions = [
   {
-    label: t("dashboard.newMeasurement"),
-    icon: "pi pi-plus",
-    command: () => router.push("/dashboard"),
-  },
-  {
     label: t("dashboard.generateReport"),
     icon: "pi pi-file-pdf",
     command: () => router.push("/dashboard/print-client-report"),
@@ -179,8 +253,13 @@ onMounted(async () => {
   loading.value = true;
   try {
     if (currentUser.value && currentUser.value.id) {
-      const availableData = await firebaseService.getAvailableMeasurements(currentUser.value.id);
-      
+      const availableData = await firebaseService.getAvailableMeasurements(
+        currentUser.value.id
+      );
+
+      // Calcular estadísticas reales
+      calculateStats(availableData);
+
       // Crear cards solo para mediciones con datos
       measurementCards.value = Object.entries(availableData)
         .filter(([id, data]) => data.hasData && measurementConfigs[id])
@@ -197,7 +276,7 @@ onMounted(async () => {
             lastValue: data.lastValue,
             trend: "stable",
             trendValue: t("measurements.lastValue"),
-            dataCount: data.dataCount
+            dataCount: data.dataCount,
           };
         });
     }
@@ -212,13 +291,17 @@ onMounted(async () => {
 <template>
   <div class="modern-dashboard">
     <!-- Welcome Section -->
-    <WelcomeSection 
+    <WelcomeSection
       :userName="currentUser?.name || currentUser?.id"
       :quickActions="quickActions"
     />
 
-    <!-- Stats Grid -->
-    <StatsGrid :stats="stats" />
+    <!-- Stats Grid - Datos Reales -->
+    <div class="stats-section">
+      <h3 class="stats-title">{{ t("dashboard.currentStatus") }}</h3>
+      <StatsGrid :stats="stats.slice(0, 4)" />
+      <StatsGrid :stats="stats.slice(4, 8)" />
+    </div>
 
     <!-- Measurement Cards -->
     <div class="section-header">
@@ -236,7 +319,7 @@ onMounted(async () => {
       <i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>
       <p>Cargando mediciones...</p>
     </div>
-    
+
     <div v-else-if="measurementCards.length > 0" class="measurement-grid">
       <MeasurementCard
         v-for="card in measurementCards"
@@ -245,7 +328,7 @@ onMounted(async () => {
         @click="navigateTo"
       />
     </div>
-    
+
     <div v-else class="no-measurements">
       <i class="pi pi-info-circle" style="font-size: 2rem; opacity: 0.5"></i>
       <p>No hay mediciones disponibles</p>
@@ -274,6 +357,19 @@ onMounted(async () => {
   }
 }
 
+/* Stats Sections */
+.stats-section {
+  margin-bottom: 2rem;
+}
+
+.stats-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--p-text-muted-color);
+  margin: 0 0 1rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
 
 /* Section Headers */
 .section-header {
@@ -297,9 +393,6 @@ onMounted(async () => {
   gap: 1.5rem;
   margin-bottom: 3rem;
 }
-
-
-
 
 .view-all-btn {
   color: var(--p-primary-color) !important;
