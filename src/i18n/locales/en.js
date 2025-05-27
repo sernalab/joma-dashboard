@@ -31,6 +31,7 @@ export default {
     noDataAvailableDescription:
       "There are no measurements available in this section yet.",
     backToDashbaord: "Back to Dashboard",
+    backToAllMeasurements: "Back to all measurement types",
   },
   selectionView: {
     manometer: {
@@ -184,8 +185,14 @@ export default {
   },
   measurements: {
     title: "Measurements",
+    allTypes: "All measurement types",
+    typesAvailable: "{count} types available",
+    lastValue: "Last value",
+    noData: "No data",
+    noDataAvailable: "No measurements available",
   },
   common: {
+    locale: "en-US",
     loading: "Loading...",
     retry: "Retry",
     language: "Language",
@@ -223,5 +230,46 @@ export default {
   },
   errors: {
     loadingData: "Error loading data",
+  },
+  activity: {
+    completeHistory: "Complete workshop activity history",
+    typeFilter: "Activity type",
+    allActivities: "All activities",
+    measurements: "Measurements",
+    reports: "Reports",
+    diagnostics: "Diagnostics",
+    alerts: "Alerts",
+    activitiesCount: "{count} activities",
+    noActivitiesFound: "No activities found",
+    adjustFilters: "Adjust filters to see more results",
+    today: "Today",
+    yesterday: "Yesterday",
+    daysAgo: "{days} days ago",
+    value: "Value",
+    status: "Status",
+    // Activity statuses
+    normal: "Normal",
+    warning: "Warning",
+    critical: "Critical",
+    urgent: "Urgent",
+    // Common activity actions
+    actions: {
+      oilPressureMeasurement: "Oil pressure measurement",
+      reportGenerated: "Report generated",
+      lowPressureDetected: "Low pressure detected",
+      fullDiagnostic: "Full diagnostic",
+      cylinderCompression: "Cylinder compression",
+      turboPressure: "Turbo pressure",
+      maintenanceReport: "Maintenance report",
+      dpfRegeneration: "DPF needs regeneration",
+    },
+    // Labels
+    client: "Client",
+    vehicle: "Vehicle",
+    fuelSystem: "Fuel system",
+    systemsOk: "{count}/10 systems OK",
+    cylinder: "Cylinder",
+    low: "Low",
+    fleet: "Fleet",
   },
 };

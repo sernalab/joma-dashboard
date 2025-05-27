@@ -3,6 +3,7 @@ import { ref, computed, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import { useI18n } from "vue-i18n";
 import { authService } from "@/services/auth.service";
+import { firebaseService } from "@/services/firebase.service";
 import Button from "primevue/button";
 
 // Import new components
@@ -14,83 +15,78 @@ import ActivityList from "@/components/dashboard/ActivityList.vue";
 const { t } = useI18n();
 const router = useRouter();
 const currentUser = ref(authService.getCurrentUser());
+const loading = ref(true);
 
-// Datos de ejemplo para las tarjetas
-const measurementCards = ref([
-  {
-    id: "manometer",
-    title: t("selectionView.manometer.title"),
-    description: t("selectionView.manometer.description"),
+// Mediciones que se mostrarán (solo las que tienen datos)
+const measurementCards = ref([]);
+
+// Mapeo de mediciones posibles con sus configuraciones visuales
+const measurementConfigs = {
+  "manometer": {
+    title: () => t("selectionView.manometer.title"),
+    description: () => t("selectionView.manometer.description"),
     icon: "pi pi-gauge",
     route: "/dashboard/manometer",
     color: "#3b82f6",
-    bgColor: "#dbeafe",
-    lastValue: "75 bar",
-    trend: "up",
-    trendValue: "+5%",
+    bgColor: "#dbeafe"
   },
-  {
-    id: "vacuum",
-    title: t("selectionView.vacuum.title"),
-    description: t("selectionView.vacuum.description"),
+  "vacuum": {
+    title: () => t("selectionView.vacuum.title"),
+    description: () => t("selectionView.vacuum.description"),
     icon: "pi pi-circle",
     route: "/dashboard/vacuum",
     color: "#8b5cf6",
-    bgColor: "#ede9fe",
-    lastValue: "-0.8 bar",
-    trend: "stable",
-    trendValue: "0%",
+    bgColor: "#ede9fe"
   },
-  {
-    id: "oil-pressure",
-    title: t("selectionView.oilPressure.title"),
-    description: t("selectionView.oilPressure.description"),
+  "oil-pressure": {
+    title: () => t("selectionView.oilPressure.title"),
+    description: () => t("selectionView.oilPressure.description"),
     icon: "pi pi-filter",
     route: "/dashboard/oil-pressure",
     color: "#f59e0b",
-    bgColor: "#fef3c7",
-    textColor: "#f59e0b",
-    lastValue: "4.2 bar",
-    trend: "down",
-    trendValue: "-2%",
+    bgColor: "#fef3c7"
   },
-  {
-    id: "fuel-pressure",
-    title: t("selectionView.fuelPressure.title"),
-    description: t("selectionView.fuelPressure.description"),
+  "fuel-pressure": {
+    title: () => t("selectionView.fuelPressure.title"),
+    description: () => t("selectionView.fuelPressure.description"),
     icon: "pi pi-bolt",
     route: "/dashboard/fuel-pressure",
     color: "#10b981",
-    bgColor: "#d1fae5",
-    lastValue: "3.5 bar",
-    trend: "up",
-    trendValue: "+1%",
+    bgColor: "#d1fae5"
   },
-  {
-    id: "common-rail",
-    title: t("selectionView.commonRail.title"),
-    description: t("selectionView.commonRail.description"),
+  "common-rail": {
+    title: () => t("selectionView.commonRail.title"),
+    description: () => t("selectionView.commonRail.description"),
     icon: "pi pi-server",
     route: "/dashboard/common-rail",
     color: "#ef4444",
-    bgColor: "#fee2e2",
-    lastValue: "1800 bar",
-    trend: "up",
-    trendValue: "+3%",
+    bgColor: "#fee2e2"
   },
-  {
-    id: "compression",
-    title: t("selectionView.compression.title"),
-    description: t("selectionView.compression.description"),
+  "compression": {
+    title: () => t("selectionView.compression.title"),
+    description: () => t("selectionView.compression.description"),
     icon: "pi pi-chart-bar",
     route: "/dashboard/compression",
     color: "#6366f1",
-    bgColor: "#e0e7ff",
-    lastValue: "12-14 bar",
-    trend: "stable",
-    trendValue: "OK",
+    bgColor: "#e0e7ff"
   },
-]);
+  "turbo-pressure": {
+    title: () => t("selectionView.turboPressure.title"),
+    description: () => t("selectionView.turboPressure.description"),
+    icon: "pi pi-sync",
+    route: "/dashboard/turbo-pressure",
+    color: "#10b981",
+    bgColor: "#d1fae5"
+  },
+  "adblue-pressure": {
+    title: () => t("selectionView.adbluePressure.title"),
+    description: () => t("selectionView.adbluePressure.description"),
+    icon: "pi pi-box",
+    route: "/dashboard/adblue-pressure",
+    color: "#6366f1",
+    bgColor: "#e0e7ff"
+  }
+};
 
 // Estadísticas generales
 const stats = ref([
@@ -155,6 +151,10 @@ const navigateTo = (route) => {
   router.push(route);
 };
 
+const showAllMeasurements = () => {
+  router.push("/dashboard/all-measurements");
+};
+
 // Quick actions
 const quickActions = [
   {
@@ -170,9 +170,43 @@ const quickActions = [
   {
     label: t("dashboard.viewHistory"),
     icon: "pi pi-history",
-    command: () => console.log("View history"),
+    command: () => router.push("/dashboard/activity"),
   },
 ];
+
+// Cargar mediciones con datos reales
+onMounted(async () => {
+  loading.value = true;
+  try {
+    if (currentUser.value && currentUser.value.id) {
+      const availableData = await firebaseService.getAvailableMeasurements(currentUser.value.id);
+      
+      // Crear cards solo para mediciones con datos
+      measurementCards.value = Object.entries(availableData)
+        .filter(([id, data]) => data.hasData && measurementConfigs[id])
+        .map(([id, data]) => {
+          const config = measurementConfigs[id];
+          return {
+            id,
+            title: config.title(),
+            description: config.description(),
+            icon: config.icon,
+            route: config.route,
+            color: config.color,
+            bgColor: config.bgColor,
+            lastValue: data.lastValue,
+            trend: "stable",
+            trendValue: t("measurements.lastValue"),
+            dataCount: data.dataCount
+          };
+        });
+    }
+  } catch (error) {
+    console.error("Error al cargar mediciones:", error);
+  } finally {
+    loading.value = false;
+  }
+});
 </script>
 
 <template>
@@ -194,16 +228,27 @@ const quickActions = [
         icon="pi pi-arrow-right"
         iconPos="right"
         class="p-button-text p-button-sm view-all-btn"
+        @click="showAllMeasurements"
       />
     </div>
 
-    <div class="measurement-grid">
+    <div v-if="loading" class="loading-container">
+      <i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>
+      <p>Cargando mediciones...</p>
+    </div>
+    
+    <div v-else-if="measurementCards.length > 0" class="measurement-grid">
       <MeasurementCard
         v-for="card in measurementCards"
         :key="card.id"
         :card="card"
         @click="navigateTo"
       />
+    </div>
+    
+    <div v-else class="no-measurements">
+      <i class="pi pi-info-circle" style="font-size: 2rem; opacity: 0.5"></i>
+      <p>No hay mediciones disponibles</p>
     </div>
 
     <!-- Recent Activity -->
@@ -262,6 +307,29 @@ const quickActions = [
 
 .app-dark .view-all-btn {
   color: var(--p-primary-400) !important;
+}
+
+/* Loading and empty states */
+.loading-container,
+.no-measurements {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  text-align: center;
+  color: var(--p-text-muted-color);
+  gap: 1rem;
+}
+
+.loading-container i {
+  color: var(--p-primary-color);
+}
+
+.no-measurements {
+  background: var(--p-surface-50);
+  border-radius: 0.75rem;
+  border: 1px dashed var(--p-surface-border);
 }
 
 /* Responsive */

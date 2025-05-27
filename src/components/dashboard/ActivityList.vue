@@ -1,10 +1,12 @@
 <script setup>
 import { defineProps } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { useRouter } from 'vue-router';
 import Card from 'primevue/card';
 import Button from 'primevue/button';
 
 const { t } = useI18n();
+const router = useRouter();
 
 defineProps({
   activities: {
@@ -12,6 +14,10 @@ defineProps({
     required: true
   }
 });
+
+const viewAllActivities = () => {
+  router.push('/dashboard/recent-activity');
+};
 </script>
 
 <template>
@@ -23,6 +29,7 @@ defineProps({
         icon="pi pi-arrow-right"
         iconPos="right"
         class="p-button-text p-button-sm view-all-btn"
+        @click="viewAllActivities"
       />
     </div>
 

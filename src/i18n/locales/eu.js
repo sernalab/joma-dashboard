@@ -1,5 +1,6 @@
 export default {
   common: {
+    locale: "eu-ES",
     language: "Hizkuntza",
     logout: "Saioa amaitu",
     darkMode: "Modu Iluna",
@@ -21,7 +22,12 @@ export default {
     quickActions: "Ekintza Azkarrak"
   },
   measurements: {
-    title: "Neurketak"
+    title: "Neurketak",
+    allTypes: "Neurketa mota guztiak",
+    typesAvailable: "{count} mota eskuragarri",
+    lastValue: "Azken balioa",
+    noData: "Daturik gabe",
+    noDataAvailable: "Ez dago neurketarik eskuragarri"
   },
   validation: {
     required: "Eremu hau beharrezkoa da",
@@ -60,6 +66,7 @@ export default {
     noDataAvailable: "Ez dago daturik eskuragarri",
     noDataAvailableDescription: "Oraindik ez dago neurketarik atal honetan.",
     backToDashbaord: "Itzuli aginte-pulpitora",
+    backToAllMeasurements: "Itzuli neurketa mota guztietara",
   },
   selectionView: {
     manometer: {
@@ -194,5 +201,63 @@ export default {
       pointLabel: "Puntua",
       dataLabel: "Datuak",
     },
+  },
+  dashboard: {
+    welcome: "Ongi etorri",
+    subtitle: "Hona hemen gaurko zure jardueraren laburpena",
+    totalMeasurements: "Neurketa Guztiak",
+    todayMeasurements: "Gaurko Neurketak",
+    activeDevices: "Gailu Aktiboak",
+    reportsGenerated: "Sortutako Txostenak",
+    measurementTypes: "Neurketa Motak",
+    recentActivity: "Azken Jarduera",
+    newMeasurement: "Neurketa Berria",
+    generateReport: "Txostena Sortu",
+    viewHistory: "Historia Ikusi",
+    viewDetails: "Xehetasunak Ikusi",
+  },
+  errors: {
+    loadingData: "Errorea datuak kargatzean",
+  },
+  activity: {
+    completeHistory: "Tailerreko jarduera historia osoa",
+    typeFilter: "Jarduera mota",
+    allActivities: "Jarduera guztiak",
+    measurements: "Neurketak",
+    reports: "Txostenak",
+    diagnostics: "Diagnostikoak",
+    alerts: "Alertak",
+    activitiesCount: "{count} jarduera",
+    noActivitiesFound: "Ez da jarduerarik aurkitu",
+    adjustFilters: "Doitu iragazkiak emaitza gehiago ikusteko",
+    today: "Gaur",
+    yesterday: "Atzo",
+    daysAgo: "Duela {days} egun",
+    value: "Balioa",
+    status: "Egoera",
+    // Activity statuses
+    normal: "Normala",
+    warning: "Abisua",
+    critical: "Kritikoa",
+    urgent: "Premiazko",
+    // Common activity actions
+    actions: {
+      oilPressureMeasurement: "Olio-presioaren neurketa",
+      reportGenerated: "Txostena sortuta",
+      lowPressureDetected: "Presio baxua detektatuta",
+      fullDiagnostic: "Diagnostiko osoa",
+      cylinderCompression: "Zilindro konpresioa",
+      turboPressure: "Turbo presioa",
+      maintenanceReport: "Mantentze-txostena",
+      dpfRegeneration: "DPF-ak berregeneratzea behar du",
+    },
+    // Labels
+    client: "Bezeroa",
+    vehicle: "Ibilgailua",
+    fuelSystem: "Erregai-sistema",
+    systemsOk: "{count}/10 sistema ONDO",
+    cylinder: "Zilindroa",
+    low: "Baxu",
+    fleet: "Flota",
   },
 };

@@ -1,5 +1,6 @@
 export default {
   common: {
+    locale: "fr-FR",
     language: 'Langue',
     logout: 'Se déconnecter',
     darkMode: 'Mode sombre',
@@ -21,7 +22,12 @@ export default {
     quickActions: 'Actions rapides'
   },
   measurements: {
-    title: 'Mesures'
+    title: 'Mesures',
+    allTypes: 'Tous les types de mesure',
+    typesAvailable: '{count} types disponibles',
+    lastValue: 'Dernière valeur',
+    noData: 'Aucune donnée',
+    noDataAvailable: 'Aucune mesure disponible'
   },
   validation: {
     required: 'Ce champ est obligatoire',
@@ -61,6 +67,7 @@ export default {
     noDataAvailableDescription:
       "Il n'y a pas encore de mesures disponibles dans cette section.",
     backToDashbaord: "Retour au tableau de bord",
+    backToAllMeasurements: "Retour à tous les types de mesure",
   },
   selectionView: {
     manometer: {
@@ -197,5 +204,63 @@ export default {
       pointLabel: "Point",
       dataLabel: "Données de",
     },
+  },
+  dashboard: {
+    welcome: "Bienvenue",
+    subtitle: "Voici votre résumé d'activité pour aujourd'hui",
+    totalMeasurements: "Mesures totales",
+    todayMeasurements: "Mesures d'aujourd'hui",
+    activeDevices: "Appareils actifs",
+    reportsGenerated: "Rapports générés",
+    measurementTypes: "Types de mesures",
+    recentActivity: "Activité récente",
+    newMeasurement: "Nouvelle mesure",
+    generateReport: "Générer un rapport",
+    viewHistory: "Voir l'historique",
+    viewDetails: "Voir les détails",
+  },
+  errors: {
+    loadingData: "Erreur lors du chargement des données",
+  },
+  activity: {
+    completeHistory: "Historique complet de l'activité de l'atelier",
+    typeFilter: "Type d'activité",
+    allActivities: "Toutes les activités",
+    measurements: "Mesures",
+    reports: "Rapports",
+    diagnostics: "Diagnostics",
+    alerts: "Alertes",
+    activitiesCount: "{count} activités",
+    noActivitiesFound: "Aucune activité trouvée",
+    adjustFilters: "Ajustez les filtres pour voir plus de résultats",
+    today: "Aujourd'hui",
+    yesterday: "Hier",
+    daysAgo: "Il y a {days} jours",
+    value: "Valeur",
+    status: "Statut",
+    // Activity statuses
+    normal: "Normal",
+    warning: "Avertissement",
+    critical: "Critique",
+    urgent: "Urgent",
+    // Common activity actions
+    actions: {
+      oilPressureMeasurement: "Mesure de pression d'huile",
+      reportGenerated: "Rapport généré",
+      lowPressureDetected: "Basse pression détectée",
+      fullDiagnostic: "Diagnostic complet",
+      cylinderCompression: "Compression des cylindres",
+      turboPressure: "Pression du turbo",
+      maintenanceReport: "Rapport de maintenance",
+      dpfRegeneration: "DPF nécessite régénération",
+    },
+    // Labels
+    client: "Client",
+    vehicle: "Véhicule",
+    fuelSystem: "Système de carburant",
+    systemsOk: "{count}/10 systèmes OK",
+    cylinder: "Cylindre",
+    low: "Bas",
+    fleet: "Flotte",
   },
 };

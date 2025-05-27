@@ -1,5 +1,6 @@
 export default {
   common: {
+    locale: "hu-HU",
     language: "Nyelv",
     logout: "Kijelentkezés",
     darkMode: "Sötét Mód",
@@ -21,7 +22,12 @@ export default {
     quickActions: "Gyors Műveletek"
   },
   measurements: {
-    title: "Mérések"
+    title: "Mérések",
+    allTypes: "Minden mérési típus",
+    typesAvailable: "{count} típus elérhető",
+    lastValue: "Utolsó érték",
+    noData: "Nincs adat",
+    noDataAvailable: "Nincsenek elérhető mérések"
   },
   validation: {
     required: "Ez a mező kötelező",
@@ -61,6 +67,7 @@ export default {
     noDataAvailableDescription:
       "Ebben a szakaszban még nincsenek elérhető mérések.",
     backToDashbaord: "Vissza az irányítópultra",
+    backToAllMeasurements: "Vissza az összes méréstípushoz",
   },
   selectionView: {
     manometer: {
@@ -197,5 +204,63 @@ export default {
       pointLabel: "Pont",
       dataLabel: "Adatok",
     },
+  },
+  dashboard: {
+    welcome: "Üdvözöljük",
+    subtitle: "Itt találja a mai tevékenységének összefoglalóját",
+    totalMeasurements: "Összes Mérés",
+    todayMeasurements: "Mai Mérések",
+    activeDevices: "Aktív Eszközök",
+    reportsGenerated: "Létrehozott Jelentések",
+    measurementTypes: "Mérési Típusok",
+    recentActivity: "Legutóbbi Tevékenység",
+    newMeasurement: "Új Mérés",
+    generateReport: "Jelentés Készítése",
+    viewHistory: "Előzmények Megtekintése",
+    viewDetails: "Részletek Megtekintése",
+  },
+  errors: {
+    loadingData: "Hiba az adatok betöltésekor",
+  },
+  activity: {
+    completeHistory: "Műhely teljes tevékenységi előzményei",
+    typeFilter: "Tevékenység típusa",
+    allActivities: "Minden tevékenység",
+    measurements: "Mérések",
+    reports: "Jelentések",
+    diagnostics: "Diagnosztika",
+    alerts: "Riasztások",
+    activitiesCount: "{count} tevékenység",
+    noActivitiesFound: "Nem található tevékenység",
+    adjustFilters: "Szűrők beállítása több eredmény megjelenítéséhez",
+    today: "Ma",
+    yesterday: "Tegnap",
+    daysAgo: "{days} nappal ezelőtt",
+    value: "Érték",
+    status: "Állapot",
+    // Activity statuses
+    normal: "Normál",
+    warning: "Figyelmeztetés",
+    critical: "Kritikus",
+    urgent: "Sürgős",
+    // Common activity actions
+    actions: {
+      oilPressureMeasurement: "Olajnyomás mérés",
+      reportGenerated: "Jelentés létrehozva",
+      lowPressureDetected: "Alacsony nyomás észlelve",
+      fullDiagnostic: "Teljes diagnosztika",
+      cylinderCompression: "Hengerkompresszió",
+      turboPressure: "Turbónyomás",
+      maintenanceReport: "Karbantartási jelentés",
+      dpfRegeneration: "DPF regenerálást igényel",
+    },
+    // Labels
+    client: "Ügyfél",
+    vehicle: "Jármű",
+    fuelSystem: "Üzemanyagrendszer",
+    systemsOk: "{count}/10 rendszer OK",
+    cylinder: "Henger",
+    low: "Alacsony",
+    fleet: "Flotta",
   },
 };

@@ -31,6 +31,7 @@ export default {
     noDataAvailableDescription:
       "Non ci sono ancora misurazioni disponibili in questa sezione.",
     backToDashbaord: "Torna alla Dashboard",
+    backToAllMeasurements: "Torna a tutti i tipi di misurazione",
   },
   selectionView: {
     manometer: {
@@ -187,8 +188,14 @@ export default {
   },
   measurements: {
     title: "Misurazioni",
+    allTypes: "Tutti i tipi di misurazione",
+    typesAvailable: "{count} tipi disponibili",
+    lastValue: "Ultimo valore",
+    noData: "Nessun dato",
+    noDataAvailable: "Nessuna misurazione disponibile",
   },
   common: {
+    locale: "it-IT",
     loading: "Caricamento...",
     retry: "Riprova",
     language: "Lingua",
@@ -226,5 +233,46 @@ export default {
   },
   errors: {
     loadingData: "Errore nel caricamento dei dati",
+  },
+  activity: {
+    completeHistory: "Cronologia completa dell'attività dell'officina",
+    typeFilter: "Tipo di attività",
+    allActivities: "Tutte le attività",
+    measurements: "Misurazioni",
+    reports: "Rapporti",
+    diagnostics: "Diagnostica",
+    alerts: "Avvisi",
+    activitiesCount: "{count} attività",
+    noActivitiesFound: "Nessuna attività trovata",
+    adjustFilters: "Regola i filtri per vedere più risultati",
+    today: "Oggi",
+    yesterday: "Ieri",
+    daysAgo: "{days} giorni fa",
+    value: "Valore",
+    status: "Stato",
+    // Activity statuses
+    normal: "Normale",
+    warning: "Avviso",
+    critical: "Critico",
+    urgent: "Urgente",
+    // Common activity actions
+    actions: {
+      oilPressureMeasurement: "Misurazione pressione olio",
+      reportGenerated: "Report generato",
+      lowPressureDetected: "Bassa pressione rilevata",
+      fullDiagnostic: "Diagnostica completa",
+      cylinderCompression: "Compressione cilindri",
+      turboPressure: "Pressione turbo",
+      maintenanceReport: "Report di manutenzione",
+      dpfRegeneration: "DPF richiede rigenerazione",
+    },
+    // Labels
+    client: "Cliente",
+    vehicle: "Veicolo",
+    fuelSystem: "Sistema carburante",
+    systemsOk: "{count}/10 sistemi OK",
+    cylinder: "Cilindro",
+    low: "Basso",
+    fleet: "Flotta",
   },
 };

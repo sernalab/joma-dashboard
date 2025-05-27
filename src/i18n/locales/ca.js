@@ -1,5 +1,6 @@
 export default {
   common: {
+    locale: "ca-ES",
     language: "Idioma",
     logout: "Tancar sessió",
     darkMode: "Mode Fosc",
@@ -21,7 +22,12 @@ export default {
     quickActions: "Accions Ràpides"
   },
   measurements: {
-    title: "Mesures"
+    title: "Mesures",
+    allTypes: "Tots els tipus de mesura",
+    typesAvailable: "{count} tipus disponibles",
+    lastValue: "Últim valor",
+    noData: "Sense dades",
+    noDataAvailable: "No hi ha mesures disponibles"
   },
   validation: {
     required: "Aquest camp és obligatori",
@@ -61,6 +67,7 @@ export default {
     noDataAvailableDescription:
       "Encara no hi ha mesures disponibles en aquesta secció.",
     backToDashbaord: "Tornar al Tauler",
+    backToAllMeasurements: "Tornar a tots els tipus de mesura",
   },
   selectionView: {
     manometer: {
@@ -198,5 +205,63 @@ export default {
       pointLabel: "Punt",
       dataLabel: "Dades de",
     },
+  },
+  dashboard: {
+    welcome: "Benvingut",
+    subtitle: "Aquí tens el resum de la teva activitat d'avui",
+    totalMeasurements: "Mesures Totals",
+    todayMeasurements: "Mesures d'Avui",
+    activeDevices: "Dispositius Actius",
+    reportsGenerated: "Informes Generats",
+    measurementTypes: "Tipus de Mesures",
+    recentActivity: "Activitat Recent",
+    newMeasurement: "Nova Mesura",
+    generateReport: "Generar Informe",
+    viewHistory: "Veure Historial",
+    viewDetails: "Veure Detalls",
+  },
+  errors: {
+    loadingData: "Error carregant les dades",
+  },
+  activity: {
+    completeHistory: "Historial complet d'activitat del taller",
+    typeFilter: "Tipus d'activitat",
+    allActivities: "Totes les activitats",
+    measurements: "Mesuraments",
+    reports: "Informes",
+    diagnostics: "Diagnòstics",
+    alerts: "Alertes",
+    activitiesCount: "{count} activitats",
+    noActivitiesFound: "No s'han trobat activitats",
+    adjustFilters: "Ajusta els filtres per veure més resultats",
+    today: "Avui",
+    yesterday: "Ahir",
+    daysAgo: "Fa {days} dies",
+    value: "Valor",
+    status: "Estat",
+    // Activity statuses
+    normal: "Normal",
+    warning: "Advertència",
+    critical: "Crític",
+    urgent: "Urgent",
+    // Common activity actions
+    actions: {
+      oilPressureMeasurement: "Mesura de pressió d'oli",
+      reportGenerated: "Informe generat",
+      lowPressureDetected: "Pressió baixa detectada",
+      fullDiagnostic: "Diagnòstic complet",
+      cylinderCompression: "Compressió de cilindres",
+      turboPressure: "Pressió del turbo",
+      maintenanceReport: "Informe de manteniment",
+      dpfRegeneration: "DPF necessita regeneració",
+    },
+    // Labels
+    client: "Client",
+    vehicle: "Vehicle",
+    fuelSystem: "Sistema de combustible",
+    systemsOk: "{count}/10 sistemes OK",
+    cylinder: "Cilindre",
+    low: "Baix",
+    fleet: "Flota",
   },
 };

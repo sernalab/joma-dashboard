@@ -1,5 +1,6 @@
 export default {
   common: {
+    locale: "nl-NL",
     language: "Taal",
     logout: "Uitloggen",
     darkMode: "Donkere Modus",
@@ -21,7 +22,12 @@ export default {
     quickActions: "Snelle Acties"
   },
   measurements: {
-    title: "Metingen"
+    title: "Metingen",
+    allTypes: "Alle meettypen",
+    typesAvailable: "{count} typen beschikbaar",
+    lastValue: "Laatste waarde",
+    noData: "Geen gegevens",
+    noDataAvailable: "Geen metingen beschikbaar"
   },
   validation: {
     required: "Dit veld is verplicht",
@@ -61,6 +67,7 @@ export default {
     noDataAvailableDescription:
       "Er zijn nog geen metingen beschikbaar in deze sectie.",
     backToDashbaord: "Terug naar Dashboard",
+    backToAllMeasurements: "Terug naar alle meettypen",
   },
   selectionView: {
     manometer: {
@@ -197,5 +204,63 @@ export default {
       pointLabel: "Punt",
       dataLabel: "Gegevens van",
     },
+  },
+  dashboard: {
+    welcome: "Welkom",
+    subtitle: "Hier is uw activiteitenoverzicht voor vandaag",
+    totalMeasurements: "Totale Metingen",
+    todayMeasurements: "Metingen van Vandaag",
+    activeDevices: "Actieve Apparaten",
+    reportsGenerated: "Gegenereerde Rapporten",
+    measurementTypes: "Meettypen",
+    recentActivity: "Recente Activiteit",
+    newMeasurement: "Nieuwe Meting",
+    generateReport: "Rapport Genereren",
+    viewHistory: "Geschiedenis Bekijken",
+    viewDetails: "Details Bekijken",
+  },
+  errors: {
+    loadingData: "Fout bij het laden van gegevens",
+  },
+  activity: {
+    completeHistory: "Volledige werkplaatsactiviteitengeschiedenis",
+    typeFilter: "Activiteitstype",
+    allActivities: "Alle activiteiten",
+    measurements: "Metingen",
+    reports: "Rapporten",
+    diagnostics: "Diagnostiek",
+    alerts: "Waarschuwingen",
+    activitiesCount: "{count} activiteiten",
+    noActivitiesFound: "Geen activiteiten gevonden",
+    adjustFilters: "Pas de filters aan om meer resultaten te zien",
+    today: "Vandaag",
+    yesterday: "Gisteren",
+    daysAgo: "{days} dagen geleden",
+    value: "Waarde",
+    status: "Status",
+    // Activity statuses
+    normal: "Normaal",
+    warning: "Waarschuwing",
+    critical: "Kritiek",
+    urgent: "Urgent",
+    // Common activity actions
+    actions: {
+      oilPressureMeasurement: "Oliedrukmeting",
+      reportGenerated: "Rapport gegenereerd",
+      lowPressureDetected: "Lage druk gedetecteerd",
+      fullDiagnostic: "Volledige diagnose",
+      cylinderCompression: "Cilindercompressie",
+      turboPressure: "Turbodruk",
+      maintenanceReport: "Onderhoudsrapport",
+      dpfRegeneration: "DPF heeft regeneratie nodig",
+    },
+    // Labels
+    client: "Klant",
+    vehicle: "Voertuig",
+    fuelSystem: "Brandstofsysteem",
+    systemsOk: "{count}/10 systemen OK",
+    cylinder: "Cilinder",
+    low: "Laag",
+    fleet: "Vloot",
   },
 };

@@ -27,9 +27,6 @@ export const languageService = {
     localStorage.setItem("appLanguage", langCode);
 
     i18n.global.locale.value = langCode;
-    console.log(
-      `Idioma establecido a: ${lang} (código: ${this.getCurrentLanguage()})`
-    );
   },
 
   getCurrentLanguage() {
@@ -46,17 +43,13 @@ export const languageService = {
           return;
         }
       } catch (error) {
-        console.error("Error parsing user data:", error);
+        // Silent fail - continue with default language
       }
     }
 
     const savedLanguage = localStorage.getItem("appLanguage");
     if (savedLanguage) {
       i18n.global.locale.value = savedLanguage;
-      console.log(`Language initialized from storage: ${savedLanguage}`);
-    } else {
-      // If no saved language, use the default from main.js
-      console.log(`Language initialized to default: ${i18n.global.locale.value}`);
     }
   },
 };

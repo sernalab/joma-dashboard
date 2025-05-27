@@ -83,6 +83,18 @@ const router = createRouter({
           meta: { requiresAuth: true },
         },
         {
+          path: "all-measurements",
+          name: "all-measurements",
+          component: () => import("../views/AllMeasurementsView.vue"),
+          meta: { requiresAuth: true, title: "Todos los tipos de medición" },
+        },
+        {
+          path: "recent-activity",
+          name: "recent-activity",
+          component: () => import("../views/RecentActivityView.vue"),
+          meta: { requiresAuth: true, title: "Actividad Reciente" },
+        },
+        {
           path: "print-client-report",
           name: "print-client-report",
           component: () => import("../views/PrintClientView.vue"),

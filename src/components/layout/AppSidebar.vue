@@ -211,6 +211,15 @@ const toggleSidebar = () => {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   position: relative;
   overflow: hidden;
+  font-weight: 700;
+}
+
+.nav-item.special i {
+  font-weight: 700;
+}
+
+.nav-item.special span {
+  font-weight: 700;
 }
 
 .nav-item.special::before {

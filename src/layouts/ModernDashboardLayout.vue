@@ -78,7 +78,7 @@ const menuItems = [
       },
       {
         label: t("selectionView.adbluePressure.title"),
-        icon: "pi pi-tint",
+        icon: "pi pi-box",
         route: "/dashboard/adblue-pressure",
       },
     ],
