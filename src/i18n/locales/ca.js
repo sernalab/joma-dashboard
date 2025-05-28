@@ -27,7 +27,8 @@ export default {
     typesAvailable: "{count} tipus disponibles",
     lastValue: "Últim valor",
     noData: "Sense dades",
-    noDataAvailable: "No hi ha mesures disponibles"
+    noDataAvailable: "No hi ha mesures disponibles",
+    readings: "lectures"
   },
   validation: {
     required: "Aquest camp és obligatori",
@@ -224,6 +225,10 @@ export default {
     generateReport: "Generar Informe",
     viewHistory: "Veure Historial",
     viewDetails: "Veure Detalls",
+  },
+  reportWizard: {
+    reportTitle: "Informe de Mesuraments",
+    generatedOn: "Generat el"
   },
   errors: {
     loadingData: "Error carregant les dades",

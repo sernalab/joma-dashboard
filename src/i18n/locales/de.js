@@ -34,6 +34,7 @@ export default {
     noData: 'Keine Daten',
     noDataAvailable: 'Keine Messungen verfügbar',
     hasData: 'Daten verfügbar',
+    readings: 'Messungen'
   },
   validation: {
     required: "Dieses Feld ist erforderlich",
@@ -237,6 +238,8 @@ export default {
   reportWizard: {
     title: "Berichtsgenerator",
     subtitle: "Erstellen Sie professionelle Berichte Schritt für Schritt",
+    reportTitle: "Messbericht",
+    generatedOn: "Generiert am",
     steps: {
       client: "Kunde",
       vehicle: "Fahrzeug", 

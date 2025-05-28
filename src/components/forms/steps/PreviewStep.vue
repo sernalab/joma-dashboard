@@ -1,17 +1,23 @@
 <script setup>
-import { inject, ref, computed, onMounted } from 'vue';
+import { inject, ref, computed, onMounted, nextTick, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useReportStore } from '@/store/reportStore';
 import { pdfGenerator } from '@/utils/pdfGenerator';
+import LineChart from '@/components/charts/LineChart.vue';
+import html2canvas from 'html2canvas';
 
 const { t } = useI18n();
 const formData = inject('formData');
 const reportStore = useReportStore();
+const shouldGeneratePDF = inject('shouldGeneratePDF');
+const setGenerating = inject('setGenerating');
 
 const isGenerating = ref(false);
 const previewRef = ref(null);
 const chartsData = ref({});
 const loadingCharts = ref(true);
+const chartRefs = ref({});
+const hiddenChartsContainer = ref(null);
 
 // Computed properties for display
 const clientSummary = computed(() => {
@@ -55,11 +61,48 @@ onMounted(async () => {
   }
 });
 
+// Watch for PDF generation trigger
+watch(shouldGeneratePDF, (newValue) => {
+  if (newValue) {
+    generatePDF();
+  }
+});
+
 // Generate PDF function
 const generatePDF = async () => {
   isGenerating.value = true;
+  if (setGenerating) setGenerating(true);
   
   try {
+    // First, wait a bit for charts to be fully rendered
+    await nextTick();
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
+    // Capture chart images
+    const chartImages = {};
+    
+    // Show hidden charts container temporarily
+    if (hiddenChartsContainer.value) {
+      hiddenChartsContainer.value.style.display = 'block';
+      await nextTick();
+      await new Promise(resolve => setTimeout(resolve, 1000)); // Wait for charts to render
+      
+      // Capture each chart
+      for (const measurement of selectedMeasurements.value) {
+        const chartElement = document.getElementById(`hidden-chart-${measurement.value}`);
+        if (chartElement) {
+          const canvas = await html2canvas(chartElement, {
+            backgroundColor: '#ffffff',
+            scale: 2
+          });
+          chartImages[measurement.value] = canvas.toDataURL('image/png');
+        }
+      }
+      
+      // Hide the container again
+      hiddenChartsContainer.value.style.display = 'none';
+    }
+    
     // Create a temporary element for PDF generation
     const tempElement = document.createElement('div');
     tempElement.id = 'pdf-content';
@@ -75,14 +118,14 @@ const generatePDF = async () => {
     // Generate HTML content
     tempElement.innerHTML = `
       <div style="text-align: center; margin-bottom: 40px; border-bottom: 3px solid #f59e0b; padding-bottom: 20px;">
-        <h1 style="color: #1f2937; margin: 0; font-size: 28px; font-weight: bold;">INFORME DE MEDICIONES</h1>
-        <p style="color: #6b7280; margin: 10px 0 0 0; font-size: 14px;">Generado el ${new Date().toLocaleDateString()}</p>
+        <h1 style="color: #1f2937; margin: 0; font-size: 28px; font-weight: bold;">${t('reportWizard.reportTitle').toUpperCase()}</h1>
+        <p style="color: #6b7280; margin: 10px 0 0 0; font-size: 14px;">${t('reportWizard.generatedOn')} ${new Date().toLocaleDateString()}</p>
         ${formData.value.nombreTaller ? `<p style="color: #f59e0b; margin: 5px 0 0 0; font-size: 16px; font-weight: 600;">${formData.value.nombreTaller}</p>` : ''}
       </div>
       
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px;">
         <div>
-          <h2 style="color: #1f2937; font-size: 18px; margin-bottom: 15px; border-bottom: 2px solid #e5e7eb; padding-bottom: 5px;">DATOS DEL CLIENTE</h2>
+          <h2 style="color: #1f2937; font-size: 18px; margin-bottom: 15px; border-bottom: 2px solid #e5e7eb; padding-bottom: 5px;">${t('printView.clientData').toUpperCase()}</h2>
           ${clientSummary.value.map(item => `
             <div style="margin-bottom: 8px; display: flex;">
               <span style="font-weight: 600; color: #4b5563; min-width: 100px;">${item.label}:</span>
@@ -92,7 +135,7 @@ const generatePDF = async () => {
         </div>
         
         <div>
-          <h2 style="color: #1f2937; font-size: 18px; margin-bottom: 15px; border-bottom: 2px solid #e5e7eb; padding-bottom: 5px;">DATOS DEL VEHÍCULO</h2>
+          <h2 style="color: #1f2937; font-size: 18px; margin-bottom: 15px; border-bottom: 2px solid #e5e7eb; padding-bottom: 5px;">${t('printView.vehicleDetails').toUpperCase()}</h2>
           ${vehicleSummary.value.map(item => `
             <div style="margin-bottom: 8px; display: flex;">
               <span style="font-weight: 600; color: #4b5563; min-width: 100px;">${item.label}:</span>
@@ -104,44 +147,48 @@ const generatePDF = async () => {
       
       ${selectedMeasurements.value.length > 0 ? `
         <div style="margin-bottom: 30px;">
-          <h2 style="color: #1f2937; font-size: 18px; margin-bottom: 15px; border-bottom: 2px solid #e5e7eb; padding-bottom: 5px;">MEDICIONES SELECCIONADAS</h2>
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+          <h2 style="color: #1f2937; font-size: 18px; margin-bottom: 15px; border-bottom: 2px solid #e5e7eb; padding-bottom: 5px;">${t('printView.measurements').toUpperCase()}</h2>
+          <div style="display: flex; flex-direction: column; gap: 30px;">
             ${selectedMeasurements.value.map(measurement => {
               const chartData = chartsData.value[measurement.value];
               const hasData = chartData && chartData.data && chartData.data.length > 0;
               const lastValue = hasData ? chartData.data[chartData.data.length - 1] : null;
               const unit = chartData?.unit || '';
+              const chartImage = chartImages[measurement.value];
               
               return `
-                <div style="border: 1px solid #d1d5db; border-radius: 8px; overflow: hidden; background: white;">
-                  <div style="background: #f59e0b; color: white; padding: 12px 15px;">
-                    <h3 style="margin: 0; font-size: 14px; font-weight: 600;">${measurement.name}</h3>
+                <div style="border: 1px solid #d1d5db; border-radius: 8px; overflow: hidden; background: white; page-break-inside: avoid;">
+                  <div style="background: #f59e0b; color: white; padding: 12px 20px;">
+                    <h3 style="margin: 0; font-size: 16px; font-weight: 600;">${measurement.name}</h3>
                   </div>
-                  <div style="padding: 15px;">
+                  <div style="padding: 20px;">
                     ${hasData ? `
-                      <div style="margin-bottom: 10px;">
-                        <div style="font-size: 12px; color: #6b7280; margin-bottom: 4px;">Último valor registrado:</div>
-                        <div style="font-size: 24px; font-weight: bold; color: #1f2937;">${lastValue.y} ${unit}</div>
-                        <div style="font-size: 11px; color: #9ca3af; margin-top: 4px;">${new Date(lastValue.x).toLocaleString()}</div>
-                      </div>
-                      <div style="border-top: 1px solid #e5e7eb; padding-top: 10px; margin-top: 10px;">
-                        <div style="font-size: 12px; color: #6b7280;">
-                          <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
-                            <span>Total mediciones:</span>
-                            <span style="font-weight: 600; color: #1f2937;">${chartData.data.length}</span>
-                          </div>
+                      <div style="display: flex; justify-content: space-between; margin-bottom: 15px; padding: 15px; background: #f9fafb; border-radius: 6px;">
+                        <div>
+                          <div style="font-size: 12px; color: #6b7280; margin-bottom: 4px;">Último valor:</div>
+                          <div style="font-size: 20px; font-weight: bold; color: #1f2937;">${lastValue.y} ${unit}</div>
+                          <div style="font-size: 11px; color: #9ca3af;">${new Date(lastValue.x).toLocaleString()}</div>
+                        </div>
+                        <div style="text-align: right;">
+                          <div style="font-size: 12px; color: #6b7280; margin-bottom: 4px;">Total mediciones:</div>
+                          <div style="font-size: 20px; font-weight: bold; color: #1f2937;">${chartData.data.length}</div>
                           ${chartData.data.length > 1 ? `
-                            <div style="display: flex; justify-content: space-between;">
-                              <span>Rango:</span>
-                              <span style="font-weight: 600; color: #1f2937;">
-                                ${Math.min(...chartData.data.map(d => d.y))} - ${Math.max(...chartData.data.map(d => d.y))} ${unit}
-                              </span>
+                            <div style="font-size: 11px; color: #9ca3af;">
+                              Rango: ${Math.min(...chartData.data.map(d => d.y))} - ${Math.max(...chartData.data.map(d => d.y))} ${unit}
                             </div>
                           ` : ''}
                         </div>
                       </div>
+                      
+                      ${chartImage ? `
+                        <img src="${chartImage}" style="width: 100%; height: 300px; object-fit: contain; border: 1px solid #e5e7eb; border-radius: 4px; background: white;" />
+                      ` : `
+                        <div style="height: 300px; background: #f3f4f6; border: 1px solid #e5e7eb; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #6b7280;">
+                          <span>Generando gráfica...</span>
+                        </div>
+                      `}
                     ` : `
-                      <div style="text-align: center; padding: 20px; color: #6b7280;">
+                      <div style="text-align: center; padding: 40px; color: #6b7280;">
                         <div style="font-size: 14px;">Sin datos disponibles</div>
                       </div>
                     `}
@@ -155,7 +202,7 @@ const generatePDF = async () => {
       
       ${formData.value.observaciones ? `
         <div style="margin-bottom: 30px;">
-          <h2 style="color: #1f2937; font-size: 18px; margin-bottom: 15px; border-bottom: 2px solid #e5e7eb; padding-bottom: 5px;">OBSERVACIONES</h2>
+          <h2 style="color: #1f2937; font-size: 18px; margin-bottom: 15px; border-bottom: 2px solid #e5e7eb; padding-bottom: 5px;">${t('printView.observations').toUpperCase()}</h2>
           <div style="background: #f9fafb; border: 1px solid #d1d5db; border-radius: 8px; padding: 20px;">
             <p style="margin: 0; line-height: 1.6; color: #1f2937;">${formData.value.observaciones}</p>
           </div>
@@ -182,6 +229,7 @@ const generatePDF = async () => {
     // You might want to show a toast notification here
   } finally {
     isGenerating.value = false;
+    if (setGenerating) setGenerating(false);
   }
 };
 
@@ -317,22 +365,26 @@ defineExpose({
       </template>
     </Card>
 
-    <!-- Generate button -->
-    <div class="generate-section">
-      <div class="generate-info">
-        <h4>{{ t('reportWizard.readyToGenerate') }}</h4>
-        <p>{{ t('reportWizard.generateInfo') }}</p>
+    
+    <!-- Hidden container for charts rendering -->
+    <div 
+      ref="hiddenChartsContainer" 
+      style="position: absolute; left: -9999px; top: -9999px; width: 800px; display: none;"
+    >
+      <div
+        v-for="measurement in selectedMeasurements"
+        :key="`hidden-${measurement.value}`"
+        :id="`hidden-chart-${measurement.value}`"
+        style="margin-bottom: 20px; background: white; padding: 20px;"
+      >
+        <h3 style="margin-bottom: 10px;">{{ measurement.name }}</h3>
+        <div style="height: 300px;">
+          <LineChart 
+            v-if="chartsData[measurement.value]"
+            :data="chartsData[measurement.value]"
+          />
+        </div>
       </div>
-      <Button
-        :label="t('reportWizard.generateReport')"
-        icon="pi pi-file-pdf"
-        iconPos="right"
-        size="large"
-        :loading="isGenerating"
-        :disabled="selectedMeasurements.length === 0"
-        @click="generatePDF"
-        class="generate-btn"
-      />
     </div>
   </div>
 </template>
@@ -523,37 +575,6 @@ defineExpose({
   font-style: italic;
 }
 
-.generate-section {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: var(--p-surface-0);
-  border: 1px solid var(--p-surface-border);
-  border-radius: 0.75rem;
-  padding: 2rem;
-  gap: 2rem;
-}
-
-.app-dark .generate-section {
-  background: var(--p-surface-900);
-}
-
-.generate-info h4 {
-  margin: 0 0 0.5rem 0;
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--p-text-color);
-}
-
-.generate-info p {
-  margin: 0;
-  color: var(--p-text-muted-color);
-  line-height: 1.4;
-}
-
-.generate-btn {
-  flex-shrink: 0;
-}
 
 /* Responsive */
 @media (max-width: 768px) {

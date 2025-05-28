@@ -34,6 +34,7 @@ export default {
     noData: "Nincs adat",
     noDataAvailable: "Nincsenek elérhető mérések",
     hasData: "Elérhető adatok",
+    readings: "leolvasások"
   },
   validation: {
     required: "Ez a mező kötelező",
@@ -237,6 +238,8 @@ export default {
   reportWizard: {
     title: "Jelentéskészítő",
     subtitle: "Készítsen szakmai jelentéseket lépésről lépésre",
+    reportTitle: "Mérési Jelentés",
+    generatedOn: "Létrehozva",
     steps: {
       client: "Ügyfél",
       vehicle: "Jármű", 

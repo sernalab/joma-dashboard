@@ -191,6 +191,8 @@ export default {
   reportWizard: {
     title: "Report Generator",
     subtitle: "Create professional reports step by step",
+    reportTitle: "Measurements Report",
+    generatedOn: "Generated on",
     steps: {
       client: "Client",
       vehicle: "Vehicle", 

@@ -10,6 +10,7 @@ const updateFormData = inject('updateFormData');
 const touched = ref({
   nombreTaller: false,
   nombre: false,
+  telefono: false,
   email: false
 });
 
@@ -75,11 +76,15 @@ const isValidEmail = computed(() => {
             v-model="formData.telefono"
             @input="updateField('telefono', $event.target.value)"
             class="w-full"
+            :class="{ 'p-invalid': touched.telefono && !formData.telefono }"
           />
           <label for="phone">
-            {{ t('printView.phone') }}
+            {{ t('printView.phone') }} *
           </label>
         </FloatLabel>
+        <small v-if="touched.telefono && !formData.telefono" class="p-error">
+          {{ t('validation.required') }}
+        </small>
       </div>
 
       <!-- Email -->
@@ -90,14 +95,17 @@ const isValidEmail = computed(() => {
             v-model="formData.email"
             @input="updateField('email', $event.target.value)"
             class="w-full"
-            :class="{ 'p-invalid': touched.email && formData.email && !isValidEmail }"
+            :class="{ 'p-invalid': touched.email && (!formData.email || (formData.email && !isValidEmail)) }"
             type="email"
           />
           <label for="email">
-            {{ t('printView.email') }}
+            {{ t('printView.email') }} *
           </label>
         </FloatLabel>
-        <small v-if="touched.email && formData.email && !isValidEmail" class="p-error">
+        <small v-if="touched.email && !formData.email" class="p-error">
+          {{ t('validation.required') }}
+        </small>
+        <small v-else-if="touched.email && formData.email && !isValidEmail" class="p-error">
           {{ t('validation.invalidEmail') }}
         </small>
       </div>

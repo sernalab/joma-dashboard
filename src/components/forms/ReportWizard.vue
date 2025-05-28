@@ -68,12 +68,18 @@ const currentStepComponent = computed(() => steps.value[currentStep.value].compo
 const isFirstStep = computed(() => currentStep.value === 0);
 const isLastStep = computed(() => currentStep.value === steps.value.length - 1);
 const canProceed = computed(() => validateCurrentStep());
+const selectedMeasurements = computed(() => formData.value.graficos || []);
 
 // Validation functions
 const validateCurrentStep = () => {
   switch (currentStep.value) {
     case 0: // Client
-      return formData.value.nombreTaller && formData.value.nombre;
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return formData.value.nombreTaller && 
+             formData.value.nombre && 
+             formData.value.telefono && 
+             formData.value.email && 
+             emailRegex.test(formData.value.email);
     case 1: // Vehicle
       return formData.value.marca && formData.value.modelo;
     case 2: // Measurements
@@ -115,9 +121,24 @@ provide('updateFormData', (updates) => {
 // Emit for parent component
 const emit = defineEmits(['generate-pdf']);
 
-const generateReport = () => {
-  emit('generate-pdf', formData.value);
+const isGenerating = ref(false);
+
+// Event bus for triggering PDF generation
+const shouldGeneratePDF = ref(false);
+
+const generateReport = async () => {
+  shouldGeneratePDF.value = true;
+  // Reset after a short delay
+  setTimeout(() => {
+    shouldGeneratePDF.value = false;
+  }, 100);
 };
+
+// Provide the trigger to child components
+provide('shouldGeneratePDF', shouldGeneratePDF);
+provide('setGenerating', (value) => {
+  isGenerating.value = value;
+});
 </script>
 
 <template>
@@ -215,9 +236,10 @@ const generateReport = () => {
               :label="t('reportWizard.generateReport')"
               icon="pi pi-file-pdf"
               iconPos="right"
-              :disabled="!canProceed"
+              :disabled="!canProceed || selectedMeasurements.length === 0"
+              :loading="isGenerating"
               @click="generateReport"
-              severity="success"
+              severity="warning"
             />
           </div>
         </div>

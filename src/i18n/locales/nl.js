@@ -34,6 +34,7 @@ export default {
     noData: "Geen gegevens",
     noDataAvailable: "Geen metingen beschikbaar",
     hasData: "Gegevens beschikbaar",
+    readings: "metingen"
   },
   validation: {
     required: "Dit veld is verplicht",
@@ -237,6 +238,8 @@ export default {
   reportWizard: {
     title: "Rapportgenerator",
     subtitle: "Maak professionele rapporten stap voor stap",
+    reportTitle: "Meetrapport",
+    generatedOn: "Gegenereerd op",
     steps: {
       client: "Klant",
       vehicle: "Voertuig", 

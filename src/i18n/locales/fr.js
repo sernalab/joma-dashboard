@@ -34,6 +34,7 @@ export default {
     noData: 'Aucune donnée',
     noDataAvailable: 'Aucune mesure disponible',
     hasData: 'Données disponibles',
+    readings: 'lectures'
   },
   validation: {
     required: "Ce champ est obligatoire",
@@ -237,6 +238,8 @@ export default {
   reportWizard: {
     title: "Générateur de Rapports",
     subtitle: "Créez des rapports professionnels étape par étape",
+    reportTitle: "Rapport de Mesures",
+    generatedOn: "Généré le",
     steps: {
       client: "Client",
       vehicle: "Véhicule", 

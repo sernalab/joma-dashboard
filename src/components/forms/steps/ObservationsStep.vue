@@ -64,6 +64,9 @@ const remainingChars = computed(() => characterLimit - (formData.value.observaci
 <style scoped>
 .observations-step {
   animation: slideIn 0.3s ease-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 @keyframes slideIn {
@@ -79,6 +82,7 @@ const remainingChars = computed(() => characterLimit - (formData.value.observaci
 
 .observations-container {
   max-width: 600px;
+  width: 100%;
 }
 
 .info-card {
@@ -87,6 +91,7 @@ const remainingChars = computed(() => characterLimit - (formData.value.observaci
   border-radius: 0.75rem;
   padding: 1.25rem;
   max-width: 600px;
+  width: 100%;
 }
 
 .app-dark .info-card {

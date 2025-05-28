@@ -194,6 +194,8 @@ export default {
   reportWizard: {
     title: "Generatore di Rapporti",
     subtitle: "Crea rapporti professionali passo dopo passo",
+    reportTitle: "Rapporto delle Misurazioni",
+    generatedOn: "Generato il",
     steps: {
       client: "Cliente",
       vehicle: "Veicolo", 
@@ -242,6 +244,7 @@ export default {
     noData: "Nessun dato",
     noDataAvailable: "Nessuna misurazione disponibile",
     hasData: "Dati disponibili",
+    readings: "letture"
   },
   common: {
     locale: "it-IT",

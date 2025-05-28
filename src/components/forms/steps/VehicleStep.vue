@@ -21,12 +21,6 @@ const updateField = (field, value) => {
 };
 
 // Validation
-const currentYear = new Date().getFullYear();
-const isValidYear = computed(() => {
-  if (!formData.value.año) return true;
-  return formData.value.año >= 1900 && formData.value.año <= currentYear + 1;
-});
-
 const isValidMileage = computed(() => {
   if (!formData.value.kilometraje) return true;
   return formData.value.kilometraje >= 0 && formData.value.kilometraje <= 2000000;
@@ -98,18 +92,12 @@ const isValidMileage = computed(() => {
             v-model="formData.año"
             @input="updateField('año', $event.value)"
             class="w-full"
-            :class="{ 'p-invalid': touched.año && formData.año && !isValidYear }"
-            :min="1900"
-            :max="currentYear + 1"
             :useGrouping="false"
           />
           <label for="year">
             {{ t('printView.year') }}
           </label>
         </FloatLabel>
-        <small v-if="touched.año && formData.año && !isValidYear" class="p-error">
-          {{ t('validation.invalidYear') }}
-        </small>
       </div>
 
       <!-- Mileage -->

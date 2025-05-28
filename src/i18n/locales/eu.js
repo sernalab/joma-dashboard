@@ -27,7 +27,8 @@ export default {
     typesAvailable: "{count} mota eskuragarri",
     lastValue: "Azken balioa",
     noData: "Daturik gabe",
-    noDataAvailable: "Ez dago neurketarik eskuragarri"
+    noDataAvailable: "Ez dago neurketarik eskuragarri",
+    readings: "neurriak"
   },
   validation: {
     required: "Eremu hau beharrezkoa da",
@@ -220,6 +221,10 @@ export default {
     generateReport: "Txostena Sortu",
     viewHistory: "Historia Ikusi",
     viewDetails: "Xehetasunak Ikusi",
+  },
+  reportWizard: {
+    reportTitle: "Neurrien Txostena",
+    generatedOn: "Sortua"
   },
   errors: {
     loadingData: "Errorea datuak kargatzean",
