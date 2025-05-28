@@ -19,7 +19,12 @@ export default {
     trend: "Trend",
     statistics: "Statistieken",
     activities: "Activiteiten",
-    quickActions: "Snelle Acties"
+    quickActions: "Snelle Acties",
+    previous: "Vorige",
+    next: "Volgende",
+    selectAll: "Alles Selecteren",
+    clearAll: "Alles Wissen",
+    charactersLeft: "tekens over"
   },
   measurements: {
     title: "Metingen",
@@ -27,10 +32,15 @@ export default {
     typesAvailable: "{count} typen beschikbaar",
     lastValue: "Laatste waarde",
     noData: "Geen gegevens",
-    noDataAvailable: "Geen metingen beschikbaar"
+    noDataAvailable: "Geen metingen beschikbaar",
+    hasData: "Gegevens beschikbaar",
   },
   validation: {
     required: "Dit veld is verplicht",
+    invalidEmail: "Voer een geldig e-mailadres in",
+    invalidPhone: "Voer een geldig telefoonnummer in",
+    invalidYear: "Het jaar moet tussen 1900 en het huidige jaar liggen",
+    invalidMileage: "De kilometerstand moet een geldig getal zijn",
     email: "Voer een geldig e-mailadres in",
     minLength: "Minimale lengte is {min} tekens",
     invalidFormat: "Ongeldig formaat"
@@ -223,6 +233,49 @@ export default {
     generateReport: "Rapport Genereren",
     viewHistory: "Geschiedenis Bekijken",
     viewDetails: "Details Bekijken",
+  },
+  reportWizard: {
+    title: "Rapportgenerator",
+    subtitle: "Maak professionele rapporten stap voor stap",
+    steps: {
+      client: "Klant",
+      vehicle: "Voertuig", 
+      measurements: "Metingen",
+      observations: "Opmerkingen",
+      preview: "Voorbeeld"
+    },
+    descriptions: {
+      step1: "Werkplaats- en klantinformatie",
+      step2: "Details van het te diagnosticeren voertuig",
+      step3: "Selecteer de op te nemen metingen",
+      step4: "Voeg extra opmerkingen toe",
+      step5: "Beoordeel en genereer het rapport"
+    },
+    progress: "Stap {current} van {total}",
+    generateReport: "Rapport Genereren",
+    clientInfo: {
+      title: "Belangrijke Informatie",
+      description: "Velden gemarkeerd met * zijn verplicht. Deze informatie verschijnt in het eindrapport."
+    },
+    vehicleSummary: {
+      title: "Voertuigoverzicht"
+    },
+    measurementsInfo: "Selecteer de metingen die u in het rapport wilt opnemen. Alleen metingen met beschikbare gegevens worden getoond.",
+    selectedMeasurements: "{count} meting(en) geselecteerd",
+    noDataTitle: "Geen metingen beschikbaar",
+    noDataDescription: "Geen metingen met gegevens gevonden. Voer eerst enkele metingen uit.",
+    observationsHelp: "Voeg eventuele opmerkingen, aanbevelingen of extra notities over de diagnose toe.",
+    observationsTips: {
+      title: "Tips voor opmerkingen",
+      tip1: "Voeg onderhoudsaanbevelingen toe",
+      tip2: "Vermeld gevonden afwijkingen",
+      tip3: "Voeg voorgestelde volgende stappen toe"
+    },
+    noClientData: "Geen klantgegevens",
+    noVehicleData: "Geen voertuiggegevens",
+    noMeasurementsSelected: "Geen metingen geselecteerd",
+    readyToGenerate: "Klaar om te genereren!",
+    generateInfo: "Beoordeel alle informatie en genereer uw professionele PDF-rapport."
   },
   errors: {
     loadingData: "Fout bij het laden van gegevens",

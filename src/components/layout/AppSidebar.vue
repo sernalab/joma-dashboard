@@ -1,7 +1,5 @@
 <script setup>
 import { defineProps, defineEmits } from 'vue';
-import Button from 'primevue/button';
-import Badge from 'primevue/badge';
 
 const emit = defineEmits(['toggle', 'navigate']);
 

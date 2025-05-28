@@ -191,6 +191,49 @@ export default {
     viewHistory: "Visualizza Cronologia",
     viewDetails: "Visualizza Dettagli",
   },
+  reportWizard: {
+    title: "Generatore di Rapporti",
+    subtitle: "Crea rapporti professionali passo dopo passo",
+    steps: {
+      client: "Cliente",
+      vehicle: "Veicolo", 
+      measurements: "Misurazioni",
+      observations: "Osservazioni",
+      preview: "Anteprima"
+    },
+    descriptions: {
+      step1: "Informazioni dell'officina e del cliente",
+      step2: "Dettagli del veicolo da diagnosticare",
+      step3: "Seleziona le misurazioni da includere",
+      step4: "Aggiungi osservazioni aggiuntive",
+      step5: "Rivedi e genera il rapporto"
+    },
+    progress: "Passo {current} di {total}",
+    generateReport: "Genera Rapporto",
+    clientInfo: {
+      title: "Informazioni Importanti",
+      description: "I campi contrassegnati con * sono obbligatori. Queste informazioni appariranno nel rapporto finale."
+    },
+    vehicleSummary: {
+      title: "Riepilogo Veicolo"
+    },
+    measurementsInfo: "Seleziona le misurazioni che vuoi includere nel rapporto. Vengono mostrate solo le misurazioni con dati disponibili.",
+    selectedMeasurements: "{count} misurazione/i selezionata/e",
+    noDataTitle: "Nessuna misurazione disponibile",
+    noDataDescription: "Nessuna misurazione con dati trovata. Esegui prima alcune misurazioni.",
+    observationsHelp: "Aggiungi qualsiasi osservazione, raccomandazione o nota aggiuntiva sulla diagnosi.",
+    observationsTips: {
+      title: "Suggerimenti per le osservazioni",
+      tip1: "Includi raccomandazioni di manutenzione",
+      tip2: "Menziona qualsiasi anomalia trovata",
+      tip3: "Aggiungi i prossimi passi suggeriti"
+    },
+    noClientData: "Nessun dato cliente",
+    noVehicleData: "Nessun dato veicolo",
+    noMeasurementsSelected: "Nessuna misurazione selezionata",
+    readyToGenerate: "Pronto per generare!",
+    generateInfo: "Rivedi tutte le informazioni e genera il tuo rapporto PDF professionale."
+  },
   measurements: {
     title: "Misurazioni",
     allTypes: "Tutti i tipi di misurazione",
@@ -198,6 +241,7 @@ export default {
     lastValue: "Ultimo valore",
     noData: "Nessun dato",
     noDataAvailable: "Nessuna misurazione disponibile",
+    hasData: "Dati disponibili",
   },
   common: {
     locale: "it-IT",
@@ -208,11 +252,11 @@ export default {
     darkMode: "Modalità scura",
     profile: "Profilo",
     settings: "Impostazioni",
-    dashboard: "Pannello di controllo",
+    dashboard: "Dashboard",
     reports: "Rapporti",
     clients: "Clienti",
     newMeasurement: "Nuova misurazione",
-    viewAll: "Vedi tutto",
+    viewAll: "Vedi Tutto",
     recent: "Recente",
     today: "Oggi",
     thisWeek: "Questa settimana",
@@ -221,14 +265,20 @@ export default {
     trend: "Tendenza",
     statistics: "Statistiche",
     activities: "Attività",
-    quickActions: "Azioni rapide"
+    quickActions: "Azioni rapide",
+    previous: "Precedente",
+    next: "Successivo",
+    selectAll: "Seleziona Tutto",
+    clearAll: "Cancella Tutto",
+    charactersLeft: "caratteri rimasti"
   },
   validation: {
     required: "Questo campo è obbligatorio",
-    invalidEmail: "Inserisci un indirizzo email valido",
+    invalidEmail: "Inserisci un'email valida",
     invalidPhone: "Inserisci un numero di telefono valido",
+    invalidYear: "L'anno deve essere tra il 1900 e l'anno corrente",
+    invalidMileage: "Il chilometraggio deve essere un numero valido",
     phoneTooShort: "Il telefono deve avere almeno 6 cifre",
-    invalidYear: "Inserisci un anno tra {min} e {max}",
     invalidLicensePlate: "Inserisci una targa valida",
     mustBePositive: "Il valore deve essere positivo",
     minLength: "La lunghezza minima è di {min} caratteri",

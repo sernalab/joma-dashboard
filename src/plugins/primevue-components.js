@@ -15,6 +15,9 @@ import { Form } from "@primevue/forms";
 import Textarea from "primevue/textarea";
 import ProgressBar from "primevue/progressbar";
 import Tooltip from "primevue/tooltip";
+import Steps from "primevue/steps";
+import FloatLabel from "primevue/floatlabel";
+import Checkbox from "primevue/checkbox";
 
 // 2. Directive Imports
 import Ripple from "primevue/ripple";
@@ -43,6 +46,9 @@ const components = {
   InputNumber,
   Textarea,
   ProgressBar,
+  Steps,
+  FloatLabel,
+  Checkbox,
 };
 
 // 4. Setup Function

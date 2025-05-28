@@ -1,7 +1,5 @@
 <script setup>
 import { ref, defineProps, defineEmits } from 'vue';
-import Avatar from 'primevue/avatar';
-import Menu from 'primevue/menu';
 
 const emit = defineEmits(['toggle-menu']);
 const userMenuRef = ref(null);

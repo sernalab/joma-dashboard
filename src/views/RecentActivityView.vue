@@ -2,11 +2,8 @@
 import { ref, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router';
-import Card from 'primevue/card';
-import Button from 'primevue/button';
 import Dropdown from 'primevue/dropdown';
 import Calendar from 'primevue/calendar';
-import InputText from 'primevue/inputtext';
 
 const { t } = useI18n();
 const router = useRouter();

@@ -188,6 +188,65 @@ export default {
     viewHistory: "View History",
     viewDetails: "View Details",
   },
+  reportWizard: {
+    title: "Report Generator",
+    subtitle: "Create professional reports step by step",
+    steps: {
+      client: "Client",
+      vehicle: "Vehicle", 
+      measurements: "Measurements",
+      observations: "Observations",
+      preview: "Preview"
+    },
+    descriptions: {
+      step1: "Workshop and client information",
+      step2: "Vehicle details to diagnose",
+      step3: "Select measurements to include",
+      step4: "Add additional observations",
+      step5: "Review and generate report"
+    },
+    progress: "Step {current} of {total}",
+    generateReport: "Generate Report",
+    clientInfo: {
+      title: "Important Information",
+      description: "Fields marked with * are required. This information will appear in the final report."
+    },
+    vehicleSummary: {
+      title: "Vehicle Summary"
+    },
+    measurementsInfo: "Select the measurements you want to include in the report. Only measurements with available data are shown.",
+    selectedMeasurements: "{count} measurement(s) selected",
+    noDataTitle: "No measurements available",
+    noDataDescription: "No measurements with data found. Perform some measurements first.",
+    observationsHelp: "Add any observation, recommendation or additional note about the diagnosis.",
+    observationsTips: {
+      title: "Tips for observations",
+      tip1: "Include maintenance recommendations",
+      tip2: "Mention any anomaly found",
+      tip3: "Add suggested next steps"
+    },
+    noClientData: "No client data",
+    noVehicleData: "No vehicle data",
+    noMeasurementsSelected: "No measurements selected",
+    readyToGenerate: "Ready to generate!",
+    generateInfo: "Review all information and generate your professional PDF report."
+  },
+  validation: {
+    required: "This field is required",
+    invalidEmail: "Enter a valid email",
+    invalidPhone: "Enter a valid phone number",
+    invalidYear: "Year must be between 1900 and current year",
+    invalidMileage: "Mileage must be a valid number"
+  },
+  common: {
+    dashboard: "Dashboard",
+    previous: "Previous",
+    next: "Next",
+    selectAll: "Select All",
+    clearAll: "Clear All",
+    charactersLeft: "characters left",
+    viewAll: "View All"
+  },
   measurements: {
     title: "Measurements",
     allTypes: "All measurement types",
@@ -195,6 +254,8 @@ export default {
     lastValue: "Last value",
     noData: "No data",
     noDataAvailable: "No measurements available",
+    hasData: "Data available",
+    readings: "readings",
   },
   common: {
     locale: "en-US",

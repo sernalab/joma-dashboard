@@ -6,7 +6,7 @@ export default {
     darkMode: "Tryb Ciemny",
     profile: "Profil",
     settings: "Ustawienia",
-    dashboard: "Panel",
+    dashboard: "Dashboard",
     reports: "Raporty",
     clients: "Klienci",
     newMeasurement: "Nowy Pomiar",
@@ -19,7 +19,12 @@ export default {
     trend: "Trend",
     statistics: "Statystyki",
     activities: "Aktywności",
-    quickActions: "Szybkie Akcje"
+    quickActions: "Szybkie Akcje",
+    previous: "Poprzedni",
+    next: "Następny",
+    selectAll: "Wybierz Wszystko",
+    clearAll: "Wyczyść Wszystko",
+    charactersLeft: "pozostało znaków"
   },
   measurements: {
     title: "Pomiary",
@@ -27,10 +32,15 @@ export default {
     typesAvailable: "{count} dostępnych typów",
     lastValue: "Ostatnia wartość",
     noData: "Brak danych",
-    noDataAvailable: "Brak dostępnych pomiarów"
+    noDataAvailable: "Brak dostępnych pomiarów",
+    hasData: "Dostępne dane",
   },
   validation: {
     required: "To pole jest wymagane",
+    invalidEmail: "Wprowadź prawidłowy email",
+    invalidPhone: "Wprowadź prawidłowy numer telefonu",
+    invalidYear: "Rok musi być między 1900 a bieżącym rokiem",
+    invalidMileage: "Przebieg musi być prawidłową liczbą",
     email: "Proszę wprowadzić prawidłowy adres e-mail",
     minLength: "Minimalna długość to {min} znaków",
     invalidFormat: "Nieprawidłowy format"
@@ -221,6 +231,49 @@ export default {
     generateReport: "Generuj Raport",
     viewHistory: "Zobacz Historię",
     viewDetails: "Zobacz Szczegóły",
+  },
+  reportWizard: {
+    title: "Generator Raportów",
+    subtitle: "Twórz profesjonalne raporty krok po kroku",
+    steps: {
+      client: "Klient",
+      vehicle: "Pojazd", 
+      measurements: "Pomiary",
+      observations: "Obserwacje",
+      preview: "Podgląd"
+    },
+    descriptions: {
+      step1: "Informacje o warsztacie i kliencie",
+      step2: "Szczegóły pojazdu do diagnozy",
+      step3: "Wybierz pomiary do uwzględnienia",
+      step4: "Dodaj dodatkowe obserwacje",
+      step5: "Przejrzyj i wygeneruj raport"
+    },
+    progress: "Krok {current} z {total}",
+    generateReport: "Generuj Raport",
+    clientInfo: {
+      title: "Ważne Informacje",
+      description: "Pola oznaczone * są wymagane. Te informacje pojawią się w końcowym raporcie."
+    },
+    vehicleSummary: {
+      title: "Podsumowanie Pojazdu"
+    },
+    measurementsInfo: "Wybierz pomiary, które chcesz uwzględnić w raporcie. Pokazywane są tylko pomiary z dostępnymi danymi.",
+    selectedMeasurements: "{count} wybrany(ch) pomiar(ów)",
+    noDataTitle: "Brak dostępnych pomiarów",
+    noDataDescription: "Nie znaleziono pomiarów z danymi. Najpierw wykonaj kilka pomiarów.",
+    observationsHelp: "Dodaj wszelkie obserwacje, zalecenia lub dodatkowe uwagi dotyczące diagnozy.",
+    observationsTips: {
+      title: "Wskazówki do obserwacji",
+      tip1: "Uwzględnij zalecenia konserwacyjne",
+      tip2: "Wspomnij o znalezionych anomaliach",
+      tip3: "Dodaj sugerowane następne kroki"
+    },
+    noClientData: "Brak danych klienta",
+    noVehicleData: "Brak danych pojazdu",
+    noMeasurementsSelected: "Nie wybrano pomiarów",
+    readyToGenerate: "Gotowe do generowania!",
+    generateInfo: "Przejrzyj wszystkie informacje i wygeneruj profesjonalny raport PDF."
   },
   errors: {
     loadingData: "Błąd podczas ładowania danych",

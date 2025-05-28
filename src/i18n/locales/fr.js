@@ -6,11 +6,11 @@ export default {
     darkMode: 'Mode sombre',
     profile: 'Profil',
     settings: 'Paramètres',
-    dashboard: 'Tableau de bord',
+    dashboard: 'Tableau de Bord',
     reports: 'Rapports',
     clients: 'Clients',
     newMeasurement: 'Nouvelle mesure',
-    viewAll: 'Voir tout',
+    viewAll: 'Voir Tout',
     recent: 'Récent',
     today: 'Aujourd\'hui',
     thisWeek: 'Cette semaine',
@@ -19,7 +19,12 @@ export default {
     trend: 'Tendance',
     statistics: 'Statistiques',
     activities: 'Activités',
-    quickActions: 'Actions rapides'
+    quickActions: 'Actions rapides',
+    previous: "Précédent",
+    next: "Suivant",
+    selectAll: "Tout Sélectionner",
+    clearAll: "Tout Effacer",
+    charactersLeft: "caractères restants"
   },
   measurements: {
     title: 'Mesures',
@@ -27,10 +32,15 @@ export default {
     typesAvailable: '{count} types disponibles',
     lastValue: 'Dernière valeur',
     noData: 'Aucune donnée',
-    noDataAvailable: 'Aucune mesure disponible'
+    noDataAvailable: 'Aucune mesure disponible',
+    hasData: 'Données disponibles',
   },
   validation: {
-    required: 'Ce champ est obligatoire',
+    required: "Ce champ est obligatoire",
+    invalidEmail: "Entrez un email valide",
+    invalidPhone: "Entrez un numéro de téléphone valide",
+    invalidYear: "L'année doit être entre 1900 et l'année actuelle",
+    invalidMileage: "Le kilométrage doit être un nombre valide",
     email: 'Veuillez entrer une adresse email valide',
     minLength: 'Ce champ doit contenir au moins {min} caractères',
     invalidFormat: 'Format invalide'
@@ -223,6 +233,49 @@ export default {
     generateReport: "Générer un rapport",
     viewHistory: "Voir l'historique",
     viewDetails: "Voir les détails",
+  },
+  reportWizard: {
+    title: "Générateur de Rapports",
+    subtitle: "Créez des rapports professionnels étape par étape",
+    steps: {
+      client: "Client",
+      vehicle: "Véhicule", 
+      measurements: "Mesures",
+      observations: "Observations",
+      preview: "Aperçu"
+    },
+    descriptions: {
+      step1: "Informations de l'atelier et du client",
+      step2: "Détails du véhicule à diagnostiquer",
+      step3: "Sélectionnez les mesures à inclure",
+      step4: "Ajoutez des observations supplémentaires",
+      step5: "Révisez et générez le rapport"
+    },
+    progress: "Étape {current} de {total}",
+    generateReport: "Générer le Rapport",
+    clientInfo: {
+      title: "Informations Importantes",
+      description: "Les champs marqués d'un * sont obligatoires. Ces informations apparaîtront dans le rapport final."
+    },
+    vehicleSummary: {
+      title: "Résumé du Véhicule"
+    },
+    measurementsInfo: "Sélectionnez les mesures que vous voulez inclure dans le rapport. Seules les mesures avec des données disponibles sont affichées.",
+    selectedMeasurements: "{count} mesure(s) sélectionnée(s)",
+    noDataTitle: "Aucune mesure disponible",
+    noDataDescription: "Aucune mesure avec des données trouvée. Effectuez d'abord quelques mesures.",
+    observationsHelp: "Ajoutez toute observation, recommandation ou note supplémentaire sur le diagnostic.",
+    observationsTips: {
+      title: "Conseils pour les observations",
+      tip1: "Incluez des recommandations de maintenance",
+      tip2: "Mentionnez toute anomalie trouvée",
+      tip3: "Ajoutez les prochaines étapes suggérées"
+    },
+    noClientData: "Aucune donnée client",
+    noVehicleData: "Aucune donnée véhicule",
+    noMeasurementsSelected: "Aucune mesure sélectionnée",
+    readyToGenerate: "Prêt à générer !",
+    generateInfo: "Révisez toutes les informations et générez votre rapport PDF professionnel."
   },
   errors: {
     loadingData: "Erreur lors du chargement des données",

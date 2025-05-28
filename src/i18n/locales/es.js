@@ -189,6 +189,65 @@ export default {
     viewHistory: "Ver Historial",
     viewDetails: "Ver Detalles",
   },
+  reportWizard: {
+    title: "Generador de Reportes",
+    subtitle: "Crea informes profesionales paso a paso",
+    steps: {
+      client: "Cliente",
+      vehicle: "Vehículo", 
+      measurements: "Mediciones",
+      observations: "Observaciones",
+      preview: "Vista Previa"
+    },
+    descriptions: {
+      step1: "Información del taller y cliente",
+      step2: "Detalles del vehículo a diagnosticar",
+      step3: "Selecciona las mediciones a incluir",
+      step4: "Añade observaciones adicionales",
+      step5: "Revisa y genera el reporte"
+    },
+    progress: "Paso {current} de {total}",
+    generateReport: "Generar Reporte",
+    clientInfo: {
+      title: "Información Importante",
+      description: "Los campos marcados con * son obligatorios. Esta información aparecerá en el reporte final."
+    },
+    vehicleSummary: {
+      title: "Resumen del Vehículo"
+    },
+    measurementsInfo: "Selecciona las mediciones que quieres incluir en el reporte. Solo se muestran las mediciones con datos disponibles.",
+    selectedMeasurements: "{count} medición(es) seleccionada(s)",
+    noDataTitle: "No hay mediciones disponibles",
+    noDataDescription: "No se encontraron mediciones con datos. Realiza algunas mediciones primero.",
+    observationsHelp: "Añade cualquier observación, recomendación o nota adicional sobre el diagnóstico.",
+    observationsTips: {
+      title: "Consejos para las observaciones",
+      tip1: "Incluye recomendaciones de mantenimiento",
+      tip2: "Menciona cualquier anomalía encontrada",
+      tip3: "Añade próximos pasos sugeridos"
+    },
+    noClientData: "No hay datos del cliente",
+    noVehicleData: "No hay datos del vehículo",
+    noMeasurementsSelected: "No se han seleccionado mediciones",
+    readyToGenerate: "¡Listo para generar!",
+    generateInfo: "Revisa toda la información y genera tu reporte profesional en PDF."
+  },
+  validation: {
+    required: "Este campo es obligatorio",
+    invalidEmail: "Ingresa un email válido",
+    invalidPhone: "Ingresa un teléfono válido",
+    invalidYear: "Año debe estar entre 1900 y el año actual",
+    invalidMileage: "Kilometraje debe ser un número válido"
+  },
+  common: {
+    dashboard: "Dashboard",
+    previous: "Anterior",
+    next: "Siguiente",
+    selectAll: "Seleccionar Todo",
+    clearAll: "Limpiar Todo",
+    charactersLeft: "caracteres restantes",
+    viewAll: "Ver Todo"
+  },
   measurements: {
     title: "Mediciones",
     allTypes: "Todos los tipos de medición",
@@ -196,6 +255,8 @@ export default {
     lastValue: "Último valor",
     noData: "Sin datos",
     noDataAvailable: "No hay mediciones disponibles",
+    hasData: "Datos disponibles",
+    readings: "lecturas",
   },
   common: {
     locale: "es-ES",

@@ -1,8 +1,6 @@
 <script setup>
 import { defineProps, defineEmits, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
-import Card from 'primevue/card';
-import Button from 'primevue/button';
 
 const { t } = useI18n();
 const emit = defineEmits(['click']);

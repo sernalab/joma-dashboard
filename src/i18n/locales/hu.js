@@ -6,7 +6,7 @@ export default {
     darkMode: "Sötét Mód",
     profile: "Profil",
     settings: "Beállítások",
-    dashboard: "Irányítópult",
+    dashboard: "Dashboard",
     reports: "Jelentések",
     clients: "Ügyfelek",
     newMeasurement: "Új Mérés",
@@ -19,7 +19,12 @@ export default {
     trend: "Trend",
     statistics: "Statisztikák",
     activities: "Tevékenységek",
-    quickActions: "Gyors Műveletek"
+    quickActions: "Gyors Műveletek",
+    previous: "Előző",
+    next: "Következő",
+    selectAll: "Mind Kiválasztása",
+    clearAll: "Mind Törlése",
+    charactersLeft: "karakter maradt"
   },
   measurements: {
     title: "Mérések",
@@ -27,10 +32,15 @@ export default {
     typesAvailable: "{count} típus elérhető",
     lastValue: "Utolsó érték",
     noData: "Nincs adat",
-    noDataAvailable: "Nincsenek elérhető mérések"
+    noDataAvailable: "Nincsenek elérhető mérések",
+    hasData: "Elérhető adatok",
   },
   validation: {
     required: "Ez a mező kötelező",
+    invalidEmail: "Adjon meg érvényes email címet",
+    invalidPhone: "Adjon meg érvényes telefonszámot",
+    invalidYear: "Az évnek 1900 és a jelenlegi év között kell lennie",
+    invalidMileage: "A kilométerállásnak érvényes számnak kell lennie",
     email: "Kérjük, adjon meg érvényes e-mail címet",
     minLength: "A minimális hossz {min} karakter",
     invalidFormat: "Érvénytelen formátum"
@@ -223,6 +233,49 @@ export default {
     generateReport: "Jelentés Készítése",
     viewHistory: "Előzmények Megtekintése",
     viewDetails: "Részletek Megtekintése",
+  },
+  reportWizard: {
+    title: "Jelentéskészítő",
+    subtitle: "Készítsen szakmai jelentéseket lépésről lépésre",
+    steps: {
+      client: "Ügyfél",
+      vehicle: "Jármű", 
+      measurements: "Mérések",
+      observations: "Megfigyelések",
+      preview: "Előnézet"
+    },
+    descriptions: {
+      step1: "Műhely és ügyfél adatok",
+      step2: "A diagnosztizálandó jármű részletei",
+      step3: "Válassza ki a felveenő méréseket",
+      step4: "Adjon hozzá további megfigyeléseket",
+      step5: "Tekintse át és generálja a jelentést"
+    },
+    progress: "{current}. lépés a {total}-ból",
+    generateReport: "Jelentés Generálása",
+    clientInfo: {
+      title: "Fontos Információk",
+      description: "A *-gal jelölt mezők kitöltése kötelező. Ezek az információk megjelennek a végső jelentésben."
+    },
+    vehicleSummary: {
+      title: "Jármű Összefoglaló"
+    },
+    measurementsInfo: "Válassza ki a jelentésbe felveendő méréseket. Csak az elérhető adatokkal rendelkező mérések jelennek meg.",
+    selectedMeasurements: "{count} kiválasztott mérés",
+    noDataTitle: "Nincsenek elérhető mérések",
+    noDataDescription: "Nem található adatokkal rendelkező mérés. Először végezzen el néhány mérést.",
+    observationsHelp: "Adjon hozzá bármilyen megfigyelést, ajánlást vagy további megjegyzést a diagnózisról.",
+    observationsTips: {
+      title: "Tippek a megfigyelésekhez",
+      tip1: "Foglalja bele a karbantartási ajánlásokat",
+      tip2: "Említse meg a talált anomáliákat",
+      tip3: "Adja hozzá a javasolt következő lépéseket"
+    },
+    noClientData: "Nincs ügyféladat",
+    noVehicleData: "Nincs járműadat",
+    noMeasurementsSelected: "Nincs kiválasztott mérés",
+    readyToGenerate: "Kész a generálásra!",
+    generateInfo: "Tekintse át az összes információt és generálja le a szakmai PDF jelentést."
   },
   errors: {
     loadingData: "Hiba az adatok betöltésekor",

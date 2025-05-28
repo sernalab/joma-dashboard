@@ -6,11 +6,11 @@ export default {
     darkMode: "Modo Escuro",
     profile: "Perfil",
     settings: "Configurações",
-    dashboard: "Painel",
+    dashboard: "Dashboard",
     reports: "Relatórios",
     clients: "Clientes",
     newMeasurement: "Nova Medição",
-    viewAll: "Ver Todos",
+    viewAll: "Ver Tudo",
     recent: "Recente",
     today: "Hoje",
     thisWeek: "Esta Semana",
@@ -19,7 +19,12 @@ export default {
     trend: "Tendência",
     statistics: "Estatísticas",
     activities: "Atividades",
-    quickActions: "Ações Rápidas"
+    quickActions: "Ações Rápidas",
+    previous: "Anterior",
+    next: "Seguinte",
+    selectAll: "Selecionar Tudo",
+    clearAll: "Limpar Tudo",
+    charactersLeft: "caracteres restantes"
   },
   measurements: {
     title: "Medições",
@@ -27,10 +32,15 @@ export default {
     typesAvailable: "{count} tipos disponíveis",
     lastValue: "Último valor",
     noData: "Sem dados",
-    noDataAvailable: "Nenhuma medição disponível"
+    noDataAvailable: "Nenhuma medição disponível",
+    hasData: "Dados disponíveis",
   },
   validation: {
     required: "Este campo é obrigatório",
+    invalidEmail: "Insira um email válido",
+    invalidPhone: "Insira um número de telefone válido",
+    invalidYear: "O ano deve estar entre 1900 e o ano atual",
+    invalidMileage: "A quilometragem deve ser um número válido",
     email: "Por favor, insira um endereço de e-mail válido",
     minLength: "O comprimento mínimo é {min} caracteres",
     invalidFormat: "Formato inválido"
@@ -224,6 +234,49 @@ export default {
     generateReport: "Gerar Relatório",
     viewHistory: "Ver Histórico",
     viewDetails: "Ver Detalhes",
+  },
+  reportWizard: {
+    title: "Gerador de Relatórios",
+    subtitle: "Crie relatórios profissionais passo a passo",
+    steps: {
+      client: "Cliente",
+      vehicle: "Veículo", 
+      measurements: "Medições",
+      observations: "Observações",
+      preview: "Pré-visualização"
+    },
+    descriptions: {
+      step1: "Informações da oficina e do cliente",
+      step2: "Detalhes do veículo a diagnosticar",
+      step3: "Selecione as medições a incluir",
+      step4: "Adicione observações adicionais",
+      step5: "Revise e gere o relatório"
+    },
+    progress: "Passo {current} de {total}",
+    generateReport: "Gerar Relatório",
+    clientInfo: {
+      title: "Informações Importantes",
+      description: "Os campos marcados com * são obrigatórios. Estas informações aparecerão no relatório final."
+    },
+    vehicleSummary: {
+      title: "Resumo do Veículo"
+    },
+    measurementsInfo: "Selecione as medições que deseja incluir no relatório. Apenas as medições com dados disponíveis são mostradas.",
+    selectedMeasurements: "{count} medição(ões) selecionada(s)",
+    noDataTitle: "Nenhuma medição disponível",
+    noDataDescription: "Nenhuma medição com dados encontrada. Realize algumas medições primeiro.",
+    observationsHelp: "Adicione qualquer observação, recomendação ou nota adicional sobre o diagnóstico.",
+    observationsTips: {
+      title: "Dicas para observações",
+      tip1: "Inclua recomendações de manutenção",
+      tip2: "Mencione qualquer anomalia encontrada",
+      tip3: "Adicione próximos passos sugeridos"
+    },
+    noClientData: "Sem dados do cliente",
+    noVehicleData: "Sem dados do veículo",
+    noMeasurementsSelected: "Nenhuma medição selecionada",
+    readyToGenerate: "Pronto para gerar!",
+    generateInfo: "Revise todas as informações e gere o seu relatório PDF profissional."
   },
   errors: {
     loadingData: "Erro ao carregar os dados",

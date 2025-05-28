@@ -10,7 +10,7 @@ export default {
     reports: 'Berichte',
     clients: 'Kunden',
     newMeasurement: 'Neue Messung',
-    viewAll: 'Alle anzeigen',
+    viewAll: 'Alle Anzeigen',
     recent: 'Kürzlich',
     today: 'Heute',
     thisWeek: 'Diese Woche',
@@ -19,7 +19,12 @@ export default {
     trend: 'Trend',
     statistics: 'Statistiken',
     activities: 'Aktivitäten',
-    quickActions: 'Schnellaktionen'
+    quickActions: 'Schnellaktionen',
+    previous: "Zurück",
+    next: "Weiter",
+    selectAll: "Alles Auswählen",
+    clearAll: "Alles Löschen",
+    charactersLeft: "Zeichen übrig"
   },
   measurements: {
     title: 'Messungen',
@@ -27,10 +32,15 @@ export default {
     typesAvailable: '{count} Typen verfügbar',
     lastValue: 'Letzter Wert',
     noData: 'Keine Daten',
-    noDataAvailable: 'Keine Messungen verfügbar'
+    noDataAvailable: 'Keine Messungen verfügbar',
+    hasData: 'Daten verfügbar',
   },
   validation: {
-    required: 'Dieses Feld ist erforderlich',
+    required: "Dieses Feld ist erforderlich",
+    invalidEmail: "Geben Sie eine gültige E-Mail ein",
+    invalidPhone: "Geben Sie eine gültige Telefonnummer ein",
+    invalidYear: "Das Jahr muss zwischen 1900 und dem aktuellen Jahr liegen",
+    invalidMileage: "Der Kilometerstand muss eine gültige Zahl sein",
     email: 'Bitte geben Sie eine gültige E-Mail-Adresse ein',
     minLength: 'Dieses Feld muss mindestens {min} Zeichen enthalten',
     invalidFormat: 'Ungültiges Format'
@@ -223,6 +233,49 @@ export default {
     generateReport: "Bericht erstellen",
     viewHistory: "Verlauf anzeigen",
     viewDetails: "Details anzeigen",
+  },
+  reportWizard: {
+    title: "Berichtsgenerator",
+    subtitle: "Erstellen Sie professionelle Berichte Schritt für Schritt",
+    steps: {
+      client: "Kunde",
+      vehicle: "Fahrzeug", 
+      measurements: "Messungen",
+      observations: "Beobachtungen",
+      preview: "Vorschau"
+    },
+    descriptions: {
+      step1: "Werkstatt- und Kundeninformationen",
+      step2: "Details des zu diagnostizierenden Fahrzeugs",
+      step3: "Wählen Sie die einzuschließenden Messungen",
+      step4: "Fügen Sie zusätzliche Beobachtungen hinzu",
+      step5: "Überprüfen und Bericht generieren"
+    },
+    progress: "Schritt {current} von {total}",
+    generateReport: "Bericht Generieren",
+    clientInfo: {
+      title: "Wichtige Informationen",
+      description: "Mit * gekennzeichnete Felder sind erforderlich. Diese Informationen erscheinen im endgültigen Bericht."
+    },
+    vehicleSummary: {
+      title: "Fahrzeugübersicht"
+    },
+    measurementsInfo: "Wählen Sie die Messungen aus, die Sie in den Bericht aufnehmen möchten. Es werden nur Messungen mit verfügbaren Daten angezeigt.",
+    selectedMeasurements: "{count} Messung(en) ausgewählt",
+    noDataTitle: "Keine Messungen verfügbar",
+    noDataDescription: "Keine Messungen mit Daten gefunden. Führen Sie zuerst einige Messungen durch.",
+    observationsHelp: "Fügen Sie alle Beobachtungen, Empfehlungen oder zusätzlichen Notizen zur Diagnose hinzu.",
+    observationsTips: {
+      title: "Tipps für Beobachtungen",
+      tip1: "Wartungsempfehlungen einschließen",
+      tip2: "Gefundene Anomalien erwähnen",
+      tip3: "Vorgeschlagene nächste Schritte hinzufügen"
+    },
+    noClientData: "Keine Kundendaten",
+    noVehicleData: "Keine Fahrzeugdaten",
+    noMeasurementsSelected: "Keine Messungen ausgewählt",
+    readyToGenerate: "Bereit zur Generierung!",
+    generateInfo: "Überprüfen Sie alle Informationen und generieren Sie Ihren professionellen PDF-Bericht."
   },
   errors: {
     loadingData: "Fehler beim Laden der Daten",
