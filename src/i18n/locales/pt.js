@@ -54,6 +54,9 @@ export default {
     userId: "ID do Usuário",
     password: "Senha",
     submit: "Entrar",
+    userIdPlaceholder: "Digite seu ID de usuário",
+    passwordPlaceholder: "Digite sua senha",
+    loading: "Carregando...",
     error: {
       credentials: "Credenciais inválidas",
       required: "Por favor, insira todas as credenciais necessárias",

@@ -44,6 +44,9 @@ export default {
     userId: "Erabiltzaile IDa",
     password: "Pasahitza",
     submit: "Hasi saioa",
+    userIdPlaceholder: "Sartu zure erabiltzaile IDa",
+    passwordPlaceholder: "Sartu zure pasahitza",
+    loading: "Kargatzen...",
     error: {
       credentials: "Kredentzial baliogabeak",
       required: "Mesedez, sartu kredentzial guztiak",

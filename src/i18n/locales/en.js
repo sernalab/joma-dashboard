@@ -5,6 +5,9 @@ export default {
     userId: "User ID",
     password: "Password",
     submit: "Log In",
+    userIdPlaceholder: "Enter your user ID",
+    passwordPlaceholder: "Enter your password",
+    loading: "Loading...",
     error: {
       credentials: "Invalid credentials",
       required: "Please enter all required credentials",

@@ -54,6 +54,9 @@ export default {
     userId: "Gebruikers-ID",
     password: "Wachtwoord",
     submit: "Inloggen",
+    userIdPlaceholder: "Voer uw gebruikers-ID in",
+    passwordPlaceholder: "Voer uw wachtwoord in",
+    loading: "Laden...",
     error: {
       credentials: "Ongeldige inloggegevens",
       required: "Voer alle vereiste inloggegevens in",

@@ -5,6 +5,9 @@ export default {
     userId: "ID Utente",
     password: "Password",
     submit: "Accedi",
+    userIdPlaceholder: "Inserisci il tuo ID utente",
+    passwordPlaceholder: "Inserisci la tua password",
+    loading: "Caricamento...",
     error: {
       credentials: "Credenziali non valide",
       required: "Inserisci tutte le credenziali richieste",

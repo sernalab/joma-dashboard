@@ -54,6 +54,9 @@ export default {
     userId: "ID użytkownika",
     password: "Hasło",
     submit: "Zaloguj się",
+    userIdPlaceholder: "Wprowadź swój ID użytkownika",
+    passwordPlaceholder: "Wprowadź swoje hasło",
+    loading: "Ładowanie...",
     error: {
       credentials: "Nieprawidłowe dane logowania",
       required: "Proszę wprowadzić wszystkie wymagane dane logowania",

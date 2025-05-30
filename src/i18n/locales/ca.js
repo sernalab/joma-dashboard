@@ -44,6 +44,9 @@ export default {
     userId: "ID d'Usuari",
     password: "Contrasenya",
     submit: "Iniciar Sessió",
+    userIdPlaceholder: "Introdueix el teu ID d'usuari",
+    passwordPlaceholder: "Introdueix la teva contrasenya",
+    loading: "Carregant...",
     error: {
       credentials: "Credencials no vàlides",
       required: "Si us plau, introdueix totes les credencials necessàries",

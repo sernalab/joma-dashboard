@@ -54,6 +54,9 @@ export default {
     userId: "Felhasználói azonosító",
     password: "Jelszó",
     submit: "Bejelentkezés",
+    userIdPlaceholder: "Adja meg a felhasználói azonosítóját",
+    passwordPlaceholder: "Adja meg a jelszavát",
+    loading: "Betöltés...",
     error: {
       credentials: "Érvénytelen hitelesítő adatok",
       required: "Kérjük, adja meg az összes hitelesítő adatot",

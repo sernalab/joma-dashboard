@@ -54,6 +54,9 @@ export default {
     userId: "ID Utilisateur",
     password: "Mot de passe",
     submit: "Connexion",
+    userIdPlaceholder: "Entrez votre ID utilisateur",
+    passwordPlaceholder: "Entrez votre mot de passe",
+    loading: "Chargement...",
     error: {
       credentials: "Identifiants invalides",
       required: "Veuillez saisir tous les identifiants requis",

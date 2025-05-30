@@ -54,6 +54,9 @@ export default {
     userId: "Benutzer-ID",
     password: "Passwort",
     submit: "Anmelden",
+    userIdPlaceholder: "Geben Sie Ihre Benutzer-ID ein",
+    passwordPlaceholder: "Geben Sie Ihr Passwort ein",
+    loading: "Wird geladen...",
     error: {
       credentials: "Ungültige Anmeldedaten",
       required: "Bitte geben Sie alle erforderlichen Anmeldedaten ein",
