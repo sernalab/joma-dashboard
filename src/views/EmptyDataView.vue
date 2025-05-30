@@ -13,8 +13,8 @@ const { t } = useI18n();
       <h2 class="text-2xl font-semibold mb-2">{{ t("extras.noDataAvailable") }}</h2>
       <p class="text-500 mb-4">{{ t("extras.noDataAvailableDescription") }}</p>
       <Button
-        :label="t('extras.backToDashbaord')"
-        @click="() => router.push('/dashboard')"
+        :label="t('extras.backToAllMeasurements')"
+        @click="() => router.push('/dashboard/all-measurements')"
         outlined
       />
     </div>

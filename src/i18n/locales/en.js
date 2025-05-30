@@ -286,7 +286,9 @@ export default {
     activities: "Activities",
     quickActions: "Quick actions",
     goToDashboard: "Go to Dashboard",
-    goBack: "Go Back"
+    goBack: "Go Back",
+    search: "Search",
+    selectDate: "Select date"
   },
   validation: {
     required: "This field is required",

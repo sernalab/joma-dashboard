@@ -278,7 +278,9 @@ export default {
     next: "Successivo",
     selectAll: "Seleziona Tutto",
     clearAll: "Cancella Tutto",
-    charactersLeft: "caratteri rimasti"
+    charactersLeft: "caratteri rimasti",
+    search: "Cerca",
+    selectDate: "Seleziona data"
   },
   validation: {
     required: "Questo campo è obbligatorio",

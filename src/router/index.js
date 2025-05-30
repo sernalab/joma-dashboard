@@ -92,7 +92,7 @@ const router = createRouter({
           path: "recent-activity",
           name: "recent-activity",
           component: () => import("../views/RecentActivityView.vue"),
-          meta: { requiresAuth: true, title: "Actividad Reciente" },
+          meta: { requiresAuth: true },
         },
         {
           path: "print-client-report",

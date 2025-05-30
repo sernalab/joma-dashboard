@@ -287,7 +287,9 @@ export default {
     activities: "Actividades",
     quickActions: "Acciones rápidas",
     goToDashboard: "Ir al Panel",
-    goBack: "Volver"
+    goBack: "Volver",
+    search: "Buscar",
+    selectDate: "Seleccionar fecha"
   },
   validation: {
     required: "Este campo es obligatorio",

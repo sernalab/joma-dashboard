@@ -319,20 +319,49 @@ const getSeverityColor = (status) => {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .search-wrapper {
   flex: 1;
   min-width: 250px;
+  position: relative;
+}
+
+.search-wrapper :deep(.pi-search) {
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--p-text-muted-color);
+  font-size: 1rem;
 }
 
 .search-input {
   width: 100%;
+  height: 2.5rem;
+  padding-left: 2.5rem;
+}
+
+.search-input :deep(.p-inputtext) {
+  height: 2.5rem;
+  padding-left: 2.5rem;
 }
 
 .filter-dropdown,
 .filter-calendar {
-  min-width: 200px;
+  min-width: 180px;
+  height: 2.5rem;
+}
+
+.filter-dropdown :deep(.p-dropdown),
+.filter-calendar :deep(.p-calendar) {
+  height: 2.5rem;
+}
+
+.filter-dropdown :deep(.p-dropdown .p-inputtext),
+.filter-calendar :deep(.p-calendar .p-inputtext) {
+  height: 2.5rem;
+  padding: 0.5rem 0.75rem;
 }
 
 /* Timeline */
