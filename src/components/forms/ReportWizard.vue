@@ -145,23 +145,13 @@ provide('setGenerating', (value) => {
   <div class="report-wizard">
     <!-- Header -->
     <div class="wizard-header">
-      <div class="flex align-items-center justify-content-between mb-4">
-        <div>
-          <h1 class="text-3xl font-bold text-900 m-0">
-            {{ t('reportWizard.title') }}
-          </h1>
-          <p class="text-600 text-lg mt-2 mb-0">
-            {{ t('reportWizard.subtitle') }}
-          </p>
-        </div>
-        <div class="flex align-items-center gap-2">
-          <Button
-            icon="pi pi-home"
-            :label="t('common.dashboard')"
-            link
-            @click="$router.push('/dashboard')"
-          />
-        </div>
+      <div class="mb-4">
+        <h1 class="text-3xl font-bold text-900 m-0">
+          {{ t('reportWizard.title') }}
+        </h1>
+        <p class="text-600 text-lg mt-2 mb-0">
+          {{ t('reportWizard.subtitle') }}
+        </p>
       </div>
 
       <!-- Steps indicator -->
@@ -209,12 +199,13 @@ provide('setGenerating', (value) => {
       <template #content>
         <div class="flex justify-content-between align-items-center">
           <Button
+            v-if="!isFirstStep"
             :label="t('common.previous')"
             icon="pi pi-arrow-left"
-            :disabled="isFirstStep"
             @click="prevStep"
             outlined
           />
+          <div v-else></div>
 
           <div class="flex align-items-center gap-2">
             <span class="text-sm text-muted-color">

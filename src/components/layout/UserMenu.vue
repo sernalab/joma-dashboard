@@ -64,8 +64,8 @@ const toggleUserMenu = (event) => {
 }
 
 .user-avatar {
-  background: var(--p-primary-color);
-  color: var(--p-primary-inverse-color);
+  background: #ff8e53;
+  color: white;
 }
 
 .user-name {
