@@ -158,17 +158,13 @@ const navigateTo = (route) => {
 };
 
 const toggleDarkMode = () => {
-  darkMode.value = !darkMode.value;
-  localStorage.setItem("darkMode", darkMode.value);
-  updateTheme();
+  // Dark mode functionality disabled
+  console.log('Dark mode toggle disabled');
 };
 
 const updateTheme = () => {
-  if (darkMode.value) {
-    document.documentElement.classList.add("app-dark");
-  } else {
-    document.documentElement.classList.remove("app-dark");
-  }
+  // Always keep light mode
+  document.documentElement.classList.remove("app-dark");
 };
 
 // Detectar cambios de tamaño de pantalla
