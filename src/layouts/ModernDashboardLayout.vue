@@ -30,6 +30,7 @@ const menuItems = [
   {
     label: t("measurements.title"),
     icon: "pi pi-chart-line",
+    route: "/dashboard/all-measurements",
     items: [
       {
         label: t("selectionView.manometer.title"),
@@ -220,7 +221,7 @@ onUnmounted(() => {
             @click="toggleSidebar"
             class="p-button-text p-button-plain menu-toggle"
           />
-          <h1 class="page-title">{{ $route.meta?.title || "Dashboard" }}</h1>
+          <h1 v-if="$route.path !== '/dashboard' && $route.meta?.title" class="page-title">{{ $route.meta.title }}</h1>
         </div>
 
         <div class="header-right">

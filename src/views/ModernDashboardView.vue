@@ -244,7 +244,7 @@ const quickActions = [
   {
     label: t("dashboard.viewHistory"),
     icon: "pi pi-history",
-    command: () => router.push("/dashboard/activity"),
+    command: () => router.push("/dashboard/recent-activity"),
   },
 ];
 
