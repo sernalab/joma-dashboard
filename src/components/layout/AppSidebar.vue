@@ -28,6 +28,18 @@ const isActiveRoute = (routePath) => {
   return route.path === routePath;
 };
 
+const isGroupActive = (item) => {
+  // Verificar si la ruta del grupo está activa
+  if (item.route && route.path === item.route) {
+    return true;
+  }
+  // Verificar si alguno de los subitems está activo
+  if (item.items) {
+    return item.items.some(subItem => route.path === subItem.route);
+  }
+  return false;
+};
+
 const navigateTo = (route) => {
   emit('navigate', route);
 };
@@ -53,7 +65,12 @@ const toggleSidebar = () => {
       <template v-for="item in menuItems" :key="item.label">
         <!-- Items con subitems -->
         <div v-if="item.items" class="nav-group">
-          <div class="nav-group-label">
+          <div 
+            class="nav-group-label" 
+            :class="{ 'active': isGroupActive(item) }"
+            @click="item.route ? navigateTo(item.route) : null" 
+            :style="item.route ? 'cursor: pointer' : ''"
+          >
             <i :class="item.icon"></i>
             <span>{{ item.label }}</span>
           </div>
@@ -157,6 +174,29 @@ const toggleSidebar = () => {
   color: var(--p-text-muted-color);
   font-size: 0.875rem;
   font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.nav-group-label:hover {
+  background: var(--p-surface-100);
+  color: var(--p-primary-color);
+}
+
+.nav-group-label.active {
+  background: var(--p-primary-100);
+  color: var(--p-primary-700);
+  font-weight: 600;
+  position: relative;
+}
+
+.nav-group-label.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--p-primary-color);
 }
 
 .nav-group-items {

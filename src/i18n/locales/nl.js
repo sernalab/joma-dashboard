@@ -20,6 +20,8 @@ export default {
     statistics: "Statistieken",
     activities: "Activiteiten",
     quickActions: "Snelle Acties",
+    goToDashboard: "Naar Dashboard",
+    goBack: "Terug",
     previous: "Vorige",
     next: "Volgende",
     selectAll: "Alles Selecteren",
@@ -282,6 +284,9 @@ export default {
   },
   errors: {
     loadingData: "Fout bij het laden van gegevens",
+    pageNotFound: "Pagina Niet Gevonden",
+    pageNotFoundDescription: "De pagina die u zoekt bestaat niet of is verplaatst.",
+    redirectingIn: "Doorverwijzen naar dashboard in {seconds} seconden...",
   },
   activity: {
     completeHistory: "Volledige werkplaatsactiviteitengeschiedenis",

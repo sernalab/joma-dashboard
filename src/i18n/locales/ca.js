@@ -19,7 +19,9 @@ export default {
     trend: "Tendència",
     statistics: "Estadístiques",
     activities: "Activitats",
-    quickActions: "Accions Ràpides"
+    quickActions: "Accions Ràpides",
+    goToDashboard: "Anar al Tauler",
+    goBack: "Tornar"
   },
   measurements: {
     title: "Mesures",
@@ -232,6 +234,9 @@ export default {
   },
   errors: {
     loadingData: "Error carregant les dades",
+    pageNotFound: "Pàgina No Trobada",
+    pageNotFoundDescription: "La pàgina que cerques no existeix o ha estat moguda.",
+    redirectingIn: "Redirigint al tauler en {seconds} segons...",
   },
   activity: {
     completeHistory: "Historial complet d'activitat del taller",

@@ -20,6 +20,8 @@ export default {
     statistics: "Estatísticas",
     activities: "Atividades",
     quickActions: "Ações Rápidas",
+    goToDashboard: "Ir para o Painel",
+    goBack: "Voltar",
     previous: "Anterior",
     next: "Seguinte",
     selectAll: "Selecionar Tudo",
@@ -283,6 +285,9 @@ export default {
   },
   errors: {
     loadingData: "Erro ao carregar os dados",
+    pageNotFound: "Página Não Encontrada",
+    pageNotFoundDescription: "A página que procura não existe ou foi movida.",
+    redirectingIn: "Redirecionando para o painel em {seconds} segundos...",
   },
   activity: {
     completeHistory: "Histórico completo de atividade da oficina",

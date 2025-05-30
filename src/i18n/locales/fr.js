@@ -20,6 +20,8 @@ export default {
     statistics: 'Statistiques',
     activities: 'Activités',
     quickActions: 'Actions rapides',
+    goToDashboard: "Aller au Tableau de Bord",
+    goBack: "Retour",
     previous: "Précédent",
     next: "Suivant",
     selectAll: "Tout Sélectionner",
@@ -282,6 +284,9 @@ export default {
   },
   errors: {
     loadingData: "Erreur lors du chargement des données",
+    pageNotFound: "Page Non Trouvée",
+    pageNotFoundDescription: "La page que vous recherchez n'existe pas ou a été déplacée.",
+    redirectingIn: "Redirection vers le tableau de bord dans {seconds} secondes...",
   },
   activity: {
     completeHistory: "Historique complet de l'activité de l'atelier",

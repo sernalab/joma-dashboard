@@ -20,6 +20,8 @@ export default {
     statistics: "Statystyki",
     activities: "Aktywności",
     quickActions: "Szybkie Akcje",
+    goToDashboard: "Przejdź do Panelu",
+    goBack: "Wróć",
     previous: "Poprzedni",
     next: "Następny",
     selectAll: "Wybierz Wszystko",
@@ -280,6 +282,9 @@ export default {
   },
   errors: {
     loadingData: "Błąd podczas ładowania danych",
+    pageNotFound: "Strona Nie Znaleziona",
+    pageNotFoundDescription: "Strona której szukasz nie istnieje lub została przeniesiona.",
+    redirectingIn: "Przekierowanie do panelu za {seconds} sekund...",
   },
   activity: {
     completeHistory: "Pełna historia aktywności warsztatu",

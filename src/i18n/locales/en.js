@@ -281,7 +281,9 @@ export default {
     trend: "Trend",
     statistics: "Statistics",
     activities: "Activities",
-    quickActions: "Quick actions"
+    quickActions: "Quick actions",
+    goToDashboard: "Go to Dashboard",
+    goBack: "Go Back"
   },
   validation: {
     required: "This field is required",
@@ -298,6 +300,9 @@ export default {
   },
   errors: {
     loadingData: "Error loading data",
+    pageNotFound: "Page Not Found",
+    pageNotFoundDescription: "The page you're looking for doesn't exist or has been moved.",
+    redirectingIn: "Redirecting to dashboard in {seconds} seconds...",
   },
   activity: {
     completeHistory: "Complete workshop activity history",

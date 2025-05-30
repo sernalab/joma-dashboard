@@ -20,6 +20,8 @@ export default {
     statistics: "Statisztikák",
     activities: "Tevékenységek",
     quickActions: "Gyors Műveletek",
+    goToDashboard: "Vezérlőpult",
+    goBack: "Vissza",
     previous: "Előző",
     next: "Következő",
     selectAll: "Mind Kiválasztása",
@@ -282,6 +284,9 @@ export default {
   },
   errors: {
     loadingData: "Hiba az adatok betöltésekor",
+    pageNotFound: "Az Oldal Nem Található",
+    pageNotFoundDescription: "A keresett oldal nem létezik vagy áthelyezték.",
+    redirectingIn: "Átirányítás a vezérlőpultra {seconds} másodperc múlva...",
   },
   activity: {
     completeHistory: "Műhely teljes tevékenységi előzményei",

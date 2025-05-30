@@ -19,7 +19,9 @@ export default {
     trend: "Joera",
     statistics: "Estatistikak",
     activities: "Jarduerak",
-    quickActions: "Ekintza Azkarrak"
+    quickActions: "Ekintza Azkarrak",
+    goToDashboard: "Aginte-panelera Joan",
+    goBack: "Atzera"
   },
   measurements: {
     title: "Neurketak",
@@ -228,6 +230,9 @@ export default {
   },
   errors: {
     loadingData: "Errorea datuak kargatzean",
+    pageNotFound: "Orria Ez Da Aurkitu",
+    pageNotFoundDescription: "Bilatzen duzun orria ez da existitzen edo lekuz aldatu da.",
+    redirectingIn: "Aginte-panelera bideratzen {seconds} segundotan...",
   },
   activity: {
     completeHistory: "Tailerreko jarduera historia osoa",

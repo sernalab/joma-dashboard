@@ -282,7 +282,9 @@ export default {
     trend: "Tendencia",
     statistics: "Estadísticas",
     activities: "Actividades",
-    quickActions: "Acciones rápidas"
+    quickActions: "Acciones rápidas",
+    goToDashboard: "Ir al Panel",
+    goBack: "Volver"
   },
   validation: {
     required: "Este campo es obligatorio",
@@ -299,6 +301,9 @@ export default {
   },
   errors: {
     loadingData: "Error al cargar los datos",
+    pageNotFound: "Página No Encontrada",
+    pageNotFoundDescription: "La página que buscas no existe o ha sido movida.",
+    redirectingIn: "Redirigiendo al panel en {seconds} segundos...",
   },
   activity: {
     completeHistory: "Historial completo de actividad del taller",

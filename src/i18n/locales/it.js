@@ -269,6 +269,8 @@ export default {
     statistics: "Statistiche",
     activities: "Attività",
     quickActions: "Azioni rapide",
+    goToDashboard: "Vai alla Dashboard",
+    goBack: "Indietro",
     previous: "Precedente",
     next: "Successivo",
     selectAll: "Seleziona Tutto",
@@ -291,6 +293,9 @@ export default {
   },
   errors: {
     loadingData: "Errore nel caricamento dei dati",
+    pageNotFound: "Pagina Non Trovata",
+    pageNotFoundDescription: "La pagina che stai cercando non esiste o è stata spostata.",
+    redirectingIn: "Reindirizzamento alla dashboard tra {seconds} secondi...",
   },
   activity: {
     completeHistory: "Cronologia completa dell'attività dell'officina",

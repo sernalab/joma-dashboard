@@ -20,6 +20,8 @@ export default {
     statistics: 'Statistiken',
     activities: 'Aktivitäten',
     quickActions: 'Schnellaktionen',
+    goToDashboard: "Zum Dashboard",
+    goBack: "Zurück",
     previous: "Zurück",
     next: "Weiter",
     selectAll: "Alles Auswählen",
@@ -282,6 +284,9 @@ export default {
   },
   errors: {
     loadingData: "Fehler beim Laden der Daten",
+    pageNotFound: "Seite Nicht Gefunden",
+    pageNotFoundDescription: "Die gesuchte Seite existiert nicht oder wurde verschoben.",
+    redirectingIn: "Weiterleitung zum Dashboard in {seconds} Sekunden...",
   },
   activity: {
     completeHistory: "Vollständiger Werkstatt-Aktivitätsverlauf",
