@@ -1,7 +1,9 @@
 <script setup>
 import { defineProps, defineEmits } from 'vue';
+import { useRoute } from 'vue-router';
 
 const emit = defineEmits(['toggle', 'navigate']);
+const route = useRoute();
 
 defineProps({
   sidebarVisible: {
@@ -22,8 +24,8 @@ defineProps({
   }
 });
 
-const isActiveRoute = (route) => {
-  return window.location.pathname === route;
+const isActiveRoute = (routePath) => {
+  return route.path === routePath;
 };
 
 const navigateTo = (route) => {
@@ -155,7 +157,6 @@ const toggleSidebar = () => {
   color: var(--p-text-muted-color);
   font-size: 0.875rem;
   font-weight: 600;
-  text-transform: uppercase;
 }
 
 .nav-group-items {
