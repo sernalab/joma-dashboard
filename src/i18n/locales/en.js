@@ -243,15 +243,6 @@ export default {
     invalidYear: "Year must be between 1900 and current year",
     invalidMileage: "Mileage must be a valid number"
   },
-  common: {
-    dashboard: "Dashboard",
-    previous: "Previous",
-    next: "Next",
-    selectAll: "Select All",
-    clearAll: "Clear All",
-    charactersLeft: "characters left",
-    viewAll: "View All"
-  },
   measurements: {
     title: "Measurements",
     allTypes: "All measurement types",
@@ -288,7 +279,12 @@ export default {
     goToDashboard: "Go to Dashboard",
     goBack: "Go Back",
     search: "Search",
-    selectDate: "Select date"
+    selectDate: "Select date",
+    previous: "Previous",
+    next: "Next",
+    selectAll: "Select All",
+    clearAll: "Clear All",
+    charactersLeft: "characters left"
   },
   validation: {
     required: "This field is required",

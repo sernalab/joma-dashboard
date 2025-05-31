@@ -210,29 +210,36 @@ const getSeverityColor = (status) => {
       </div>
       
       <div class="header-filters">
-        <span class="p-input-icon-left search-wrapper">
-          <i class="pi pi-search" />
-          <InputText 
+        <div class="search-container">
+          <i class="pi pi-search search-icon" />
+          <input 
             v-model="searchQuery" 
             :placeholder="t('common.search')" 
-            class="search-input"
+            class="custom-search-input"
+            type="text"
           />
-        </span>
-        <Dropdown 
-          v-model="filterType" 
-          :options="activityTypes" 
-          optionLabel="label" 
-          optionValue="value"
-          :placeholder="t('activity.typeFilter')"
-          class="filter-dropdown"
-        />
-        <Calendar 
-          v-model="filterDate" 
-          :placeholder="t('common.selectDate')"
-          dateFormat="dd/mm/yy"
-          showIcon
-          class="filter-calendar"
-        />
+        </div>
+        
+        <div class="filter-container">
+          <Dropdown 
+            v-model="filterType" 
+            :options="activityTypes" 
+            optionLabel="label" 
+            optionValue="value"
+            :placeholder="t('activity.typeFilter')"
+            class="custom-dropdown"
+          />
+        </div>
+        
+        <div class="date-container">
+          <Calendar 
+            v-model="filterDate" 
+            :placeholder="t('common.selectDate')"
+            dateFormat="dd/mm/yy"
+            showIcon
+            class="custom-calendar"
+          />
+        </div>
       </div>
     </div>
 
@@ -319,49 +326,129 @@ const getSeverityColor = (status) => {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: stretch;
 }
 
-.search-wrapper {
+/* All inputs container */
+.search-container,
+.filter-container,
+.date-container {
+  height: 44px;
+}
+
+/* Search Input */
+.search-container {
   flex: 1;
-  min-width: 250px;
+  min-width: 280px;
   position: relative;
 }
 
-.search-wrapper :deep(.pi-search) {
-  left: 0.75rem;
+.search-icon {
+  position: absolute;
+  left: 1rem;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--p-text-muted-color);
+  color: #6c757d;
   font-size: 1rem;
+  pointer-events: none;
+  z-index: 1;
 }
 
-.search-input {
+.custom-search-input {
   width: 100%;
-  height: 2.5rem;
-  padding-left: 2.5rem;
+  height: 44px;
+  padding: 0 1rem 0 2.75rem;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  background: #ffffff;
+  color: #2c3e50;
+  transition: all 0.3s ease;
+  outline: none;
+  box-sizing: border-box;
 }
 
-.search-input :deep(.p-inputtext) {
-  height: 2.5rem;
-  padding-left: 2.5rem;
+.custom-search-input::placeholder {
+  color: #adb5bd;
 }
 
-.filter-dropdown,
-.filter-calendar {
-  min-width: 180px;
-  height: 2.5rem;
+.custom-search-input:hover {
+  border-color: #dee2e6;
 }
 
-.filter-dropdown :deep(.p-dropdown),
-.filter-calendar :deep(.p-calendar) {
-  height: 2.5rem;
+.custom-search-input:focus {
+  border-color: #ff8e53;
+  box-shadow: 0 0 0 4px rgba(255, 142, 83, 0.1);
 }
 
-.filter-dropdown :deep(.p-dropdown .p-inputtext),
-.filter-calendar :deep(.p-calendar .p-inputtext) {
-  height: 2.5rem;
-  padding: 0.5rem 0.75rem;
+/* Dropdown and Calendar */
+.filter-container,
+.date-container {
+  min-width: 200px;
+}
+
+.custom-dropdown,
+.custom-calendar {
+  width: 100%;
+  height: 44px;
+}
+
+/* Force consistent height for PrimeVue components */
+.custom-dropdown :deep(.p-dropdown),
+.custom-calendar :deep(.p-calendar) {
+  height: 44px !important;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.custom-dropdown :deep(.p-dropdown:not(.p-disabled):hover),
+.custom-calendar :deep(.p-calendar:not(.p-disabled):hover) {
+  border-color: #dee2e6;
+}
+
+.custom-dropdown :deep(.p-dropdown:not(.p-disabled).p-focus),
+.custom-calendar :deep(.p-calendar:not(.p-disabled).p-focus) {
+  border-color: #ff8e53;
+  box-shadow: 0 0 0 4px rgba(255, 142, 83, 0.1);
+}
+
+/* Inner elements */
+.custom-dropdown :deep(.p-dropdown .p-dropdown-label),
+.custom-calendar :deep(.p-calendar .p-inputtext) {
+  height: 40px !important;
+  line-height: 40px;
+  padding: 0 1rem;
+  font-size: 0.95rem;
+}
+
+.custom-calendar :deep(.p-calendar .p-inputtext) {
+  padding-right: 2.5rem;
+}
+
+.custom-dropdown :deep(.p-dropdown .p-dropdown-trigger),
+.custom-calendar :deep(.p-calendar .p-trigger-button) {
+  width: 40px;
+  height: 40px;
+  color: #6c757d;
+}
+
+.custom-dropdown :deep(.p-dropdown .p-dropdown-trigger:hover),
+.custom-calendar :deep(.p-calendar .p-trigger-button:hover) {
+  color: #ff8e53;
+  background: rgba(255, 142, 83, 0.05);
+}
+
+/* Calendar specific */
+.custom-calendar :deep(.p-calendar-w-btn .p-calendar-trigger) {
+  width: 40px;
+  height: 40px;
+}
+
+.custom-calendar :deep(.p-datepicker-trigger) {
+  width: 40px;
+  height: 40px;
 }
 
 /* Timeline */

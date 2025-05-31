@@ -244,15 +244,6 @@ export default {
     invalidYear: "Año debe estar entre 1900 y el año actual",
     invalidMileage: "Kilometraje debe ser un número válido"
   },
-  common: {
-    dashboard: "Dashboard",
-    previous: "Anterior",
-    next: "Siguiente",
-    selectAll: "Seleccionar Todo",
-    clearAll: "Limpiar Todo",
-    charactersLeft: "caracteres restantes",
-    viewAll: "Ver Todo"
-  },
   measurements: {
     title: "Mediciones",
     allTypes: "Todos los tipos de medición",
@@ -289,7 +280,12 @@ export default {
     goToDashboard: "Ir al Panel",
     goBack: "Volver",
     search: "Buscar",
-    selectDate: "Seleccionar fecha"
+    selectDate: "Seleccionar fecha",
+    previous: "Anterior",
+    next: "Siguiente",
+    selectAll: "Seleccionar Todo",
+    clearAll: "Limpiar Todo",
+    charactersLeft: "caracteres restantes"
   },
   validation: {
     required: "Este campo es obligatorio",
