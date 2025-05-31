@@ -293,11 +293,6 @@ export class ModernPDFGenerator {
         this.pageWidth - this.margin - 20,
         this.pageHeight - 10
       );
-      this.pdf.text(
-        'Generado con JOMA Dashboard',
-        this.margin,
-        this.pageHeight - 10
-      );
     }
   }
 }

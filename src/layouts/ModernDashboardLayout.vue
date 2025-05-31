@@ -5,6 +5,7 @@ import { useI18n } from "vue-i18n";
 import { authService } from "@/services/auth.service";
 import { languageService } from "@/services/language.service";
 import Button from "primevue/button";
+import logoUrl from "@/assets/beta-logo.png";
 
 // Import new components
 import AppSidebar from "@/components/layout/AppSidebar.vue";
@@ -201,7 +202,7 @@ onUnmounted(() => {
       :sidebarVisible="sidebarVisible"
       :menuItems="menuItems"
       :isMobile="isMobile"
-      logo="/src/assets/beta-logo.png"
+      :logo="logoUrl"
       @toggle="toggleSidebar"
       @navigate="navigateTo"
     />

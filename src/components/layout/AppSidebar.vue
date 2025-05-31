@@ -1,6 +1,7 @@
 <script setup>
 import { defineProps, defineEmits } from 'vue';
 import { useRoute } from 'vue-router';
+import defaultLogoUrl from "@/assets/beta-logo.png";
 
 const emit = defineEmits(['toggle', 'navigate']);
 const route = useRoute();
@@ -20,7 +21,7 @@ defineProps({
   },
   logo: {
     type: String,
-    default: '/src/assets/beta-logo.png'
+    default: defaultLogoUrl
   }
 });
 

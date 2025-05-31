@@ -3,6 +3,7 @@ import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { authService } from "@/services/auth.service";
 import { useI18n } from "vue-i18n";
+import logoUrl from "@/assets/beta-logo.png";
 
 const router = useRouter();
 const userId = ref("");
@@ -43,7 +44,7 @@ const { t } = useI18n();
         
         <!-- Logo -->
         <div class="logo-container">
-          <img src="/src/assets/beta-logo.png" alt="JOMA" class="logo" />
+          <img :src="logoUrl" alt="JOMA" class="logo" />
         </div>
 
         <!-- Welcome text -->
