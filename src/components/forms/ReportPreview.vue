@@ -49,7 +49,7 @@ const props = defineProps({
 
     <!-- Información del cliente -->
     <div
-      v-if="formData.nombre || formData.telefono || formData.email"
+      v-if="formData.nombre || formData.telefono || formData.email || formData.vin || formData.datosAdicionales"
       class="client-info"
     >
       <h2 class="font-bold">{{ t("printView.clientData") }}</h2>
@@ -69,6 +69,17 @@ const props = defineProps({
           <p>
             <strong>{{ t("printView.email") }}:</strong> {{ formData.email }}
           </p>
+        </div>
+        <div v-if="formData.vin" class="col-12 md:col-4">
+          <p>
+            <strong>VIN:</strong> {{ formData.vin }}
+          </p>
+        </div>
+        <div v-if="formData.datosAdicionales" class="col-12">
+          <p>
+            <strong>{{ t("printView.additionalClientData") }}:</strong>
+          </p>
+          <p class="white-space-pre-wrap">{{ formData.datosAdicionales }}</p>
         </div>
       </div>
 

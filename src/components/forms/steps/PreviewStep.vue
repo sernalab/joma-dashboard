@@ -26,6 +26,8 @@ const clientSummary = computed(() => {
   if (formData.value.nombre) items.push({ label: t('printView.name'), value: formData.value.nombre });
   if (formData.value.telefono) items.push({ label: t('printView.phone'), value: formData.value.telefono });
   if (formData.value.email) items.push({ label: t('printView.email'), value: formData.value.email });
+  if (formData.value.vin) items.push({ label: 'VIN', value: formData.value.vin });
+  if (formData.value.datosAdicionales) items.push({ label: t('printView.additionalClientData'), value: formData.value.datosAdicionales });
   return items;
 });
 

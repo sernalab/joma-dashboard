@@ -187,7 +187,8 @@ export class ModernPDFGenerator {
     const clientData = [
       ['Nombre:', reportData.nombre || 'N/A'],
       ['Teléfono:', reportData.telefono || 'N/A'],
-      ['Email:', reportData.email || 'N/A']
+      ['Email:', reportData.email || 'N/A'],
+      ['VIN:', reportData.vin || 'N/A']
     ];
     
     clientData.forEach(([label, value], index) => {
@@ -196,7 +197,27 @@ export class ModernPDFGenerator {
       this.pdf.text(value, this.margin + 25, y);
     });
     
-    return yPosition + 30;
+    let currentY = yPosition + 36;
+    
+    // Add additional client data if present
+    if (reportData.datosAdicionales) {
+      this.pdf.setFontSize(12);
+      this.pdf.setFont('helvetica', 'bold');
+      this.pdf.text('Datos adicionales:', this.margin, currentY);
+      
+      this.pdf.setFontSize(10);
+      this.pdf.setFont('helvetica', 'normal');
+      
+      // Split text to fit within margins
+      const lines = this.pdf.splitTextToSize(reportData.datosAdicionales, this.pageWidth - 2 * this.margin);
+      lines.forEach((line, index) => {
+        this.pdf.text(line, this.margin, currentY + 8 + (index * 5));
+      });
+      
+      currentY += 8 + (lines.length * 5) + 6;
+    }
+    
+    return currentY;
   }
 
   _addVehicleInfo(reportData, yPosition) {

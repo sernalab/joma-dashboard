@@ -159,6 +159,8 @@ export default {
     measurements: "Uit te Voeren Metingen",
     observations: "Opmerkingen",
     addNotes: "Voeg notities of opmerkingen over de metingen toe",
+    additionalClientData: "Aanvullende klantgegevens",
+    additionalClientDataHelp: "Aanvullende informatie over de klant (adres, speciale opmerkingen, enz.)",
     generateReport: "Rapport Genereren",
     technicalReport: "Technisch Rapport",
     noDataAvailable: "Geen gegevens beschikbaar voor {chartName}.",

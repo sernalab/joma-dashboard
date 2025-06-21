@@ -19,6 +19,8 @@ const formData = ref({
   nombre: '',
   telefono: '',
   email: '',
+  vin: '',
+  datosAdicionales: '',
   
   // Vehicle data
   marca: '',
@@ -79,6 +81,7 @@ const validateCurrentStep = () => {
              formData.value.nombre && 
              formData.value.telefono && 
              formData.value.email && 
+             formData.value.vin &&
              emailRegex.test(formData.value.email);
     case 1: // Vehicle
       return formData.value.marca && formData.value.modelo;

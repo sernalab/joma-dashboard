@@ -11,7 +11,9 @@ const touched = ref({
   nombreTaller: false,
   nombre: false,
   telefono: false,
-  email: false
+  email: false,
+  vin: false,
+  datosAdicionales: false
 });
 
 const updateField = (field, value) => {
@@ -25,6 +27,10 @@ const isValidEmail = computed(() => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(formData.value.email);
 });
+
+// Character limit for additional data
+const characterLimit = 300;
+const remainingChars = computed(() => characterLimit - (formData.value.datosAdicionales?.length || 0));
 </script>
 
 <template>
@@ -107,6 +113,52 @@ const isValidEmail = computed(() => {
         </small>
         <small v-else-if="touched.email && formData.email && !isValidEmail" class="p-error">
           {{ t('validation.invalidEmail') }}
+        </small>
+      </div>
+
+      <!-- VIN -->
+      <div class="field-container">
+        <FloatLabel>
+          <InputText
+            id="vin"
+            v-model="formData.vin"
+            @input="updateField('vin', $event.target.value)"
+            class="w-full"
+            :class="{ 'p-invalid': touched.vin && !formData.vin }"
+          />
+          <label for="vin">
+            VIN *
+          </label>
+        </FloatLabel>
+        <small v-if="touched.vin && !formData.vin" class="p-error">
+          {{ t('validation.required') }}
+        </small>
+      </div>
+    </div>
+
+    <!-- Additional Client Data -->
+    <div class="additional-data-container mt-4">
+      <FloatLabel>
+        <Textarea
+          id="additional-data"
+          v-model="formData.datosAdicionales"
+          @input="updateField('datosAdicionales', $event.target.value)"
+          rows="4"
+          class="w-full"
+          :maxlength="characterLimit"
+          autoResize
+        />
+        <label for="additional-data">
+          {{ t('printView.additionalClientData') }}
+        </label>
+      </FloatLabel>
+      
+      <div class="flex justify-content-between align-items-center mt-2">
+        <small class="text-muted-color">
+          {{ t('printView.additionalClientDataHelp') }}
+        </small>
+        <small class="text-muted-color" :class="{ 'text-orange-500': remainingChars < 50 }">
+          {{ remainingChars }} {{ t('common.charactersLeft') }}
         </small>
       </div>
     </div>

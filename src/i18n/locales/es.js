@@ -111,6 +111,8 @@ export default {
     measurements: "Mediciones a Realizar",
     observations: "Observaciones",
     addNotes: "Añadir notas o comentarios sobre las mediciones",
+    additionalClientData: "Datos adicionales del cliente",
+    additionalClientDataHelp: "Información adicional sobre el cliente (dirección, notas especiales, etc.)",
     generateReport: "Generar Informe",
     technicalReport: "Informe Técnico",
     noDataAvailable: "No hay datos disponibles para {chartName}.",

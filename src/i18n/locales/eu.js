@@ -146,6 +146,8 @@ export default {
     measurements: "Egin beharreko neurketak",
     observations: "Oharrak",
     addNotes: "Gehitu oharrak edo iruzkinak neurketei buruz",
+    additionalClientData: "Bezeroaren datu gehigarriak",
+    additionalClientDataHelp: "Bezeroari buruzko informazio gehigarria (helbidea, ohar bereziak, etab.)",
     generateReport: "Txostena Sortu",
     technicalReport: "Txosten Teknikoa",
     noDataAvailable: "Ez dago daturik {chartName}-rako.",

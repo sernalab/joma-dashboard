@@ -159,6 +159,8 @@ export default {
     measurements: "Elvégzendő mérések",
     observations: "Megjegyzések",
     addNotes: "Megjegyzések vagy észrevételek hozzáadása a mérésekhez",
+    additionalClientData: "További ügyfél adatok",
+    additionalClientDataHelp: "További információk az ügyfélről (cím, speciális megjegyzések, stb.)",
     generateReport: "Jelentés generálása",
     technicalReport: "Műszaki jelentés",
     noDataAvailable: "Nincs elérhető adat ehhez: {chartName}.",
