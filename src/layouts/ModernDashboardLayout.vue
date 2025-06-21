@@ -109,29 +109,29 @@ const userMenuItems = computed(() => [
   {
     label: currentUser.value?.name || currentUser.value?.id,
     items: [
-      {
-        label: t("menu.settings"),
-        icon: "pi pi-cog",
-        command: () => {
-          // Navegación a configuración
-        },
-      },
-      {
-        label: t("common.language"),
-        icon: "pi pi-globe",
-        items: [
-          { label: "Español", command: () => changeLanguage("es") },
-          { label: "English", command: () => changeLanguage("en") },
-          { label: "Italiano", command: () => changeLanguage("it") },
-          { label: "Français", command: () => changeLanguage("fr") },
-          { label: "Deutsch", command: () => changeLanguage("de") },
-        ],
-      },
-      {
-        label: t("common.darkMode"),
-        icon: darkMode.value ? "pi pi-sun" : "pi pi-moon",
-        command: toggleDarkMode,
-      },
+      // {
+      //   label: t("menu.settings"),
+      //   icon: "pi pi-cog",
+      //   command: () => {
+      //     // Navegación a configuración
+      //   },
+      // },
+      // {
+      //   label: t("common.language"),
+      //   icon: "pi pi-globe",
+      //   items: [
+      //     { label: "Español", command: () => changeLanguage("es") },
+      //     { label: "English", command: () => changeLanguage("en") },
+      //     { label: "Italiano", command: () => changeLanguage("it") },
+      //     { label: "Français", command: () => changeLanguage("fr") },
+      //     { label: "Deutsch", command: () => changeLanguage("de") },
+      //   ],
+      // },
+      // {
+      //   label: t("common.darkMode"),
+      //   icon: darkMode.value ? "pi pi-sun" : "pi pi-moon",
+      //   command: toggleDarkMode,
+      // },
       { separator: true },
       {
         label: t("common.logout"),
