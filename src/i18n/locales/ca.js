@@ -65,7 +65,7 @@ export default {
     templates: "Plantilles",
     apollo: "Apollo",
     ultima: "Ultima",
-    printReports: "Imprimir Informes",
+    printReports: "Gestionar Informes",
   },
   extras: {
     cylinder: "Cilindre",

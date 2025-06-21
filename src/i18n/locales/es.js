@@ -26,7 +26,7 @@ export default {
     templates: "Plantillas",
     apollo: "Apollo",
     ultima: "Ultima",
-    printReports: "Imprimir Informes",
+    printReports: "Gestionar Reportes",
   },
   extras: {
     cylinder: "Cilindro",
