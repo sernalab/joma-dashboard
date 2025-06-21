@@ -297,11 +297,11 @@ onMounted(async () => {
     />
 
     <!-- Stats Grid - Datos Reales -->
-    <div class="stats-section">
+    <!-- <div class="stats-section">
       <h3 class="stats-title">{{ t("dashboard.currentStatus") }}</h3>
       <StatsGrid :stats="stats.slice(0, 4)" />
       <StatsGrid :stats="stats.slice(4, 8)" />
-    </div>
+    </div> -->
 
     <!-- Measurement Cards -->
     <div class="section-header">
