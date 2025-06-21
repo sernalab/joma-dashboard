@@ -241,11 +241,11 @@ const quickActions = [
     icon: "pi pi-file-pdf",
     command: () => router.push("/dashboard/print-client-report"),
   },
-  {
-    label: t("dashboard.viewHistory"),
-    icon: "pi pi-history",
-    command: () => router.push("/dashboard/recent-activity"),
-  },
+  // {
+  //   label: t("dashboard.viewHistory"),
+  //   icon: "pi pi-history",
+  //   command: () => router.push("/dashboard/recent-activity"),
+  // },
 ];
 
 // Cargar mediciones con datos reales
@@ -335,7 +335,7 @@ onMounted(async () => {
     </div>
 
     <!-- Recent Activity -->
-    <ActivityList :activities="recentActivity" />
+    <!-- <ActivityList :activities="recentActivity" /> -->
   </div>
 </template>
 
