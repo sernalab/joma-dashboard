@@ -91,4 +91,20 @@ export const firebaseService = {
 
     return availableData;
   },
+
+  async getWorkshopData(userId) {
+    const userData = await this.fetchUserData(userId);
+    
+    if (!userData) {
+      return null;
+    }
+
+    // Extract workshop data from user document
+    return {
+      name: userData.workshopName || userData.name || '',
+      phone: userData.workshopPhone || userData.phone || '',
+      address: userData.workshopAddress || userData.address || '',
+      address2: userData.workshopAddress2 || userData.address2 || ''
+    };
+  },
 };

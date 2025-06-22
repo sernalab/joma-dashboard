@@ -12,7 +12,8 @@ const touched = ref({
   modelo: false,
   matricula: false,
   año: false,
-  kilometraje: false
+  kilometraje: false,
+  vin: false
 });
 
 const updateField = (field, value) => {
@@ -84,6 +85,22 @@ const isValidMileage = computed(() => {
         </FloatLabel>
       </div>
 
+      <!-- VIN -->
+      <div class="field-container">
+        <FloatLabel>
+          <InputText
+            id="vin"
+            v-model="formData.vin"
+            @input="updateField('vin', $event.target.value)"
+            class="w-full"
+            :class="{ 'p-invalid': touched.vin && !formData.vin }"
+          />
+          <label for="vin">
+            VIN
+          </label>
+        </FloatLabel>
+      </div>
+
       <!-- Year -->
       <div class="field-container">
         <FloatLabel>
@@ -144,6 +161,10 @@ const isValidMileage = computed(() => {
             <div v-if="formData.matricula" class="detail-item">
               <span class="detail-label">{{ t('printView.plate') }}:</span>
               <span class="font-mono">{{ formData.matricula }}</span>
+            </div>
+            <div v-if="formData.vin" class="detail-item">
+              <span class="detail-label">VIN:</span>
+              <span class="font-mono">{{ formData.vin }}</span>
             </div>
             <div v-if="formData.kilometraje" class="detail-item">
               <span class="detail-label">{{ t('printView.mileage') }}:</span>

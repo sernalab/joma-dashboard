@@ -21,7 +21,12 @@ export default {
     activities: "Jarduerak",
     quickActions: "Ekintza Azkarrak",
     goToDashboard: "Aginte-panelera Joan",
-    goBack: "Atzera"
+    goBack: "Atzera",
+    previous: "Aurrekoa",
+    next: "Hurrengoa",
+    selectAll: "Denak Hautatu",
+    clearAll: "Denak Garbitu",
+    charactersLeft: "karaktere geratzen dira"
   },
   measurements: {
     title: "Neurketak",
@@ -30,6 +35,7 @@ export default {
     lastValue: "Azken balioa",
     noData: "Daturik gabe",
     noDataAvailable: "Ez dago neurketarik eskuragarri",
+    hasData: "Datu eskuragarriak",
     readings: "neurriak"
   },
   validation: {
@@ -65,7 +71,7 @@ export default {
     templates: "Txantiloiak",
     apollo: "Apollo",
     ultima: "Ultima",
-    printReports: "Txostenak Inprimatu",
+    printReports: "Txostenak Kudeatu",
   },
   extras: {
     cylinder: "Zilindroa",
@@ -134,6 +140,11 @@ export default {
   },
   printView: {
     clientData: "Bezeroaren Datuak",
+    workshopName: "Taileraren Izena",
+    workshopPhone: "Taileraren Telefonoa",
+    workshopAddress: "Taileraren Helbidea",
+    workshopAddress2: "Taileraren Helbidea",
+    workshopData: "Taileraren Datuak",
     name: "Bezeroaren Izena",
     phone: "Telefonoa",
     email: "Emaila",
@@ -230,8 +241,55 @@ export default {
     viewDetails: "Xehetasunak Ikusi",
   },
   reportWizard: {
+    title: "Txosten Sortzailea",
+    subtitle: "Sortu txosten profesionalak pausoz pauso",
     reportTitle: "Neurrien Txostena",
-    generatedOn: "Sortua"
+    generatedOn: "Sortua",
+    steps: {
+      workshop: "Tailerra",
+      client: "Bezeroa",
+      vehicle: "Ibilgailua",
+      measurements: "Neurketak",
+      observations: "Behaketak",
+      preview: "Aurrebista"
+    },
+    workshopInfo: {
+      title: "Taileraren Datuak",
+      description: "Konfiguratu zure taileraren informazioa"
+    },
+    descriptions: {
+      step1: "Taileraren informazioa",
+      step2: "Bezeroaren datuak",
+      step3: "Diagnostikatu beharreko ibilgailuaren xehetasunak",
+      step4: "Hautatu txostenean sartu beharreko neurketak",
+      step5: "Gehitu behaketa gehigarriak",
+      step6: "Berrikusi eta sortu txostena"
+    },
+    progress: "{current}. urratsa {total}-tik",
+    generateReport: "Txostena Sortu",
+    clientInfo: {
+      title: "Informazio Garrantzitsuak",
+      description: "*-rekin markatutako eremuak derrigorrezkoak dira. Informazio hau azken txostenean agertuko da."
+    },
+    vehicleSummary: {
+      title: "Ibilgailuaren Laburpena"
+    },
+    measurementsInfo: "Hautatu txostenean sartu nahi dituzun neurketak. Datu eskuragarriak dituzten neurketak soilik erakusten dira.",
+    selectedMeasurements: "{count} neurketa hautatuta",
+    noDataTitle: "Ez dago neurketarik eskuragarri",
+    noDataDescription: "Ez da daturik duen neurketarik aurkitu. Lehenik neurketa batzuk egin.",
+    observationsHelp: "Gehitu diagnostikoari buruzko edozein behaketa, gomendio edo ohar gehigarri.",
+    observationsTips: {
+      title: "Behaketetarako aholkuak",
+      tip1: "Sartu mantentze-gomendioak",
+      tip2: "Aipatu aurkitutako anomaliak",
+      tip3: "Gehitu gomendatutako hurrengo urratsak"
+    },
+    noClientData: "Ez dago bezeroaren daturik",
+    noVehicleData: "Ez dago ibilgailuaren daturik",
+    noMeasurementsSelected: "Ez da neurketarik hautatu",
+    readyToGenerate: "Sortzeko prest!",
+    generateInfo: "Berrikusi informazio guztia eta sortu zure PDF txosten profesionala."
   },
   errors: {
     loadingData: "Errorea datuak kargatzean",

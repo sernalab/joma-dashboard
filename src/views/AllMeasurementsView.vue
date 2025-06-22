@@ -7,6 +7,18 @@ import Button from "primevue/button";
 import { firebaseService } from "@/services/firebase.service";
 import { authService } from "@/services/auth.service";
 
+// Import PNG icons
+import GaugeIcon from '@/assets/Gauge60.png';
+import VacuumIcon from '@/assets/Vacuum60.png';
+import OilIcon from '@/assets/Oil60.png';
+import FuelIcon from '@/assets/Fuel60.png';
+import InjectorIcon from '@/assets/Injector60.png';
+import CompresionIcon from '@/assets/Compresion60.png';
+import TurbochargerIcon from '@/assets/Turbocharger60.png';
+import AdBlueIcon from '@/assets/AdBlue60.png';
+import BrakeIcon from '@/assets/Brake60.png';
+import FiltroParticulasIcon from '@/assets/FiltroParticulas60.png';
+
 const { t } = useI18n();
 const router = useRouter();
 
@@ -63,7 +75,7 @@ const allMeasurements = ref([
     id: "manometer",
     title: t("selectionView.manometer.title"),
     description: t("selectionView.manometer.description"),
-    icon: "pi pi-gauge",
+    icon: GaugeIcon,
     route: "/dashboard/manometer",
     lastValue: null,
     trend: "stable",
@@ -73,7 +85,7 @@ const allMeasurements = ref([
     id: "vacuum",
     title: t("selectionView.vacuum.title"),
     description: t("selectionView.vacuum.description"),
-    icon: "pi pi-circle",
+    icon: VacuumIcon,
     route: "/dashboard/vacuum",
     lastValue: null,
     trend: "stable",
@@ -83,7 +95,7 @@ const allMeasurements = ref([
     id: "oil-pressure",
     title: t("selectionView.oilPressure.title"),
     description: t("selectionView.oilPressure.description"),
-    icon: "pi pi-filter",
+    icon: OilIcon,
     route: "/dashboard/oil-pressure",
     lastValue: null,
     trend: "stable",
@@ -93,7 +105,7 @@ const allMeasurements = ref([
     id: "fuel-pressure",
     title: t("selectionView.fuelPressure.title"),
     description: t("selectionView.fuelPressure.description"),
-    icon: "pi pi-bolt",
+    icon: FuelIcon,
     route: "/dashboard/fuel-pressure",
     lastValue: null,
     trend: "stable",
@@ -103,7 +115,7 @@ const allMeasurements = ref([
     id: "common-rail",
     title: t("selectionView.commonRail.title"),
     description: t("selectionView.commonRail.description"),
-    icon: "pi pi-server",
+    icon: InjectorIcon,
     route: "/dashboard/common-rail",
     lastValue: null,
     trend: "stable",
@@ -113,7 +125,7 @@ const allMeasurements = ref([
     id: "compression",
     title: t("selectionView.compression.title"),
     description: t("selectionView.compression.description"),
-    icon: "pi pi-chart-bar",
+    icon: CompresionIcon,
     route: "/dashboard/compression",
     lastValue: null,
     trend: "stable",
@@ -123,7 +135,7 @@ const allMeasurements = ref([
     id: "turbo-pressure",
     title: t("selectionView.turboPressure.title"),
     description: t("selectionView.turboPressure.description"),
-    icon: "pi pi-sync",
+    icon: TurbochargerIcon,
     route: "/dashboard/turbo-pressure",
     lastValue: null,
     trend: "stable",
@@ -133,7 +145,7 @@ const allMeasurements = ref([
     id: "brake-pressure",
     title: t("selectionView.brakePressure.title"),
     description: t("selectionView.brakePressure.description"),
-    icon: "pi pi-stop-circle",
+    icon: BrakeIcon,
     route: "/dashboard/brake-pressure",
     lastValue: null,
     trend: "stable",
@@ -143,7 +155,7 @@ const allMeasurements = ref([
     id: "dpf-pressure",
     title: t("selectionView.dpfPressure.title"),
     description: t("selectionView.dpfPressure.description"),
-    icon: "pi pi-filter-fill",
+    icon: FiltroParticulasIcon,
     route: "/dashboard/dpf-pressure",
     lastValue: null,
     trend: "stable",
@@ -153,7 +165,7 @@ const allMeasurements = ref([
     id: "adblue-pressure",
     title: t("selectionView.adbluePressure.title"),
     description: t("selectionView.adbluePressure.description"),
-    icon: "pi pi-box",
+    icon: AdBlueIcon,
     route: "/dashboard/adblue-pressure",
     lastValue: null,
     trend: "stable",

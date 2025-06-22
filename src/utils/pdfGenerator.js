@@ -135,8 +135,11 @@ export class ModernPDFGenerator {
       // Add header
       this._addHeader(reportData);
       
+      // Add workshop information
+      let yPosition = this._addWorkshopInfo(reportData, 50);
+      
       // Add client information
-      let yPosition = this._addClientInfo(reportData, 50);
+      yPosition = this._addClientInfo(reportData, yPosition + 15);
       
       // Add vehicle information
       yPosition = this._addVehicleInfo(reportData, yPosition + 15);
@@ -176,6 +179,37 @@ export class ModernPDFGenerator {
     }
   }
 
+  _addWorkshopInfo(reportData, yPosition) {
+    this.pdf.setFontSize(16);
+    this.pdf.setFont('helvetica', 'bold');
+    this.pdf.text('DATOS DEL TALLER', this.margin, yPosition);
+    
+    this.pdf.setFontSize(11);
+    this.pdf.setFont('helvetica', 'normal');
+    
+    const workshopData = [
+      ['Nombre:', reportData.tallerNombre || 'N/A'],
+      ['Teléfono:', reportData.tallerTelefono || 'N/A'],
+      ['Dirección:', reportData.tallerDireccion || 'N/A']
+    ];
+    
+    if (reportData.tallerDireccion2) {
+      workshopData.push(['Dirección 2:', reportData.tallerDireccion2]);
+    }
+    
+    workshopData.forEach(([label, value], index) => {
+      const y = yPosition + 10 + (index * 6);
+      // Label in bold
+      this.pdf.setFont('helvetica', 'bold');
+      this.pdf.text(label, this.margin, y);
+      // Value in normal
+      this.pdf.setFont('helvetica', 'normal');
+      this.pdf.text(value, this.margin + 25, y);
+    });
+    
+    return yPosition + 10 + (workshopData.length * 6) + 10;
+  }
+
   _addClientInfo(reportData, yPosition) {
     this.pdf.setFontSize(16);
     this.pdf.setFont('helvetica', 'bold');
@@ -193,7 +227,11 @@ export class ModernPDFGenerator {
     
     clientData.forEach(([label, value], index) => {
       const y = yPosition + 10 + (index * 6);
+      // Label in bold
+      this.pdf.setFont('helvetica', 'bold');
       this.pdf.text(label, this.margin, y);
+      // Value in normal
+      this.pdf.setFont('helvetica', 'normal');
       this.pdf.text(value, this.margin + 25, y);
     });
     
@@ -238,7 +276,11 @@ export class ModernPDFGenerator {
     
     vehicleData.forEach(([label, value], index) => {
       const y = yPosition + 10 + (index * 6);
+      // Label in bold
+      this.pdf.setFont('helvetica', 'bold');
       this.pdf.text(label, this.margin, y);
+      // Value in normal
+      this.pdf.setFont('helvetica', 'normal');
       this.pdf.text(value, this.margin + 25, y);
     });
     

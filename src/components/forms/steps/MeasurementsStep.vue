@@ -1,8 +1,20 @@
 <script setup>
-import { inject, ref, onMounted } from 'vue';
+import { inject, ref, onMounted, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { authService } from '@/services/auth.service';
 import { firebaseService } from '@/services/firebase.service';
+
+// Import PNG icons
+import GaugeIcon from '@/assets/Gauge60.png';
+import VacuumIcon from '@/assets/Vacuum60.png';
+import OilIcon from '@/assets/Oil60.png';
+import FuelIcon from '@/assets/Fuel60.png';
+import InjectorIcon from '@/assets/Injector60.png';
+import CompresionIcon from '@/assets/Compresion60.png';
+import TurbochargerIcon from '@/assets/Turbocharger60.png';
+import AdBlueIcon from '@/assets/AdBlue60.png';
+import BrakeIcon from '@/assets/Brake60.png';
+import FiltroParticulasIcon from '@/assets/FiltroParticulas60.png';
 
 const { t } = useI18n();
 const formData = inject('formData');
@@ -17,7 +29,7 @@ const measurementConfigs = {
     id: 'datamanometer80',
     name: t('selectionView.manometer.title'),
     description: t('selectionView.manometer.description'),
-    icon: 'pi pi-gauge',
+    iconImage: GaugeIcon,
     color: '#3b82f6',
     bgColor: '#dbeafe'
   },
@@ -25,7 +37,7 @@ const measurementConfigs = {
     id: 'datavacuum',
     name: t('selectionView.vacuum.title'),
     description: t('selectionView.vacuum.description'),
-    icon: 'pi pi-circle',
+    iconImage: VacuumIcon,
     color: '#8b5cf6',
     bgColor: '#ede9fe'
   },
@@ -33,7 +45,7 @@ const measurementConfigs = {
     id: 'dataoil',
     name: t('selectionView.oilPressure.title'),
     description: t('selectionView.oilPressure.description'),
-    icon: 'pi pi-filter',
+    iconImage: OilIcon,
     color: '#f59e0b',
     bgColor: '#fef3c7'
   },
@@ -41,7 +53,7 @@ const measurementConfigs = {
     id: 'datafuel',
     name: t('selectionView.fuelPressure.title'),
     description: t('selectionView.fuelPressure.description'),
-    icon: 'pi pi-bolt',
+    iconImage: FuelIcon,
     color: '#10b981',
     bgColor: '#d1fae5'
   },
@@ -49,7 +61,7 @@ const measurementConfigs = {
     id: 'datacommonrail',
     name: t('selectionView.commonRail.title'),
     description: t('selectionView.commonRail.description'),
-    icon: 'pi pi-server',
+    iconImage: InjectorIcon,
     color: '#ef4444',
     bgColor: '#fee2e2'
   },
@@ -57,7 +69,7 @@ const measurementConfigs = {
     id: 'datacompression',
     name: t('selectionView.compression.title'),
     description: t('selectionView.compression.description'),
-    icon: 'pi pi-chart-bar',
+    iconImage: CompresionIcon,
     color: '#6366f1',
     bgColor: '#e0e7ff'
   },
@@ -65,7 +77,7 @@ const measurementConfigs = {
     id: 'dataturbo',
     name: t('selectionView.turboPressure.title'),
     description: t('selectionView.turboPressure.description'),
-    icon: 'pi pi-sync',
+    iconImage: TurbochargerIcon,
     color: '#10b981',
     bgColor: '#d1fae5'
   },
@@ -73,7 +85,7 @@ const measurementConfigs = {
     id: 'dataadblue',
     name: t('selectionView.adbluePressure.title'),
     description: t('selectionView.adbluePressure.description'),
-    icon: 'pi pi-box',
+    iconImage: AdBlueIcon,
     color: '#6366f1',
     bgColor: '#e0e7ff'
   },
@@ -81,7 +93,7 @@ const measurementConfigs = {
     id: 'databrake',
     name: t('selectionView.brakePressure.title'),
     description: t('selectionView.brakePressure.description'),
-    icon: 'pi pi-stop-circle',
+    iconImage: BrakeIcon,
     color: '#dc2626',
     bgColor: '#fee2e2'
   },
@@ -89,7 +101,7 @@ const measurementConfigs = {
     id: 'datadpf',
     name: t('selectionView.dpfPressure.title'),
     description: t('selectionView.dpfPressure.description'),
-    icon: 'pi pi-filter-fill',
+    iconImage: FiltroParticulasIcon,
     color: '#7c3aed',
     bgColor: '#ede9fe'
   }
@@ -111,8 +123,7 @@ onMounted(async () => {
           ...config,
           hasData: data?.hasData || false,
           lastValue: data?.lastValue || null,
-          dataCount: data?.dataCount || 0,
-          isSelected: (formData.value.graficos || []).some(g => g.value === firebaseKey)
+          dataCount: data?.dataCount || 0
         };
       });
     }
@@ -140,6 +151,12 @@ const mapFirebaseKeyToMeasurementId = (firebaseKey) => {
   return mapping[firebaseKey] || firebaseKey;
 };
 
+// Helper function to check if a measurement is selected
+const isMeasurementSelected = (measurement) => {
+  const graficos = formData.value.graficos || [];
+  return graficos.some(g => g.value === measurement.id);
+};
+
 const toggleMeasurement = (measurement) => {
   if (!measurement.hasData) return; // Don't allow selection if no data
   
@@ -160,9 +177,6 @@ const toggleMeasurement = (measurement) => {
   }
   
   updateFormData({ graficos: currentSelection });
-  
-  // Update local state
-  measurement.isSelected = !measurement.isSelected;
 };
 
 const selectAll = () => {
@@ -173,18 +187,10 @@ const selectAll = () => {
   }));
   
   updateFormData({ graficos: newSelection });
-  
-  // Update local state
-  availableMeasurements.value.forEach(measurement => {
-    measurement.isSelected = measurement.hasData;
-  });
 };
 
 const clearAll = () => {
   updateFormData({ graficos: [] });
-  availableMeasurements.value.forEach(measurement => {
-    measurement.isSelected = false;
-  });
 };
 </script>
 
@@ -250,7 +256,7 @@ const clearAll = () => {
         :key="measurement.id"
         class="measurement-card"
         :class="{
-          'measurement-selected': measurement.isSelected,
+          'measurement-selected': isMeasurementSelected(measurement),
           'measurement-disabled': !measurement.hasData,
           'measurement-available': measurement.hasData
         }"
@@ -258,17 +264,11 @@ const clearAll = () => {
       >
         <template #content>
           <div class="measurement-content">
-            <!-- Header with checkbox -->
+            <!-- Header -->
             <div class="measurement-header">
-              <div class="measurement-icon" :style="{ backgroundColor: measurement.bgColor, color: measurement.color }">
-                <i :class="measurement.icon"></i>
+              <div class="measurement-icon" :style="{ backgroundColor: measurement.bgColor }">
+                <img :src="measurement.iconImage" :alt="measurement.name" class="measurement-icon-img" />
               </div>
-              <Checkbox
-                :modelValue="measurement.isSelected"
-                :disabled="!measurement.hasData"
-                class="measurement-checkbox"
-                @click.stop
-              />
             </div>
 
             <!-- Content -->
@@ -394,6 +394,13 @@ const clearAll = () => {
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
+}
+
+.measurement-icon-img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%);
 }
 
 .measurement-info {

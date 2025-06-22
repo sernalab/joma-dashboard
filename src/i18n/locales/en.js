@@ -98,6 +98,10 @@ export default {
   printView: {
     clientData: "Client Data",
     workshopName: "Workshop Name",
+    workshopPhone: "Workshop Phone",
+    workshopAddress: "Workshop Address",
+    workshopAddress2: "Workshop Address",
+    workshopData: "Workshop Data",
     name: "Client Name",
     phone: "Phone",
     email: "Email",
@@ -199,6 +203,7 @@ export default {
     reportTitle: "Measurements Report",
     generatedOn: "Generated on",
     steps: {
+      workshop: "Workshop",
       client: "Client",
       vehicle: "Vehicle", 
       measurements: "Measurements",
@@ -214,6 +219,10 @@ export default {
     },
     progress: "Step {current} of {total}",
     generateReport: "Generate Report",
+    workshopInfo: {
+      title: "Workshop Information",
+      description: "This data is loaded automatically but you can edit it if needed. It will appear in the report header."
+    },
     clientInfo: {
       title: "Important Information",
       description: "Fields marked with * are required. This information will appear in the final report."

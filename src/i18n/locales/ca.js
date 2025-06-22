@@ -138,6 +138,11 @@ export default {
   },
   printView: {
     clientData: "Dades del Client",
+    workshopName: "Nom del Taller",
+    workshopPhone: "Telèfon del Taller",
+    workshopAddress: "Adreça del Taller",
+    workshopAddress2: "Adreça del Taller",
+    workshopData: "Dades del Taller",
     name: "Nom del Client",
     phone: "Telèfon",
     email: "Correu Electrònic",
@@ -234,8 +239,26 @@ export default {
     viewDetails: "Veure Detalls",
   },
   reportWizard: {
+    title: "Generador d'Informes",
+    subtitle: "Crea informes professionals pas a pas",
     reportTitle: "Informe de Mesuraments",
-    generatedOn: "Generat el"
+    generatedOn: "Generat el",
+    steps: {
+      workshop: "Taller",
+      client: "Client",
+      vehicle: "Vehicle",
+      measurements: "Mesuraments",
+      observations: "Observacions",
+      preview: "Vista Prèvia"
+    },
+    workshopInfo: {
+      title: "Informació del Taller",
+      description: "Aquestes dades es carreguen automàticament però pots editar-les si és necessari. Apareixeran a la capçalera de l'informe."
+    },
+    clientInfo: {
+      title: "Informació Important",
+      description: "Els camps marcats amb * són obligatoris. Aquesta informació apareixerà en l'informe final."
+    }
   },
   errors: {
     loadingData: "Error carregant les dades",

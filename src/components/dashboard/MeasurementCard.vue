@@ -58,33 +58,35 @@ const hasData = computed(() => {
 <template>
   <Card class="measurement-card" @click="handleClick">
     <template #content>
-      <div class="card-content-design1">
-        <div class="card-header-minimal">
-          <div class="card-icon-minimal">
-            <i :class="card.icon"></i>
-          </div>
-          <div class="card-info">
-            <h3 class="card-title-minimal">{{ card.title }}</h3>
-            <p class="card-description-minimal">{{ card.description }}</p>
-          </div>
+      <div class="card-content-modern">
+        <!-- Header with title -->
+        <div class="card-header-modern">
+          <h3 class="card-title-modern">{{ card.title }}</h3>
+          <p class="card-subtitle-modern">{{ t('measurements.title') }}</p>
         </div>
-        <div class="card-value-hero">
-          <span v-if="hasData" class="value-hero">{{ card.lastValue }}</span>
-          <div v-if="hasData" class="trend-minimal">
-            <i :class="getTrendIcon(card.trend)" :style="{ color: getTrendColor(card.trend) }"></i>
-            <span :style="{ color: getTrendColor(card.trend) }">{{ card.trendValue }}</span>
-          </div>
-          <div v-else class="no-data-section">
-            <span class="no-data-text">{{ t('measurements.noData') }}</span>
-            <div class="no-data-indicator">
-              <i class="pi pi-info-circle"></i>
-              <span>{{ t('measurements.noDataAvailable') }}</span>
-            </div>
-          </div>
+        
+        <!-- Description -->
+        <div class="card-description-modern">
+          <p>{{ card.description }}</p>
         </div>
-        <div class="card-action-minimal">
-          <span class="action-text">{{ t('dashboard.viewDetails') || 'View Details' }}</span>
-          <i class="pi pi-arrow-right action-arrow"></i>
+        
+        <!-- Icon centered -->
+        <div class="card-icon-section">
+          <!-- Check if icon is a string (PrimeVue class) or URL (PNG image) -->
+          <i v-if="typeof card.icon === 'string' && card.icon.startsWith('pi')" :class="card.icon" class="icon-primevue"></i>
+          <img v-else :src="card.icon" :alt="card.title" class="icon-img-modern" />
+        </div>
+        
+        <!-- Footer with status -->
+        <div class="card-footer-modern">
+          <div class="status-indicator">
+            <div v-if="card.hasRealData" class="status-dot active"></div>
+            <div v-else class="status-dot inactive"></div>
+            <span class="status-text">
+              {{ card.hasRealData ? t('measurements.hasData') : t('measurements.noData') }}
+            </span>
+          </div>
+          <i class="pi pi-arrow-right card-arrow"></i>
         </div>
       </div>
     </template>
@@ -192,6 +194,10 @@ DISEÑO 4 - Cards compactas estilo lista
   transition: all 0.3s ease;
   border: 1px solid var(--p-surface-border);
   height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #ffffff 0%, #fefefe 100%);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .measurement-card :deep(.p-card-body) {
@@ -205,36 +211,121 @@ DISEÑO 4 - Cards compactas estilo lista
 }
 
 .measurement-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  border-color: #fb923c;
 }
 
-.card-content-design1 {
+.card-content-modern {
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
   height: 100%;
-  min-height: 280px;
+  min-height: 220px;
 }
 
-.card-header-minimal {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
+/* Nuevo diseño moderno */
+.card-header-modern {
+  margin-bottom: 0.5rem;
 }
 
-.card-icon-minimal {
-  width: 48px;
-  height: 48px;
-  border-radius: 0.75rem;
-  background: var(--p-surface-100);
+.card-icon-section {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  padding: 1.5rem 0;
+  flex: 1;
+}
+
+.icon-img-modern {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  /* Orange filter for PNG icons - same as sidebar orange */
+  filter: invert(67%) sepia(69%) saturate(7482%) hue-rotate(16deg) brightness(101%) contrast(102%);
+}
+
+.icon-primevue {
+  font-size: 4rem;
+  color: #fb923c;
+}
+
+.card-title-modern {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--p-text-color);
+  line-height: 1.3;
+}
+
+.card-subtitle-modern {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--p-text-muted-color);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.card-description-modern {
+  margin-bottom: 0.5rem;
+}
+
+.card-description-modern p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--p-text-muted-color);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-footer-modern {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--p-surface-border);
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.status-dot.active {
+  background: var(--p-green-500);
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2);
+}
+
+.status-dot.inactive {
+  background: var(--p-surface-400);
+}
+
+.status-text {
+  font-size: 0.8rem;
+  color: var(--p-text-muted-color);
+  font-weight: 500;
+}
+
+.card-arrow {
+  color: var(--p-text-muted-color);
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+.measurement-card:hover .card-arrow {
   color: var(--p-primary-color);
-  flex-shrink: 0;
+  transform: translateX(2px);
 }
 
 .card-info {
@@ -348,8 +439,9 @@ DISEÑO 4 - Cards compactas estilo lista
 }
 
 /* Dark mode */
-.app-dark .card-icon-minimal {
+.app-dark .card-icon-modern {
   background: var(--p-surface-800);
+  border-color: var(--p-surface-700);
 }
 
 /* ========================================

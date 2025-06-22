@@ -72,7 +72,9 @@ const toggleSidebar = () => {
             @click="item.route ? navigateTo(item.route) : null" 
             :style="item.route ? 'cursor: pointer' : ''"
           >
-            <i :class="item.icon"></i>
+            <!-- Check if icon is a string (PrimeVue class) or URL (PNG image) -->
+            <i v-if="typeof item.icon === 'string' && item.icon.startsWith('pi')" :class="item.icon"></i>
+            <img v-else :src="item.icon" :alt="item.label" class="sidebar-icon-img" />
             <span>{{ item.label }}</span>
           </div>
           <div class="nav-group-items">
@@ -82,7 +84,9 @@ const toggleSidebar = () => {
               :class="['nav-item', { active: isActiveRoute(subItem.route) }]"
               @click="navigateTo(subItem.route)"
             >
-              <i :class="subItem.icon"></i>
+              <!-- Check if icon is a string (PrimeVue class) or URL (PNG image) -->
+              <i v-if="typeof subItem.icon === 'string' && subItem.icon.startsWith('pi')" :class="subItem.icon"></i>
+              <img v-else :src="subItem.icon" :alt="subItem.label" class="sidebar-icon-img" />
               <span>{{ subItem.label }}</span>
             </a>
           </div>
@@ -94,7 +98,9 @@ const toggleSidebar = () => {
           :class="['nav-item', { active: isActiveRoute(item.route), special: item.special }]"
           @click="navigateTo(item.route)"
         >
-          <i :class="item.icon"></i>
+          <!-- Check if icon is a string (PrimeVue class) or URL (PNG image) -->
+          <i v-if="typeof item.icon === 'string' && item.icon.startsWith('pi')" :class="item.icon"></i>
+          <img v-else :src="item.icon" :alt="item.label" class="sidebar-icon-img" />
           <span>{{ item.label }}</span>
           <Badge v-if="item.badge" :value="item.badge" severity="success" class="nav-badge" />
         </a>
@@ -161,6 +167,14 @@ const toggleSidebar = () => {
 
 .sidebar-nav::-webkit-scrollbar-thumb:hover {
   background: var(--p-surface-500);
+}
+
+/* Sidebar icon images */
+.sidebar-icon-img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(40%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(90%) contrast(100%);
 }
 
 .nav-group {

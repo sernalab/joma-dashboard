@@ -147,6 +147,10 @@ export default {
   printView: {
     clientData: "Klantgegevens",
     workshopName: "Naam Werkplaats",
+    workshopPhone: "Werkplaats Telefoon",
+    workshopAddress: "Werkplaats Adres",
+    workshopAddress2: "Werkplaats Adres",
+    workshopData: "Werkplaats Gegevens",
     name: "Klantnaam",
     phone: "Telefoon",
     email: "E-mail",
@@ -248,6 +252,7 @@ export default {
     reportTitle: "Meetrapport",
     generatedOn: "Gegenereerd op",
     steps: {
+      workshop: "Werkplaats",
       client: "Klant",
       vehicle: "Voertuig", 
       measurements: "Metingen",
@@ -263,6 +268,10 @@ export default {
     },
     progress: "Stap {current} van {total}",
     generateReport: "Rapport Genereren",
+    workshopInfo: {
+      title: "Werkplaats Informatie",
+      description: "Deze gegevens worden automatisch geladen maar kunnen indien nodig worden bewerkt. Ze verschijnen in de rapportkop."
+    },
     clientInfo: {
       title: "Belangrijke Informatie",
       description: "Velden gemarkeerd met * zijn verplicht. Deze informatie verschijnt in het eindrapport."

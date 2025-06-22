@@ -12,6 +12,16 @@ import StatsGrid from "@/components/dashboard/StatsGrid.vue";
 import MeasurementCard from "@/components/dashboard/MeasurementCard.vue";
 import ActivityList from "@/components/dashboard/ActivityList.vue";
 
+// Import PNG icons
+import GaugeIcon from '@/assets/Gauge60.png';
+import VacuumIcon from '@/assets/Vacuum60.png';
+import OilIcon from '@/assets/Oil60.png';
+import FuelIcon from '@/assets/Fuel60.png';
+import InjectorIcon from '@/assets/Injector60.png';
+import CompresionIcon from '@/assets/Compresion60.png';
+import TurbochargerIcon from '@/assets/Turbocharger60.png';
+import AdBlueIcon from '@/assets/AdBlue60.png';
+
 const { t } = useI18n();
 const router = useRouter();
 const currentUser = ref(authService.getCurrentUser());
@@ -25,7 +35,7 @@ const measurementConfigs = {
   manometer: {
     title: () => t("selectionView.manometer.title"),
     description: () => t("selectionView.manometer.description"),
-    icon: "pi pi-gauge",
+    icon: GaugeIcon,
     route: "/dashboard/manometer",
     color: "#3b82f6",
     bgColor: "#dbeafe",
@@ -33,7 +43,7 @@ const measurementConfigs = {
   vacuum: {
     title: () => t("selectionView.vacuum.title"),
     description: () => t("selectionView.vacuum.description"),
-    icon: "pi pi-circle",
+    icon: VacuumIcon,
     route: "/dashboard/vacuum",
     color: "#8b5cf6",
     bgColor: "#ede9fe",
@@ -41,7 +51,7 @@ const measurementConfigs = {
   "oil-pressure": {
     title: () => t("selectionView.oilPressure.title"),
     description: () => t("selectionView.oilPressure.description"),
-    icon: "pi pi-filter",
+    icon: OilIcon,
     route: "/dashboard/oil-pressure",
     color: "#f59e0b",
     bgColor: "#fef3c7",
@@ -49,7 +59,7 @@ const measurementConfigs = {
   "fuel-pressure": {
     title: () => t("selectionView.fuelPressure.title"),
     description: () => t("selectionView.fuelPressure.description"),
-    icon: "pi pi-bolt",
+    icon: FuelIcon,
     route: "/dashboard/fuel-pressure",
     color: "#10b981",
     bgColor: "#d1fae5",
@@ -57,7 +67,7 @@ const measurementConfigs = {
   "common-rail": {
     title: () => t("selectionView.commonRail.title"),
     description: () => t("selectionView.commonRail.description"),
-    icon: "pi pi-server",
+    icon: InjectorIcon,
     route: "/dashboard/common-rail",
     color: "#ef4444",
     bgColor: "#fee2e2",
@@ -65,7 +75,7 @@ const measurementConfigs = {
   compression: {
     title: () => t("selectionView.compression.title"),
     description: () => t("selectionView.compression.description"),
-    icon: "pi pi-chart-bar",
+    icon: CompresionIcon,
     route: "/dashboard/compression",
     color: "#6366f1",
     bgColor: "#e0e7ff",
@@ -73,7 +83,7 @@ const measurementConfigs = {
   "turbo-pressure": {
     title: () => t("selectionView.turboPressure.title"),
     description: () => t("selectionView.turboPressure.description"),
-    icon: "pi pi-sync",
+    icon: TurbochargerIcon,
     route: "/dashboard/turbo-pressure",
     color: "#10b981",
     bgColor: "#d1fae5",
@@ -81,7 +91,7 @@ const measurementConfigs = {
   "adblue-pressure": {
     title: () => t("selectionView.adbluePressure.title"),
     description: () => t("selectionView.adbluePressure.description"),
-    icon: "pi pi-box",
+    icon: AdBlueIcon,
     route: "/dashboard/adblue-pressure",
     color: "#6366f1",
     bgColor: "#e0e7ff",
@@ -277,6 +287,7 @@ onMounted(async () => {
             trend: "stable",
             trendValue: t("measurements.lastValue"),
             dataCount: data.dataCount,
+            hasRealData: true, // Add this since we're only showing cards with data
           };
         });
     }

@@ -20,7 +20,7 @@ defineProps({
     <div class="welcome-content">
       <h1 class="welcome-title">
         {{ t("dashboard.welcome") }},
-        {{ userName }}! 👋
+        {{ userName }}!
       </h1>
       <p class="welcome-subtitle">
         {{ t("dashboard.subtitle") }}

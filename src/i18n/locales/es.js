@@ -99,6 +99,10 @@ export default {
   printView: {
     clientData: "Datos del Cliente",
     workshopName: "Nombre del Taller",
+    workshopPhone: "Teléfono del Taller",
+    workshopAddress: "Dirección del Taller",
+    workshopAddress2: "Dirección del Taller",
+    workshopData: "Datos del Taller",
     name: "Nombre del Cliente",
     phone: "Teléfono",
     email: "Correo Electrónico",
@@ -200,6 +204,7 @@ export default {
     reportTitle: "Informe de Mediciones",
     generatedOn: "Generado el",
     steps: {
+      workshop: "Taller",
       client: "Cliente",
       vehicle: "Vehículo", 
       measurements: "Mediciones",
@@ -215,6 +220,10 @@ export default {
     },
     progress: "Paso {current} de {total}",
     generateReport: "Generar Reporte",
+    workshopInfo: {
+      title: "Información del Taller",
+      description: "Estos datos se cargan automáticamente pero puedes editarlos si es necesario. Aparecerán en el encabezado del reporte."
+    },
     clientInfo: {
       title: "Información Importante",
       description: "Los campos marcados con * son obligatorios. Esta información aparecerá en el reporte final."

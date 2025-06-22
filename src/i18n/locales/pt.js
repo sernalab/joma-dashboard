@@ -75,7 +75,7 @@ export default {
     templates: "Modelos",
     apollo: "Apollo",
     ultima: "Ultima",
-    printReports: "Imprimir Relatórios",
+    printReports: "Gestionar Relatórios",
   },
   extras: {
     cylinder: "Cilindro",
@@ -148,6 +148,10 @@ export default {
   printView: {
     clientData: "Dados do Cliente",
     workshopName: "Nome da Oficina",
+    workshopPhone: "Telefone da Oficina",
+    workshopAddress: "Endereço da Oficina",
+    workshopAddress2: "Endereço da Oficina",
+    workshopData: "Dados da Oficina",
     name: "Nome do Cliente",
     phone: "Telefone",
     email: "E-mail",
@@ -249,18 +253,24 @@ export default {
     reportTitle: "Relatório de Medições",
     generatedOn: "Gerado em",
     steps: {
+      workshop: "Oficina",
       client: "Cliente",
       vehicle: "Veículo", 
       measurements: "Medições",
       observations: "Observações",
       preview: "Pré-visualização"
     },
+    workshopInfo: {
+      title: "Dados da Oficina",
+      description: "Configure as informações da sua oficina"
+    },
     descriptions: {
-      step1: "Informações da oficina e do cliente",
-      step2: "Detalhes do veículo a diagnosticar",
-      step3: "Selecione as medições a incluir",
-      step4: "Adicione observações adicionais",
-      step5: "Revise e gere o relatório"
+      step1: "Informações da oficina",
+      step2: "Informações do cliente",
+      step3: "Detalhes do veículo a diagnosticar",
+      step4: "Selecione as medições a incluir",
+      step5: "Adicione observações adicionais",
+      step6: "Revise e gere o relatório"
     },
     progress: "Passo {current} de {total}",
     generateReport: "Gerar Relatório",

@@ -8,11 +8,9 @@ const updateFormData = inject('updateFormData');
 
 // Track which fields have been touched
 const touched = ref({
-  nombreTaller: false,
   nombre: false,
   telefono: false,
   email: false,
-  vin: false,
   datosAdicionales: false
 });
 
@@ -36,25 +34,6 @@ const remainingChars = computed(() => characterLimit - (formData.value.datosAdic
 <template>
   <div class="client-step">
     <div class="form-grid">
-      <!-- Workshop Name -->
-      <div class="field-container">
-        <FloatLabel>
-          <InputText
-            id="workshop-name"
-            v-model="formData.nombreTaller"
-            @input="updateField('nombreTaller', $event.target.value)"
-            class="w-full"
-            :class="{ 'p-invalid': touched.nombreTaller && !formData.nombreTaller }"
-          />
-          <label for="workshop-name">
-            {{ t('printView.workshopName') }} *
-          </label>
-        </FloatLabel>
-        <small v-if="touched.nombreTaller && !formData.nombreTaller" class="p-error">
-          {{ t('validation.required') }}
-        </small>
-      </div>
-
       <!-- Client Name -->
       <div class="field-container">
         <FloatLabel>
@@ -116,24 +95,6 @@ const remainingChars = computed(() => characterLimit - (formData.value.datosAdic
         </small>
       </div>
 
-      <!-- VIN -->
-      <div class="field-container">
-        <FloatLabel>
-          <InputText
-            id="vin"
-            v-model="formData.vin"
-            @input="updateField('vin', $event.target.value)"
-            class="w-full"
-            :class="{ 'p-invalid': touched.vin && !formData.vin }"
-          />
-          <label for="vin">
-            VIN *
-          </label>
-        </FloatLabel>
-        <small v-if="touched.vin && !formData.vin" class="p-error">
-          {{ t('validation.required') }}
-        </small>
-      </div>
     </div>
 
     <!-- Additional Client Data -->

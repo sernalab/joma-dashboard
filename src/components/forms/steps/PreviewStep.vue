@@ -20,9 +20,17 @@ const chartRefs = ref({});
 const hiddenChartsContainer = ref(null);
 
 // Computed properties for display
+const workshopSummary = computed(() => {
+  const items = [];
+  if (formData.value.tallerNombre) items.push({ label: t('printView.workshopName'), value: formData.value.tallerNombre });
+  if (formData.value.tallerTelefono) items.push({ label: t('printView.workshopPhone'), value: formData.value.tallerTelefono });
+  if (formData.value.tallerDireccion) items.push({ label: t('printView.workshopAddress'), value: formData.value.tallerDireccion });
+  if (formData.value.tallerDireccion2) items.push({ label: t('printView.workshopAddress2'), value: formData.value.tallerDireccion2 });
+  return items;
+});
+
 const clientSummary = computed(() => {
   const items = [];
-  if (formData.value.nombreTaller) items.push({ label: t('printView.workshopName'), value: formData.value.nombreTaller });
   if (formData.value.nombre) items.push({ label: t('printView.name'), value: formData.value.nombre });
   if (formData.value.telefono) items.push({ label: t('printView.phone'), value: formData.value.telefono });
   if (formData.value.email) items.push({ label: t('printView.email'), value: formData.value.email });
@@ -122,7 +130,19 @@ const generatePDF = async () => {
       <div style="text-align: center; margin-bottom: 40px; border-bottom: 3px solid #f59e0b; padding-bottom: 20px;">
         <h1 style="color: #1f2937; margin: 0; font-size: 28px; font-weight: bold;">${t('reportWizard.reportTitle').toUpperCase()}</h1>
         <p style="color: #6b7280; margin: 10px 0 0 0; font-size: 14px;">${t('reportWizard.generatedOn')} ${new Date().toLocaleDateString()}</p>
-        ${formData.value.nombreTaller ? `<p style="color: #f59e0b; margin: 5px 0 0 0; font-size: 16px; font-weight: 600;">${formData.value.nombreTaller}</p>` : ''}
+        ${formData.value.tallerNombre ? `<p style="color: #f59e0b; margin: 5px 0 0 0; font-size: 16px; font-weight: 600;">${formData.value.tallerNombre}</p>` : ''}
+      </div>
+      
+      <div style="margin-bottom: 30px;">
+        <h2 style="color: #1f2937; font-size: 18px; margin-bottom: 15px; border-bottom: 2px solid #e5e7eb; padding-bottom: 5px;">${t('printView.workshopData').toUpperCase()}</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+          ${workshopSummary.value.map(item => `
+            <div style="margin-bottom: 8px; display: flex;">
+              <span style="font-weight: 600; color: #4b5563; min-width: 120px;">${item.label}:</span>
+              <span style="color: #1f2937;">${item.value}</span>
+            </div>
+          `).join('')}
+        </div>
       </div>
       
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px;">
@@ -165,13 +185,8 @@ const generatePDF = async () => {
                   </div>
                   <div style="padding: 20px;">
                     ${hasData ? `
-                      <div style="display: flex; justify-content: space-between; margin-bottom: 15px; padding: 15px; background: #f9fafb; border-radius: 6px;">
-                        <div>
-                          <div style="font-size: 12px; color: #6b7280; margin-bottom: 4px;">Último valor:</div>
-                          <div style="font-size: 20px; font-weight: bold; color: #1f2937;">${lastValue.y} ${unit}</div>
-                          <div style="font-size: 11px; color: #9ca3af;">${new Date(lastValue.x).toLocaleString()}</div>
-                        </div>
-                        <div style="text-align: right;">
+                      <div style="display: flex; justify-content: center; margin-bottom: 15px; padding: 15px; background: #f9fafb; border-radius: 6px;">
+                        <div style="text-align: center;">
                           <div style="font-size: 12px; color: #6b7280; margin-bottom: 4px;">Total mediciones:</div>
                           <div style="font-size: 20px; font-weight: bold; color: #1f2937;">${chartData.data.length}</div>
                           ${chartData.data.length > 1 ? `

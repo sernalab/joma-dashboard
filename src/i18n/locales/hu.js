@@ -75,7 +75,7 @@ export default {
     templates: "Sablonok",
     apollo: "Apollo",
     ultima: "Ultima",
-    printReports: "Jelentések Nyomtatása",
+    printReports: "Jelentések Kezelése",
   },
   extras: {
     cylinder: "Henger",
@@ -147,6 +147,10 @@ export default {
   printView: {
     clientData: "Ügyfél adatai",
     workshopName: "Műhely Neve",
+    workshopPhone: "Műhely Telefon",
+    workshopAddress: "Műhely Címe",
+    workshopAddress2: "Műhely Címe",
+    workshopData: "Műhely Adatai",
     name: "Ügyfél neve",
     phone: "Telefon",
     email: "E-mail",
@@ -248,18 +252,24 @@ export default {
     reportTitle: "Mérési Jelentés",
     generatedOn: "Létrehozva",
     steps: {
+      workshop: "Műhely",
       client: "Ügyfél",
       vehicle: "Jármű", 
       measurements: "Mérések",
       observations: "Megfigyelések",
       preview: "Előnézet"
     },
+    workshopInfo: {
+      title: "Műhely Adatai",
+      description: "Állítsa be műhelye információit"
+    },
     descriptions: {
-      step1: "Műhely és ügyfél adatok",
-      step2: "A diagnosztizálandó jármű részletei",
-      step3: "Válassza ki a felveenő méréseket",
-      step4: "Adjon hozzá további megfigyeléseket",
-      step5: "Tekintse át és generálja a jelentést"
+      step1: "Műhely információk",
+      step2: "Ügyfél adatok",
+      step3: "A diagnosztizálandó jármű részletei",
+      step4: "Válassza ki a felvevénő méréseket",
+      step5: "Adjon hozzá további megfigyeléseket",
+      step6: "Tekintse át és generálja a jelentést"
     },
     progress: "{current}. lépés a {total}-ból",
     generateReport: "Jelentés Generálása",

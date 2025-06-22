@@ -145,6 +145,10 @@ export default {
   printView: {
     clientData: "Dane klienta",
     workshopName: "Nazwa Warsztatu",
+    workshopPhone: "Telefon Warsztatu",
+    workshopAddress: "Adres Warsztatu",
+    workshopAddress2: "Adres Warsztatu",
+    workshopData: "Dane Warsztatu",
     name: "Imię i nazwisko",
     phone: "Telefon",
     email: "E-mail",
@@ -246,6 +250,7 @@ export default {
     reportTitle: "Raport Pomiarów",
     generatedOn: "Wygenerowano",
     steps: {
+      workshop: "Warsztat",
       client: "Klient",
       vehicle: "Pojazd", 
       measurements: "Pomiary",

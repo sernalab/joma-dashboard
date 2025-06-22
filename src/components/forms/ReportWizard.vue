@@ -1,8 +1,11 @@
 <script setup>
-import { ref, computed, provide, markRaw } from 'vue';
+import { ref, computed, provide, markRaw, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { authService } from '@/services/auth.service';
+import { firebaseService } from '@/services/firebase.service';
 
 // Step components
+import WorkshopStep from './steps/WorkshopStep.vue';
 import ClientStep from './steps/ClientStep.vue';
 import VehicleStep from './steps/VehicleStep.vue';
 import MeasurementsStep from './steps/MeasurementsStep.vue';
@@ -14,8 +17,13 @@ const currentStep = ref(0);
 
 // Form data
 const formData = ref({
+  // Workshop data
+  tallerNombre: '',
+  tallerTelefono: '',
+  tallerDireccion: '',
+  tallerDireccion2: '',
+  
   // Client data
-  nombreTaller: '',
   nombre: '',
   telefono: '',
   email: '',
@@ -36,8 +44,13 @@ const formData = ref({
   observaciones: '',
 });
 
-// Steps configuration - mark components as raw to avoid reactivity warnings
-const steps = ref([
+// Base steps configuration
+const baseSteps = [
+  {
+    label: t('reportWizard.steps.workshop'),
+    icon: 'pi pi-building',
+    component: markRaw(WorkshopStep)
+  },
   {
     label: t('reportWizard.steps.client'),
     icon: 'pi pi-user',
@@ -63,7 +76,16 @@ const steps = ref([
     icon: 'pi pi-eye',
     component: markRaw(PreviewStep)
   }
-]);
+];
+
+// Steps with dynamic properties
+const steps = computed(() => {
+  return baseSteps.map((step, index) => ({
+    ...step,
+    command: () => goToStep(index),
+    disabled: index > currentStep.value // Disable future steps
+  }));
+});
 
 // Computed properties
 const currentStepComponent = computed(() => steps.value[currentStep.value].component);
@@ -75,21 +97,24 @@ const selectedMeasurements = computed(() => formData.value.graficos || []);
 // Validation functions
 const validateCurrentStep = () => {
   switch (currentStep.value) {
-    case 0: // Client
+    case 0: // Workshop
+      return formData.value.tallerNombre && 
+             formData.value.tallerTelefono && 
+             formData.value.tallerDireccion;
+    case 1: // Client
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      return formData.value.nombreTaller && 
-             formData.value.nombre && 
+      return formData.value.nombre && 
              formData.value.telefono && 
              formData.value.email && 
-             formData.value.vin &&
              emailRegex.test(formData.value.email);
-    case 1: // Vehicle
-      return formData.value.marca && formData.value.modelo;
-    case 2: // Measurements
+    case 2: // Vehicle
+      return formData.value.marca && 
+             formData.value.modelo;
+    case 3: // Measurements
       return formData.value.graficos.length > 0;
-    case 3: // Observations
+    case 4: // Observations
       return true; // Optional step
-    case 4: // Preview
+    case 5: // Preview
       return true;
     default:
       return true;
@@ -110,7 +135,8 @@ const prevStep = () => {
 };
 
 const goToStep = (index) => {
-  if (index >= 0 && index < steps.value.length) {
+  // Only allow going to previous steps (backwards navigation)
+  if (index >= 0 && index < currentStep.value) {
     currentStep.value = index;
   }
 };
@@ -141,6 +167,27 @@ const generateReport = async () => {
 provide('shouldGeneratePDF', shouldGeneratePDF);
 provide('setGenerating', (value) => {
   isGenerating.value = value;
+});
+
+// Load workshop data from Firestore on component mount
+onMounted(async () => {
+  try {
+    const currentUser = authService.getCurrentUser();
+    if (currentUser?.id) {
+      // Load workshop data from Firestore
+      const workshopData = await firebaseService.getWorkshopData(currentUser.id);
+      if (workshopData) {
+        // Update form data with workshop information
+        formData.value.tallerNombre = workshopData.name || '';
+        formData.value.tallerTelefono = workshopData.phone || '';
+        formData.value.tallerDireccion = workshopData.address || '';
+        formData.value.tallerDireccion2 = workshopData.address2 || '';
+      }
+    }
+  } catch (error) {
+    console.error('Error loading workshop data:', error);
+    // If there's an error, the fields will remain empty and editable
+  }
 });
 </script>
 
@@ -274,6 +321,20 @@ provide('setGenerating', (value) => {
   padding: 1rem;
   border-radius: 0.75rem;
   transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.custom-steps :deep(.p-steps-item .p-menuitem-link:hover) {
+  background: var(--p-surface-100);
+}
+
+.custom-steps :deep(.p-steps-item.p-disabled .p-menuitem-link) {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.custom-steps :deep(.p-steps-item.p-disabled .p-menuitem-link:hover) {
+  background: transparent;
 }
 
 .custom-steps :deep(.p-steps-item.p-highlight .p-menuitem-link) {

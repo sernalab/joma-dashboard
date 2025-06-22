@@ -11,6 +11,18 @@ import logoUrl from "@/assets/beta-logo.png";
 import AppSidebar from "@/components/layout/AppSidebar.vue";
 import UserMenu from "@/components/layout/UserMenu.vue";
 
+// Import PNG icons for sidebar
+import GaugeIcon from '@/assets/Gauge60.png';
+import VacuumIcon from '@/assets/Vacuum60.png';
+import OilIcon from '@/assets/Oil60.png';
+import FuelIcon from '@/assets/Fuel60.png';
+import InjectorIcon from '@/assets/Injector60.png';
+import CompresionIcon from '@/assets/Compresion60.png';
+import TurbochargerIcon from '@/assets/Turbocharger60.png';
+import AdBlueIcon from '@/assets/AdBlue60.png';
+import BrakeIcon from '@/assets/Brake60.png';
+import FiltroParticulasIcon from '@/assets/FiltroParticulas60.png';
+
 const { t, locale } = useI18n();
 const router = useRouter();
 
@@ -35,52 +47,52 @@ const menuItems = [
     items: [
       {
         label: t("selectionView.manometer.title"),
-        icon: "pi pi-gauge",
+        icon: GaugeIcon,
         route: "/dashboard/manometer",
       },
       {
         label: t("selectionView.vacuum.title"),
-        icon: "pi pi-circle",
+        icon: VacuumIcon,
         route: "/dashboard/vacuum",
       },
       {
         label: t("selectionView.oilPressure.title"),
-        icon: "pi pi-filter",
+        icon: OilIcon,
         route: "/dashboard/oil-pressure",
       },
       {
         label: t("selectionView.fuelPressure.title"),
-        icon: "pi pi-bolt",
+        icon: FuelIcon,
         route: "/dashboard/fuel-pressure",
       },
       {
         label: t("selectionView.commonRail.title"),
-        icon: "pi pi-server",
+        icon: InjectorIcon,
         route: "/dashboard/common-rail",
       },
       {
         label: t("selectionView.compression.title"),
-        icon: "pi pi-chart-bar",
+        icon: CompresionIcon,
         route: "/dashboard/compression",
       },
       {
         label: t("selectionView.turboPressure.title"),
-        icon: "pi pi-sync",
+        icon: TurbochargerIcon,
         route: "/dashboard/turbo-pressure",
       },
       {
         label: t("selectionView.brakePressure.title"),
-        icon: "pi pi-stop-circle",
+        icon: BrakeIcon,
         route: "/dashboard/brake-pressure",
       },
       {
         label: t("selectionView.dpfPressure.title"),
-        icon: "pi pi-filter-fill",
+        icon: FiltroParticulasIcon,
         route: "/dashboard/dpf-pressure",
       },
       {
         label: t("selectionView.adbluePressure.title"),
-        icon: "pi pi-box",
+        icon: AdBlueIcon,
         route: "/dashboard/adblue-pressure",
       },
     ],

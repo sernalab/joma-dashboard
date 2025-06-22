@@ -147,6 +147,10 @@ export default {
   printView: {
     clientData: "Kundendaten",
     workshopName: "Werkstattname",
+    workshopPhone: "Werkstatt Telefon",
+    workshopAddress: "Werkstatt Adresse",
+    workshopAddress2: "Werkstatt Adresse",
+    workshopData: "Werkstatt Daten",
     name: "Kundenname",
     phone: "Telefon",
     email: "E-Mail",
@@ -248,6 +252,7 @@ export default {
     reportTitle: "Messbericht",
     generatedOn: "Generiert am",
     steps: {
+      workshop: "Werkstatt",
       client: "Kunde",
       vehicle: "Fahrzeug", 
       measurements: "Messungen",
@@ -263,6 +268,10 @@ export default {
     },
     progress: "Schritt {current} von {total}",
     generateReport: "Bericht Generieren",
+    workshopInfo: {
+      title: "Werkstatt Informationen",
+      description: "Diese Daten werden automatisch geladen, können aber bei Bedarf bearbeitet werden. Sie erscheinen im Berichtskopf."
+    },
     clientInfo: {
       title: "Wichtige Informationen",
       description: "Mit * gekennzeichnete Felder sind erforderlich. Diese Informationen erscheinen im endgültigen Bericht."

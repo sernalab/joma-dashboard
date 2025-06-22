@@ -147,6 +147,10 @@ export default {
   printView: {
     clientData: "Données du client",
     workshopName: "Nom de l'Atelier",
+    workshopPhone: "Téléphone de l'atelier",
+    workshopAddress: "Adresse de l'atelier",
+    workshopAddress2: "Adresse de l'atelier",
+    workshopData: "Données de l'atelier",
     name: "Nom du client",
     phone: "Téléphone",
     email: "E-mail",
