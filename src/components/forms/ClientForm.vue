@@ -17,6 +17,14 @@ const updateField = (field, value) => {
     <h2 class="text-xl mb-3">{{ t("printView.clientData") }}</h2>
     <div class="grid">
       <div class="col-12 md:col-4">
+        <label class="block mb-2">{{ t("printView.workshopName") }}</label>
+        <InputText
+          :value="modelValue.nombreTaller"
+          @input="(e) => updateField('nombreTaller', e.target.value)"
+          class="w-full"
+        />
+      </div>
+      <div class="col-12 md:col-4">
         <label class="block mb-2">{{ t("printView.name") }}</label>
         <InputText
           :value="modelValue.nombre"

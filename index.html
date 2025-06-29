@@ -5,8 +5,23 @@
     <link rel="icon" href="/favicon-beta.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beta Dashboard</title>
+    <script>
+      // Prevent dark mode flash and transition on load
+      (function() {
+        document.documentElement.classList.add('preload');
+        const darkMode = localStorage.getItem('darkMode') === 'true';
+        if (darkMode) {
+          document.documentElement.classList.add('app-dark');
+        }
+        window.addEventListener('load', function() {
+          setTimeout(function() {
+            document.documentElement.classList.remove('preload');
+          }, 100);
+        });
+      })();
+    </script>
   </head>
-  <body>
+  <body class="preload">
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
   </body>

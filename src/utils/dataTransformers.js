@@ -1,6 +1,6 @@
 // src/utils/dataTransformers.js
 
-import { i18n } from "@/main";
+import { i18n } from "@/i18n/i18n-instance";
 import { chartConfigs } from "./chartConfig";
 
 /**
@@ -24,20 +24,28 @@ function createTransformedData(type, rawData, config) {
   // Determinar la configuración a usar
   const chartConfig = config || chartConfigs[type] || {};
   const chartType = chartConfig.type || "line";
-  const labelKey = chartConfig.labelKey || "";
+  const labelKey = chartConfig.labelKey || "chartsData.generic.pointLabel";
 
   // Procesar los datos (funciona con arrays u objetos)
   if (Array.isArray(rawData)) {
     rawData.forEach((value, index) => {
-      data.push(parseFloat(value));
-      categories.push(`${t(labelKey)} ${index + 1}`);
+      const parsedValue = parseFloat(value);
+      // Incluir valores 0 como válidos
+      if (!isNaN(parsedValue)) {
+        data.push(parsedValue);
+        categories.push(labelKey ? `${t(labelKey)} ${index + 1}` : `${index + 1}`);
+      }
     });
   } else if (typeof rawData === "object" && rawData !== null) {
     Object.keys(rawData)
       .sort((a, b) => parseInt(a) - parseInt(b))
       .forEach((key) => {
-        data.push(parseFloat(rawData[key]));
-        categories.push(`${t(labelKey)} ${parseInt(key) + 1}`);
+        const parsedValue = parseFloat(rawData[key]);
+        // Incluir valores 0 como válidos
+        if (!isNaN(parsedValue)) {
+          data.push(parsedValue);
+          categories.push(labelKey ? `${t(labelKey)} ${parseInt(key) + 1}` : `${parseInt(key) + 1}`);
+        }
       });
   }
 
@@ -116,6 +124,6 @@ export function registerTransformer(type, config) {
 export const createGenericGraphData = (type, rawData) => {
   return createTransformedData(type, rawData, {
     type: "line",
-    labelKey: "",
+    labelKey: null,
   });
 };

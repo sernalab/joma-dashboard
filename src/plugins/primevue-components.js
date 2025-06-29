@@ -13,6 +13,11 @@ import Badge from "primevue/badge";
 import Menu from "primevue/menu";
 import { Form } from "@primevue/forms";
 import Textarea from "primevue/textarea";
+import ProgressBar from "primevue/progressbar";
+import Tooltip from "primevue/tooltip";
+import Steps from "primevue/steps";
+import FloatLabel from "primevue/floatlabel";
+import Checkbox from "primevue/checkbox";
 
 // 2. Directive Imports
 import Ripple from "primevue/ripple";
@@ -22,6 +27,7 @@ import StyleClass from "primevue/styleclass";
 const directives = {
   styleclass: StyleClass,
   ripple: Ripple,
+  tooltip: Tooltip,
 };
 
 const components = {
@@ -39,6 +45,10 @@ const components = {
   Form,
   InputNumber,
   Textarea,
+  ProgressBar,
+  Steps,
+  FloatLabel,
+  Checkbox,
 };
 
 // 4. Setup Function

@@ -1,4 +1,4 @@
-import { i18n } from "@/main";
+import { i18n } from "@/i18n/i18n-instance";
 
 export const languageService = {
   setLanguage(lang) {
@@ -27,9 +27,6 @@ export const languageService = {
     localStorage.setItem("appLanguage", langCode);
 
     i18n.global.locale.value = langCode;
-    console.log(
-      `Idioma establecido a: ${lang} (código: ${this.getCurrentLanguage()})`
-    );
   },
 
   getCurrentLanguage() {
@@ -39,10 +36,14 @@ export const languageService = {
   initializeLanguage() {
     const currentUser = localStorage.getItem("currentUser");
     if (currentUser) {
-      const userData = JSON.parse(currentUser);
-      if (userData.language) {
-        this.setLanguage(userData.language);
-        return;
+      try {
+        const userData = JSON.parse(currentUser);
+        if (userData.language) {
+          this.setLanguage(userData.language);
+          return;
+        }
+      } catch (error) {
+        // Silent fail - continue with default language
       }
     }
 

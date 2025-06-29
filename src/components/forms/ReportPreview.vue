@@ -30,6 +30,7 @@ const props = defineProps({
         formData.nombre ||
         formData.telefono ||
         formData.email ||
+        formData.nombreTaller ||
         formData.marca ||
         formData.modelo ||
         formData.matricula ||
@@ -41,11 +42,14 @@ const props = defineProps({
       class="print-header"
     >
       <h1 class="font-bold">{{ t("printView.technicalReport") }}</h1>
+      <div v-if="formData.nombreTaller" class="workshop-info mt-2 mb-4">
+        <h3 class="font-bold text-xl">{{ formData.nombreTaller }}</h3>
+      </div>
     </div>
 
     <!-- Información del cliente -->
     <div
-      v-if="formData.nombre || formData.telefono || formData.email"
+      v-if="formData.nombre || formData.telefono || formData.email || formData.vin || formData.datosAdicionales"
       class="client-info"
     >
       <h2 class="font-bold">{{ t("printView.clientData") }}</h2>
@@ -65,6 +69,17 @@ const props = defineProps({
           <p>
             <strong>{{ t("printView.email") }}:</strong> {{ formData.email }}
           </p>
+        </div>
+        <div v-if="formData.vin" class="col-12 md:col-4">
+          <p>
+            <strong>VIN:</strong> {{ formData.vin }}
+          </p>
+        </div>
+        <div v-if="formData.datosAdicionales" class="col-12">
+          <p>
+            <strong>{{ t("printView.additionalClientData") }}:</strong>
+          </p>
+          <p class="white-space-pre-wrap">{{ formData.datosAdicionales }}</p>
         </div>
       </div>
 
